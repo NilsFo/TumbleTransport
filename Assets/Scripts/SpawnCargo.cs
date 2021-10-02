@@ -10,15 +10,12 @@ public class SpawnCargo : MonoBehaviour
     public SpawnPoolScriptableObject spawnPool;
 
     public BoxCollider2D spawnArea;
+    public Transform spawnPoint;
 
     public  ContactFilter2D filter;
     
-    public int maxRetrysForPlacement = 20;
-
-    private void Start()
-    {
-        
-    }
+    public float minAirTime = 2f;
+    public float maxAirTime = 5f;
 
     // Update is called once per frame
     void Update()
@@ -48,7 +45,6 @@ public class SpawnCargo : MonoBehaviour
             SpriteRenderer mySpriteRenderer = spawnPrefab.GetComponent<SpriteRenderer>();
 
             var bounds = spawnArea.bounds;
-            Debug.Log(bounds);
             var spriteExtents = mySpriteRenderer.bounds.extents;
             Vector2 spriteArea = new Vector2(spriteExtents.x, spriteExtents.y);
 
@@ -57,9 +53,19 @@ public class SpawnCargo : MonoBehaviour
             
             xpos = Random.Range((bounds.min.x + spriteExtents.x) , (bounds.max.x - spriteExtents.x));
             ypos = Random.Range((bounds.min.y + spriteExtents.y) , (bounds.max.y - spriteExtents.y));
-
-
-            Instantiate(spawnPrefab, new Vector3(xpos, ypos, 0), Quaternion.identity);
+            
+            var endPos = new Vector3(xpos, ypos, 0);
+            
+            GameObject myCargoGameObject = Instantiate(spawnPrefab, spawnPoint.position, Quaternion.identity);
+            CargoSpawnAnimator myAnmimator = myCargoGameObject.GetComponent<CargoSpawnAnimator>();
+            if (myAnmimator != null)
+            {
+                myAnmimator.startPos = spawnPoint.position;
+                myAnmimator.targetPos = endPos;
+                myAnmimator.maxAirTime = Random.Range(minAirTime, maxAirTime);
+                myAnmimator.bounceNumber = Random.Range(2, 5);
+            }
+            
         }
     }
 }
