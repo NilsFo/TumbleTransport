@@ -140,5 +140,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
   targetPos: {x: 0, y: 0, z: 0}
-  maxAirTime: 5
+  maxAirTime: 2
   bounceNumber: 2

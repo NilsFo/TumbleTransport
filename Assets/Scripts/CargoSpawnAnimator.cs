@@ -27,7 +27,7 @@ public class CargoSpawnAnimator : MonoBehaviour
             
             Vector2 pos = Vector2.Lerp(startPos, targetPos, time);
 
-            transform.position = new Vector3(pos.x, startPos.y+(distance.y * bounceY), transform.position.z);
+            transform.position = new Vector3(pos.x, pos.y-(bounceY), transform.position.z);
 
             _currentAirTime += Time.deltaTime;
         }
