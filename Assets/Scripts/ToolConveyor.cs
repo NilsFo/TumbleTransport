@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class ToolConveyor : MonoBehaviour
 {
+    private GameState gameState;
     private List<GameObject> myTools;
+    public GameObject toolIndicator;
 
     private float spawnTimerCurrent;
     public float spawnTimer = 5;
@@ -23,11 +25,19 @@ public class ToolConveyor : MonoBehaviour
 
     public GameObject debugSpawn;
 
+    public SpriteRenderer mySprite;
+    public float animationSpeed = 1;
+    private float animationSpeedCurrent = 0;
+    public int currentKeyFrame = 0;
     public List<Sprite> animationKeyFrames;
 
     private void Start()
     {
         myTools = new List<GameObject>();
+        animationSpeedCurrent = 0;
+        currentKeyFrame = 0;
+        mySprite.sprite = animationKeyFrames[currentKeyFrame];
+        gameState = FindObjectOfType<GameState>();
     }
 
     private void Update()
@@ -64,9 +74,22 @@ public class ToolConveyor : MonoBehaviour
             spawnTimerCurrent = 0;
         }
 
+        // Debug Remove
         if (Input.GetKeyDown("e"))
         {
             Remove(UnityEngine.Random.Range(1,GetToolCount())-1);
+        }
+        
+        // Updating animation keyframe
+        if (shouldMove && gameState.currentSelectionState != GameState.SelectionState.Tool)
+        {
+            animationSpeedCurrent = animationSpeedCurrent + Time.deltaTime;
+            if (animationSpeedCurrent > animationSpeed)
+            {
+                animationSpeedCurrent -= animationSpeed;
+                currentKeyFrame = (currentKeyFrame + 1) % animationKeyFrames.Count;
+                mySprite.sprite = animationKeyFrames[currentKeyFrame];
+            }
         }
     }
 
@@ -84,6 +107,9 @@ public class ToolConveyor : MonoBehaviour
         GameObject newTool = Instantiate(debugSpawn,gameObject.transform);
         myTools.Add(newTool);
         newTool.transform.localPosition = new Vector3(creationXPos, 0, transform.localPosition.z-1);
+        
+        ToolPickupButton buttonAI = newTool.GetComponent<ToolPickupButton>();
+        buttonAI.toolUsageIndicator = toolIndicator;
 
         spawnTimerCurrent = 0;
     }
