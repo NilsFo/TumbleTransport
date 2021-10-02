@@ -140,7 +140,10 @@ public class Truck : MonoBehaviour {
 
     public void Dispatch()
     {
-        _state = TruckState.Out;
+        if (_state == TruckState.Stay)
+        {
+            _state = TruckState.Out;
+        }
     }
 
     private void SetStay()

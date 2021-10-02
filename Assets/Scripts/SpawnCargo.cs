@@ -12,17 +12,29 @@ public class SpawnCargo : MonoBehaviour
     public BoxCollider2D spawnArea;
     public Transform spawnPoint;
 
-    public  ContactFilter2D filter;
-    
-    public float minAirTime = 2f;
-    public float maxAirTime = 5f;
+    public float minAirTime = 1.5f;
+    public float maxAirTime = 2f;
+
+    public int maxNumberOfCargo = 20;
+
+    public float spawnTime = 2f;
+    private float _currentTime = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_currentTime <= spawnTime)
         {
-            SpawnCargoInArea();
+            _currentTime += Time.deltaTime;
+        }
+        else
+        {
+            GameObject[] Cargo = GameObject.FindGameObjectsWithTag("Cargo");
+            if (Cargo.Length < maxNumberOfCargo)
+            {
+                SpawnCargoInArea();
+            }
+            _currentTime = 0f;
         }
     }
 
