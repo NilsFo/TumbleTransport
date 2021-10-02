@@ -12,6 +12,7 @@ public class GameState : MonoBehaviour
         Tool
     }
 
+    public GameObject debugTruck;
     public SelectionState currentSelectionState;
     
     // Start is called before the first frame update
@@ -30,7 +31,12 @@ public class GameState : MonoBehaviour
     {
         return currentSelectionState != SelectionState.None;
     }
-    
+
+    public GameObject GetCurrentTruck()
+    {
+        Debug.LogWarning("DEBUG TRUCK NEEDS TO BE SWAPPED WITH REAL TRUCK");
+        return debugTruck;
+    }
     
     
 }

@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class Truck : MonoBehaviour {
     public Animator truckAnimator;
+
+    public List<GameObject> eyeletsLeft;
+    public List<GameObject> eyeletsRight;
+    public int minEyeletsLeft = 1;
+    public int minEyeletsRight = 1;
     
     public enum TruckState
     {
@@ -11,7 +17,6 @@ public class Truck : MonoBehaviour {
     }
     
     private TruckState _state = TruckState.In;
-    
     
 
     private float timer = 15.5f;
@@ -21,6 +26,26 @@ public class Truck : MonoBehaviour {
         //TODO set Truckspot in Gamestate
         truckAnimator.Play("TruckEnter");
         _state = TruckState.In;
+        
+        // Removing eyelets if needed
+        for (int i = minEyeletsLeft; i < eyeletsLeft.Count; i++)
+        {
+            if (UnityEngine.Random.Range(0,1)==0)
+            {
+                GameObject eye = eyeletsLeft[UnityEngine.Random.Range(0, eyeletsLeft.Count)];
+                eyeletsLeft.Remove(eye);
+                Destroy(eye);
+            }
+        }
+        for (int i = minEyeletsRight; i < eyeletsRight.Count; i++)
+        {
+            if (UnityEngine.Random.Range(0,1)==0)
+            {
+                GameObject eye = eyeletsRight[UnityEngine.Random.Range(0, eyeletsRight.Count)];
+                eyeletsRight.Remove(eye);
+                Destroy(eye);
+            }
+        }
     }
 
     // Update is called once per frame

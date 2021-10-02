@@ -107,6 +107,7 @@ public class ToolConveyor : MonoBehaviour
         GameObject newTool = Instantiate(debugSpawn,gameObject.transform);
         myTools.Add(newTool);
         newTool.transform.localPosition = new Vector3(creationXPos, 0, transform.localPosition.z-1);
+        newTool.GetComponent<ToolPickupButton>().conveyorCallback = this;
         
         ToolPickupButton buttonAI = newTool.GetComponent<ToolPickupButton>();
         buttonAI.toolUsageIndicator = toolIndicator;

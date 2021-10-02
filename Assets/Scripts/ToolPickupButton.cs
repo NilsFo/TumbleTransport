@@ -21,6 +21,9 @@ public class ToolPickupButton : MonoBehaviour
 
     public GameObject toolUsageIndicator;
     public Vector2 toolFrameOffset = new Vector2();
+
+    public ToolConveyor conveyorCallback;
+    public int conveyorIndex;
     
     // Start is called before the first frame update
     void Start()
@@ -55,8 +58,14 @@ public class ToolPickupButton : MonoBehaviour
             isDragging = false;
             toolUsageIndicator.gameObject.SetActive(false);
             gameState.currentSelectionState = GameState.SelectionState.None;
+
+            bool isValid = CheckToolValidPoints(selectionOrigin,selectionTarget);
+            
             Destroy(lashingStrapPreview.gameObject);
-            RequestToolUse(selectionOrigin,selectionTarget);
+            if (isValid) {
+                RequestToolUse(selectionOrigin, selectionTarget);
+                conveyorCallback.Remove(conveyorIndex);
+            }
         }
 
         // Checking if this tool is currently selected
@@ -109,6 +118,31 @@ public class ToolPickupButton : MonoBehaviour
         var strap = Instantiate(lashingStrapPrefab, FindObjectOfType<TruckBed>().transform);
         strap.SetLashingStrap(start, end);
     }
+
+    private bool CheckToolValidPoints(Vector3 start, Vector3 end)
+    {
+        GameObject truck = gameState.GetCurrentTruck();
+        bool startValid = false;
+        bool endValid = false;
+        
+        // TODO ref truck here
+
+        ToolAttachment[] attachments = truck.GetComponentsInChildren<ToolAttachment>(true);
+        foreach (var attachment in attachments)
+        {
+            if (attachment.GetComponent<Collider2D>().OverlapPoint(start))
+            {
+                startValid = true;
+            }
+            if (attachment.GetComponent<Collider2D>().OverlapPoint(end))
+            {
+                endValid = true;
+            }
+        }
+
+        return startValid && endValid;
+    }
+    
     
     
 }
