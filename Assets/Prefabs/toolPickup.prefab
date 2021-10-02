@@ -46,10 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lashingStrapPrefab: {fileID: 6669530834156549585, guid: 308f71f474b67ba4cbca76a1709533e2, type: 3}
+  lashingStrapPreview: {fileID: 0}
   mySprite: {fileID: 184259756983728990}
   isSelected: 0
   toolUsageIndicator: {fileID: 0}
-  toolFrameOffset: {x: -0.35, y: -0.12}
+  toolFrameOffset: {x: -0.54, y: 0.35}
+  conveyorCallback: {fileID: 0}
+  conveyorIndex: 0
 --- !u!61 &1037265484885433245
 BoxCollider2D:
   m_ObjectHideFlags: 0
