@@ -59,11 +59,14 @@ public class ToolPickupButton : MonoBehaviour
             toolUsageIndicator.gameObject.SetActive(false);
             gameState.currentSelectionState = GameState.SelectionState.None;
 
-            bool isValid = CheckToolValidPoints(selectionOrigin,selectionTarget);
-            
+            List<GameObject> validAttachers = CheckToolRopeValidPoints(selectionOrigin,selectionTarget);
             Destroy(lashingStrapPreview.gameObject);
-            if (isValid) {
-                RequestToolUse(selectionOrigin, selectionTarget);
+            if (validAttachers.Count >= 2) {
+                // Updating centers
+                Vector3 firstCenter = validAttachers[0].GetComponent<Collider2D>().bounds.center;
+                Vector3 secondCenter = validAttachers[1].GetComponent<Collider2D>().bounds.center;
+                
+                RequestToolUse(firstCenter, secondCenter);
                 conveyorCallback.Remove(conveyorIndex);
             }
         }
@@ -119,8 +122,9 @@ public class ToolPickupButton : MonoBehaviour
         strap.SetLashingStrap(start, end);
     }
 
-    private bool CheckToolValidPoints(Vector3 start, Vector3 end)
+    private List<GameObject> CheckToolRopeValidPoints(Vector3 start, Vector3 end)
     {
+        List<GameObject> validAttachers = new List<GameObject>();
         GameObject truck = gameState.GetCurrentTruck();
         bool startValid = false;
         bool endValid = false;
@@ -133,14 +137,24 @@ public class ToolPickupButton : MonoBehaviour
             if (attachment.GetComponent<Collider2D>().OverlapPoint(start))
             {
                 startValid = true;
+                validAttachers.Add(attachment.gameObject);
             }
             if (attachment.GetComponent<Collider2D>().OverlapPoint(end))
             {
                 endValid = true;
+                validAttachers.Add(attachment.gameObject);
             }
         }
 
-        return startValid && endValid;
+        if (startValid && endValid)
+        {
+            if (validAttachers[0] == validAttachers[1])
+            {
+                validAttachers.Clear();
+            }
+        }
+
+        return validAttachers;
     }
     
     
