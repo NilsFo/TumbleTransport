@@ -12,7 +12,6 @@ public class GameState : MonoBehaviour
         Tool
     }
 
-    public GameObject debugTruck;
     public SelectionState currentSelectionState;
     
     public TruckSpawner truckSpawner;
@@ -32,7 +31,7 @@ public class GameState : MonoBehaviour
     public GameObject GetCurrentTruck()
     {
         Debug.LogWarning("DEBUG TRUCK NEEDS TO BE SWAPPED WITH REAL TRUCK");
-        return debugTruck;
+        return truckSpawner.TruckGameObject;
     }
     
     

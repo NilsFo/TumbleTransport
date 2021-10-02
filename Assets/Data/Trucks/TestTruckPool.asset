@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39b79843e58ed7409912db75cca30af, type: 3}
   m_Name: TestTruckPool
   m_EditorClassIdentifier: 
-  pool: []
-  totalWeight: 0
+  pool:
+  - {fileID: 11400000, guid: 62f15b961e6f68b4a9984bbcf4db4a33, type: 2}
+  totalWeight: 100
