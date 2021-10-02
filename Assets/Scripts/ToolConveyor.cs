@@ -23,6 +23,8 @@ public class ToolConveyor : MonoBehaviour
 
     public GameObject debugSpawn;
 
+    public List<Sprite> animationKeyFrames;
+
     private void Start()
     {
         myTools = new List<GameObject>();
