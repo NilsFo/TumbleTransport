@@ -48,23 +48,16 @@ public class SpawnCargo : MonoBehaviour
             SpriteRenderer mySpriteRenderer = spawnPrefab.GetComponent<SpriteRenderer>();
 
             var bounds = spawnArea.bounds;
-            var spriteExtents = mySpriteRenderer.bounds.size;
+            Debug.Log(bounds);
+            var spriteExtents = mySpriteRenderer.bounds.extents;
             Vector2 spriteArea = new Vector2(spriteExtents.x, spriteExtents.y);
 
             float xpos = 0;
             float ypos = 0;
-            int numberOfTrys = 0;
-            int spaceIsOccupied = 0;
             
-            do
-            {
-                xpos = Random.Range((bounds.min.x + spriteExtents.x) , (bounds.max.x - spriteExtents.x));
-                ypos = Random.Range((bounds.min.y + spriteExtents.y) , (bounds.max.y - spriteExtents.y));
+            xpos = Random.Range((bounds.min.x + spriteExtents.x) , (bounds.max.x - spriteExtents.x));
+            ypos = Random.Range((bounds.min.y + spriteExtents.y) , (bounds.max.y - spriteExtents.y));
 
-                numberOfTrys++;
-                Collider2D[] resulte = new Collider2D[1];
-                spaceIsOccupied = Physics2D.OverlapBox(new Vector2(xpos, ypos), spriteArea, 0f, filter, resulte);
-            } while ((numberOfTrys < maxRetrysForPlacement) && spaceIsOccupied == 0);
 
             Instantiate(spawnPrefab, new Vector3(xpos, ypos, 0), Quaternion.identity);
         }
