@@ -15,16 +15,13 @@ public class GameState : MonoBehaviour
     public GameObject debugTruck;
     public SelectionState currentSelectionState;
     
+    public TruckSpawner truckSpawner;
+    
     // Start is called before the first frame update
     void Start()
     {
-        print("Game has been started! Let's gooooooo!");
         currentSelectionState = SelectionState.None;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        truckSpawner.CurrentSpawnerState = TruckSpawner.SpawnerState.On;
     }
 
     public bool HasSomethingSelected()

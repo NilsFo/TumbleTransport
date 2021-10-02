@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 public class Truck : MonoBehaviour {
     public Animator truckAnimator;
@@ -13,18 +13,24 @@ public class Truck : MonoBehaviour {
     
     public enum TruckState
     {
-        In, Out, Stay 
+        Spawned,
+        In,
+        Stay,
+        Out,
+        Traveling
     }
     
-    private TruckState _state = TruckState.In;
+    private TruckState _state = TruckState.Spawned;
+    private TruckState _lastState = TruckState.Spawned;
     
-
-    private float timer = 15.5f;
+    public TruckState State
+    {
+        get => _state;
+    } 
+    
     // Start is called before the first frame update
     void Start()
     {
-        //TODO set Truckspot in Gamestate
-        truckAnimator.Play("TruckEnter");
         _state = TruckState.In;
         
         // Removing eyelets if needed
@@ -50,26 +56,22 @@ public class Truck : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        timer -= Time.deltaTime;
-        if (timer < 0) {
-            truckAnimator.Play("TruckExit");
-            Invoke(nameof(ThrowAllCargo), 0.8f);
-            BuildGraph();
-            timer = 20;
-        }
-
-        if (truckAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !truckAnimator.IsInTransition(0))
+        if (_state != _lastState)
         {
             if (_state == TruckState.In)
             {
-                _state = TruckState.Stay;
-            }
-            else if(_state == TruckState.Out)
+                truckAnimator.Play("TruckEnter");
+                Invoke(nameof(SetStay), 2.0f);
+            } 
+            else if (_state == TruckState.Out)
             {
-                //Clean Gamestate Truck
+                truckAnimator.Play("TruckExit");
+                Invoke(nameof(ThrowAllCargo), 0.8f);
+                Invoke(nameof(SetTraveling), 2.0f);
+                BuildGraph();
             }
+            _lastState = _state;
         }
-
     }
     
     public void BuildGraph() {
@@ -134,5 +136,20 @@ public class Truck : MonoBehaviour {
             if(!c.fastened)
                 c.ThrowCargo();
         }
+    }
+
+    public void Dispatch()
+    {
+        _state = TruckState.Out;
+    }
+
+    private void SetStay()
+    {
+        _state = TruckState.Stay;
+    }
+    
+    private void SetTraveling()
+    {
+        _state = TruckState.Traveling;
     }
 }
