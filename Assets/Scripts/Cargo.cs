@@ -13,10 +13,12 @@ public class Cargo : MonoBehaviour {
     
     public bool grabbed;
     private Vector3 grabPivot;
+    private Vector3 grabbedFrom;
     private Camera cam;
     private ContactFilter2D _contactFilter;
 
     private Truck truck;
+    private bool _droppable;
     // Start is called before the first frame update
     void Start() {
         cam = Camera.main;
@@ -37,19 +39,20 @@ public class Cargo : MonoBehaviour {
             var colliderResults = new Collider2D[5];
             var collisions = coll.OverlapCollider(_contactFilter, colliderResults);
             if (collisions > 0) {
-                bool droppable = true;
+                _droppable = true;
                 Truck _truck = null;
                 for (var i = 0; i < collisions; i++) {
                     var colliderResult = colliderResults [i];
-                    if (colliderResult.gameObject.layer == LayerMask.NameToLayer("CrateForbiddenArea")) {
-                        droppable = false;
+                    if (colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("CrateForbiddenArea"))
+                            || colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("Crate"))) {
+                        _droppable = false;
                         break;
                     } 
                     if (colliderResult.gameObject.CompareTag("Truck")) {
                         _truck = colliderResult.GetComponentInParent<Truck>();
                     }
                 }
-                if (droppable) {
+                if (_droppable) {
                     truck = _truck;
                     sprite.color = Color.green;
                 }
@@ -65,16 +68,24 @@ public class Cargo : MonoBehaviour {
     // Update is called once per frame
     void OnMouseDown() {
         grabbed = true;
+        grabbedFrom = transform.position;
         grabPivot = transform.worldToLocalMatrix.MultiplyPoint(cam.ScreenToWorldPoint(Input.mousePosition));
         grabPivot.z = 0;
         Debug.Log(grabPivot);
     }
     void OnMouseUp() {
         grabbed = false;
-        if(truck != null)
-            transform.SetParent(truck.GetComponentInChildren<TruckBed>().transform);
-        else {
-            transform.SetParent(null);
+        sprite.color = Color.white;
+        if (_droppable) {
+            
+
+            if (truck != null)
+                transform.SetParent(truck.GetComponentInChildren<TruckBed>().transform);
+            else {
+                transform.SetParent(null);
+            }
+        } else {
+            transform.position = grabbedFrom;
         }
     }
 }
