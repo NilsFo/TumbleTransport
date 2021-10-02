@@ -30,7 +30,6 @@ public class GameState : MonoBehaviour
 
     public GameObject GetCurrentTruck()
     {
-        Debug.LogWarning("DEBUG TRUCK NEEDS TO BE SWAPPED WITH REAL TRUCK");
         return truckSpawner.TruckGameObject;
     }
     
