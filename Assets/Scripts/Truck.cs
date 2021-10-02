@@ -25,6 +25,7 @@ public class Truck : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
+        _state = TruckState.In;
     }
 
     // Update is called once per frame
@@ -34,28 +35,17 @@ public class Truck : MonoBehaviour {
             if (_state == TruckState.In)
             {
                 truckAnimator.Play("TruckEnter");
+                Invoke(nameof(SetStay), 2.0f);
             } 
             else if (_state == TruckState.Out)
             {
                 truckAnimator.Play("TruckExit");
                 Invoke(nameof(ThrowAllCargo), 0.8f);
+                Invoke(nameof(SetTraveling), 2.0f);
                 BuildGraph();
             }
             _lastState = _state;
         }
-
-        if (truckAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !truckAnimator.IsInTransition(0))
-        {
-            if (_state == TruckState.In)
-            {
-                _state = TruckState.Stay;
-            }
-            else if(_state == TruckState.Out)
-            {
-                _state = TruckState.Traveling;
-            }
-        }
-
     }
     
     public void BuildGraph() {
@@ -125,5 +115,15 @@ public class Truck : MonoBehaviour {
     public void Dispatch()
     {
         _state = TruckState.Out;
+    }
+
+    private void SetStay()
+    {
+        _state = TruckState.Stay;
+    }
+    
+    private void SetTraveling()
+    {
+        _state = TruckState.Traveling;
     }
 }

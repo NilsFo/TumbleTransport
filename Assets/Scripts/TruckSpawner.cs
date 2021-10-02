@@ -48,12 +48,12 @@ public class TruckSpawner : MonoBehaviour
         }
         else
         {
-            if (_spawnTimer > spawnTimerDelay && _currentSpawnerState == SpawnerState.On)
+            if (_spawnTimer < spawnTimerDelay && _currentSpawnerState == SpawnerState.On)
             {
                 _spawnTimer += Time.deltaTime;
                 if (_spawnTimer <= spawnTimerDelay)
                 {
-                    _truckGameObject = spawnTruck();
+                    _truckGameObject = SpawnTruck();
                     _truck = _truckGameObject.GetComponent<Truck>();
                 }
             }
@@ -68,7 +68,7 @@ public class TruckSpawner : MonoBehaviour
         }
     }
 
-    private GameObject spawnTruck()
+    private GameObject SpawnTruck()
     {
         int pickWeight = Random.Range(0 ,spawnPool.totalWeight);
 
