@@ -90,7 +90,7 @@ public class ToolPickupButton : MonoBehaviour
             // If it is not dragging, draw the current icon as an indicator
             else
             {
-                print("following");
+//                print("following");
                 //offsetPoint = currentSelectionPos;
                 Vector3 offsetPoint = currentSelectionPos;//- toolFrameOffset;
                 toolUsageIndicator.gameObject.SetActive(true);

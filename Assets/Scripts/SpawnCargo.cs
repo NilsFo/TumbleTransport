@@ -21,8 +21,12 @@ public class SpawnCargo : MonoBehaviour
     private float _currentTime = 0f;
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        // TODO: ACHTUNG! Nach genug Zeit wird der Spawner hinter die Kamera rücken.
+        // Dafür sorgen dass die Spawnerposition nach einem Arbeitstag zurückgesetzt wird 
+        // Dies sorgt dafür dass die Collider nicht alle auf der selben Z-Ebene sind, was zu wonky physics führt
+        spawnPoint.position -= Time.deltaTime * new Vector3(0, 0, 0.01f);
+        
         if (_currentTime <= spawnTime)
         {
             _currentTime += Time.deltaTime;

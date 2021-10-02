@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -38,21 +36,20 @@ public class Cargo : MonoBehaviour {
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 180f * Time.deltaTime);
         }
         else if (!fastened & grabbed) {
-            
+            _droppable = false;
             var pos = cam.ScreenToWorldPoint(Input.mousePosition);
             pos.z = -1;
             //Debug.Log(pos);
             transform.position = pos - grabPivot;
 
-            var colliderResults = new Collider2D[5];
+            var colliderResults = new List<Collider2D>();
             var collisions = coll.OverlapCollider(_contactFilter, colliderResults);
-            if (collisions > 0) {
+            if (colliderResults.Count > 0) {
                 _droppable = true;
                 Truck _truck = null;
                 for (var i = 0; i < collisions; i++) {
                     var colliderResult = colliderResults [i];
-                    if (colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("CrateForbiddenArea"))
-                            || colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("Crate"))) {
+                    if (!colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("CrateDropArea"))) {
                         _droppable = false;
                         break;
                     } 
@@ -62,24 +59,32 @@ public class Cargo : MonoBehaviour {
                 }
                 if (_droppable) {
                     truck = _truck;
-                    sprite.color = Color.green;
-                }
-                else {
                     sprite.color = Color.white;
                 }
+                else {
+                    sprite.color = Color.red;
+                }
             } else {
-                sprite.color = Color.white;
+                sprite.color = Color.red;
             }
         }
         
     }
     // Update is called once per frame
     void OnMouseDown() {
+        List<Collider2D> results = new List<Collider2D>();
+        if (coll.OverlapCollider(new ContactFilter2D().NoFilter(), results) > 0) {
+            foreach (var result in results) {
+                if (result.gameObject.layer == LayerMask.NameToLayer("Straps")) {
+                    Debug.Log("Can't grab what is already fastened");
+                    return;
+                }
+            }
+        }
         grabbed = true;
         grabbedFrom = transform.position;
         grabPivot = transform.worldToLocalMatrix.MultiplyPoint(cam.ScreenToWorldPoint(Input.mousePosition));
         grabPivot.z = 0;
-        Debug.Log(grabPivot);
     }
     void OnMouseUp() {
         grabbed = false;
