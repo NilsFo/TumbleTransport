@@ -99,6 +99,9 @@ public class Cargo : MonoBehaviour {
 
     public void ThrowCargo() {
         transform.SetParent(null);
+        var t = transform.position;
+        t.z = -7;
+        transform.position = t;
         flying = true;
     }
 }

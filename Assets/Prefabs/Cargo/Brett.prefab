@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4506583272528820205}
   - component: {fileID: -3495914514746081352}
   - component: {fileID: 770493609887959533}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Brett
   m_TagString: Cargo
   m_Icon: {fileID: 0}

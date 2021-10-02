@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8296879259407856684}
   - component: {fileID: 184048406645097804}
-  - component: {fileID: 3136541879376352176}
   - component: {fileID: 8342015511855220089}
   - component: {fileID: 7789327812039417536}
-  m_Layer: 0
+  - component: {fileID: -8118670477464240620}
+  m_Layer: 3
   m_Name: Klavier
   m_TagString: Cargo
   m_Icon: {fileID: 0}
@@ -85,8 +85,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3136541879376352176
-BoxCollider2D:
+--- !u!114 &8342015511855220089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400313684282407009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339efa137920e7c47bd5903d95a53482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: {fileID: -8118670477464240620}
+  sprite: {fileID: 184048406645097804}
+  fastened: 0
+  grabbed: 0
+--- !u!114 &7789327812039417536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400313684282407009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50715e353b365584399e240d64de09ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  maxAirTime: 2
+  bounceNumber: 2
+--- !u!60 &-8118670477464240620
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,38 +140,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.71875, y: 1.78125}
-  m_EdgeRadius: 0
---- !u!114 &8342015511855220089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6400313684282407009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 339efa137920e7c47bd5903d95a53482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coll: {fileID: 3136541879376352176}
-  sprite: {fileID: 184048406645097804}
-  fastened: 0
-  grabbed: 0
---- !u!114 &7789327812039417536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6400313684282407009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50715e353b365584399e240d64de09ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0, z: 0}
-  targetPos: {x: 0, y: 0, z: 0}
-  maxAirTime: 2
-  bounceNumber: 2
+  m_Points:
+    m_Paths:
+    - - {x: -0.859375, y: -0.890625}
+      - {x: 0.859375, y: -0.890625}
+      - {x: 0.8647852, y: 0.66609687}
+      - {x: 0.6825309, y: 0.8771451}
+      - {x: 0.390625, y: 0.8716889}
+      - {x: 0.21641684, y: 0.7269466}
+      - {x: -0.04818344, y: 0.085600436}
+      - {x: -0.6000147, y: -0.0420686}
+      - {x: -0.8106818, y: -0.2776575}
