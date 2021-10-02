@@ -10,8 +10,12 @@ using UnityEngine.UIElements;
 public class Cargo : MonoBehaviour {
     public Collider2D coll;
     public SpriteRenderer sprite;
-    
+
+
+    public bool fastened;
     public bool grabbed;
+
+    private bool flying;
     private Vector3 grabPivot;
     private Vector3 grabbedFrom;
     private Camera cam;
@@ -29,7 +33,11 @@ public class Cargo : MonoBehaviour {
     }
 
     void Update() {
-        if (grabbed) {
+        if (flying) {
+            transform.position += Vector3.down * Time.deltaTime * 5f;
+            transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 180f * Time.deltaTime);
+        }
+        else if (!fastened & grabbed) {
             
             var pos = cam.ScreenToWorldPoint(Input.mousePosition);
             pos.z = -5;
@@ -87,5 +95,10 @@ public class Cargo : MonoBehaviour {
         } else {
             transform.position = grabbedFrom;
         }
+    }
+
+    public void ThrowCargo() {
+        transform.SetParent(null);
+        flying = true;
     }
 }
