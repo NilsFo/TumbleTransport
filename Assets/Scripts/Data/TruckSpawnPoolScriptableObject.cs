@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TruckSpawnPoolDataObject", menuName = "TruckData/SpawnPoolDataObject", order = 1)]
+[CreateAssetMenu(fileName = "TruckSpawnPoolDataObject", menuName = "TruckData/TruckSpawnPoolDataObject", order = 2)]
 public class TruckSpawnPoolScriptableObject : ScriptableObject
 {
     public TruckScriptableObject[] pool;

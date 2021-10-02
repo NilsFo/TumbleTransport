@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: TestSpawnPoolDataObject
   m_EditorClassIdentifier: 
   pool:
-  - {fileID: 11400000, guid: 481ffd3b5af260941a94775fd1b1630c, type: 2}
   - {fileID: 11400000, guid: 45bc04a9af91c5b4f9bea87679ed9971, type: 2}
-  - {fileID: 11400000, guid: bc116484248d5454f86b10aea3c613e3, type: 2}
-  totalWeight: 1200
+  totalWeight: 100
