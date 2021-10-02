@@ -14,7 +14,7 @@ public class Truck : MonoBehaviour {
     
     
 
-    private float timer = 5.5f;
+    private float timer = 15.5f;
     // Start is called before the first frame update
     void Start()
     {

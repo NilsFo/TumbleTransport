@@ -40,7 +40,7 @@ public class Cargo : MonoBehaviour {
         else if (!fastened & grabbed) {
             
             var pos = cam.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = -5;
+            pos.z = -1;
             //Debug.Log(pos);
             transform.position = pos - grabPivot;
 

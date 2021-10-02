@@ -9,6 +9,8 @@ public class ToolPickupButton : MonoBehaviour
 {
 
     private GameState gameState;
+    public LashingStrap lashingStrapPrefab;
+    public LashingStrap lashingStrapPreview;
     public SpriteRenderer mySprite;
     public bool isSelected;
 
@@ -42,6 +44,8 @@ public class ToolPickupButton : MonoBehaviour
         {
             isDragging = true;
             selectionOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+            lashingStrapPreview = Instantiate(lashingStrapPrefab);
+            lashingStrapPreview.GetComponent<Collider2D>().enabled = false;
         }
 
         // Checking if this tool is dragging and mouse has been released
@@ -51,7 +55,7 @@ public class ToolPickupButton : MonoBehaviour
             isDragging = false;
             toolUsageIndicator.gameObject.SetActive(false);
             gameState.currentSelectionState = GameState.SelectionState.None;
-            
+            Destroy(lashingStrapPreview.gameObject);
             RequestToolUse(selectionOrigin,selectionTarget);
         }
 
@@ -66,8 +70,9 @@ public class ToolPickupButton : MonoBehaviour
             // While it is dragging, draw a line
             if (isDragging)
             {
-                print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
+//                print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
                 Debug.DrawLine(selectionOrigin,currentSelectionPos);
+                lashingStrapPreview.SetLashingStrap(selectionOrigin, currentSelectionPos);
                 selectionTarget = currentSelectionPos;
             }
             // If it is not dragging, draw the current icon as an indicator
@@ -100,9 +105,9 @@ public class ToolPickupButton : MonoBehaviour
         }
     }
 
-    private void RequestToolUse(Vector3 start, Vector3 end)
-    {
-        //TODO fill with tool
+    private void RequestToolUse(Vector3 start, Vector3 end) {
+        var strap = Instantiate(lashingStrapPrefab, FindObjectOfType<TruckBed>().transform);
+        strap.SetLashingStrap(start, end);
     }
     
     
