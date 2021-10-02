@@ -43,4 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457647ce2e57b8d4cbf6dd958bfe82ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workTime: 12
+  workTimeLeft: 0
+  workHoursPerMinute: 1
   currentSelectionState: 0
+  truckSpawner: {fileID: 0}

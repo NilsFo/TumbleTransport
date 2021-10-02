@@ -11,6 +11,10 @@ public class GameState : MonoBehaviour
         Cargo,
         Tool
     }
+        
+    public float workTime = 12f;
+    public float workTimeLeft = 0;
+    public float workHoursPerMinute = 1.0f;
 
     public SelectionState currentSelectionState;
     
@@ -21,6 +25,11 @@ public class GameState : MonoBehaviour
     {
         currentSelectionState = SelectionState.None;
         truckSpawner.CurrentSpawnerState = TruckSpawner.SpawnerState.On;
+        workTimeLeft = workTime;
+    }
+
+    void Update() {
+        workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60;
     }
 
     public bool HasSomethingSelected()
@@ -30,7 +39,6 @@ public class GameState : MonoBehaviour
 
     public GameObject GetCurrentTruck()
     {
-        Debug.LogWarning("DEBUG TRUCK NEEDS TO BE SWAPPED WITH REAL TRUCK");
         return truckSpawner.TruckGameObject;
     }
     
