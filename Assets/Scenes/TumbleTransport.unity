@@ -1699,6 +1699,22 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 1108592592}
+    - target: {fileID: 7103760791787924140, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
+      propertyPath: spawnPools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103760791787924140, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
+      propertyPath: spawnPools.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: adb49808f1d7edb478014fa159ef3525, type: 2}
+    - target: {fileID: 7103760791787924140, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
+      propertyPath: spawnPools.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d81d61bb7246fab41b07084ba76783a3, type: 2}
+    - target: {fileID: 7103760791787924140, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
+      propertyPath: spawnPools.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b345a77a063f36340b93ff5ab9ab1602, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
 --- !u!114 &1833132234 stripped
