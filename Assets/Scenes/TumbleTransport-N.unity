@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 307419135}
   - component: {fileID: 307419137}
+  - component: {fileID: 307419138}
   - component: {fileID: 307419136}
   m_Layer: 5
   m_Name: Crates
@@ -257,6 +258,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307419134}
   m_CullTransparentMesh: 1
+--- !u!114 &307419138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307419134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a6021084c977f459b3db6b5f1fe331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1108592592}
+  textMeshProUGUI: {fileID: 307419136}
 --- !u!1 &424875647
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,8 +281,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424875649}
-  - component: {fileID: 424875648}
   - component: {fileID: 424875650}
+  - component: {fileID: 424875648}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -382,6 +397,106 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &671458735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 671458739}
+  - component: {fileID: 671458738}
+  - component: {fileID: 671458737}
+  - component: {fileID: 671458736}
+  m_Layer: 5
+  m_Name: TruckDialogueCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &671458736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671458735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &671458737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671458735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &671458738
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671458735}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 1837528610}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &671458739
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671458735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -6.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 736319201}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 15, y: 8.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &696185249
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +579,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &736319200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736319201}
+  - component: {fileID: 736319202}
+  - component: {fileID: 736319203}
+  m_Layer: 0
+  m_Name: TruckDialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &736319201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736319200}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01563, y: 0.01563, z: 0.01563}
+  m_Children: []
+  m_Father: {fileID: 671458739}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736319202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736319200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71100a6095eec5c469e08ac8e5eb1cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxPrefab: {fileID: 6652207136580568648, guid: 84d0f20c65a10ba4f8c4c786a0dfe0c8, type: 3}
+--- !u!114 &736319203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736319200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866c2b784fbda05488bc3fe85001424d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radioPos: {fileID: 0}
+  gameState: {fileID: 1108592592}
+  truckerWaitQuotes:
+  - Let's go, I've got places to be
+  - I'll just leave the motor running
+  - What's the hold up?
+  - Is there a problem?
+  - Get on with it
+  - I'm waiting!
+  - This stuff has to get out there ASAP!
+  - What are you doing? My job's on the line here!
+  - Gotta be home for dinner with the missus soon
+  - Do your job so I can do mine
+  - Let's go, let's go!
+  - No time for hanging around
+  - What is this? The daycare?
+  - I've had inspections that were faster than this
+  - Did you fall asleep?
+  - Hello? Load me up!
 --- !u!1 &807417791
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,9 +772,17 @@ PrefabInstance:
       value: GameState
       objectReference: {fileID: 0}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
+      propertyPath: workTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: debugTruck
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
+      propertyPath: cargoSpawner
+      value: 
+      objectReference: {fileID: 6559840326346140841}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: truckSpawner
       value: 
@@ -819,6 +1018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1224546091}
   - component: {fileID: 1224546093}
+  - component: {fileID: 1224546094}
   - component: {fileID: 1224546092}
   m_Layer: 5
   m_Name: Trucks
@@ -943,6 +1143,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224546090}
   m_CullTransparentMesh: 1
+--- !u!114 &1224546094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224546090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684f34672f82025439c6f879adc10b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1108592592}
+  textMeshProUGUI: {fileID: 1224546092}
 --- !u!1 &1269222961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1277,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+      propertyPath: maxDistance
+      value: 5.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+      propertyPath: toolPositionOffset
+      value: 0.98
+      objectReference: {fileID: 0}
     - target: {fileID: 9191020358048414656, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1170,7 +1392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dispatch
+  m_text: "Dispatch \xE4\xF6\xFC \xE9 \xE8 \xDF \xED '"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68c0d1dfeff9dce45b1fdc80d8763e7b, type: 2}
   m_sharedMaterial: {fileID: 832488639546379081, guid: 68c0d1dfeff9dce45b1fdc80d8763e7b, type: 2}
@@ -1392,6 +1614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TruckSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7103760791787924140, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 1108592592}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
 --- !u!114 &1833132234 stripped
@@ -1572,7 +1798,7 @@ GameObject:
   - component: {fileID: 1986880952}
   - component: {fileID: 1986880951}
   m_Layer: 5
-  m_Name: Destination
+  m_Name: DestinationDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1651,7 +1877,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1704,6 +1930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2056600602}
   - component: {fileID: 2056600604}
+  - component: {fileID: 2056600605}
   - component: {fileID: 2056600603}
   m_Layer: 5
   m_Name: Money
@@ -1828,6 +2055,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056600601}
   m_CullTransparentMesh: 1
+--- !u!114 &2056600605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056600601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa023c16825a08b4ca5b9ebab7a27756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1108592592}
+  textMeshProUGUI: {fileID: 2056600603}
 --- !u!1001 &6559840326346140840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1885,3 +2126,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+--- !u!114 &6559840326346140841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 377440479314826534, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+  m_PrefabInstance: {fileID: 6559840326346140840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e2dd0601f72e24ab15492955c486a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
