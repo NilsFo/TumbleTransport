@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e39b79843e58ed7409912db75cca30af, type: 3}
-  m_Name: TruckPool
+  m_Name: DayTwoTruckSpawnPoolDataObject
   m_EditorClassIdentifier: 
   pool:
   - {fileID: 11400000, guid: 62f15b961e6f68b4a9984bbcf4db4a33, type: 2}
   - {fileID: 11400000, guid: abd3e0aa345b3f747b262987976e3798, type: 2}
-  - {fileID: 11400000, guid: 22323bc779bcb2a4b930b8bd9708d3aa, type: 2}
-  - {fileID: 11400000, guid: 719c3a05bec30d741a099cf0607d1bc2, type: 2}
   - {fileID: 11400000, guid: 87a165b94bf00d04fa07e46197f3f4d4, type: 2}
-  totalWeight: 500
+  totalWeight: 300
