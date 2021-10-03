@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
   m_Name: KlavierCargoDataObject
   m_EditorClassIdentifier: 
-  weight: 100
   sprite: {fileID: 6400313684282407009, guid: bd0c25428a9b2db46beedf671822d014, type: 3}
+  weight: 100
+  isUnique: 1
+  purchaseValue: 60
+  salesValue: 180

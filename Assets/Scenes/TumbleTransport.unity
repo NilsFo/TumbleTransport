@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 307419135}
   - component: {fileID: 307419137}
+  - component: {fileID: 307419138}
   - component: {fileID: 307419136}
   m_Layer: 5
   m_Name: Crates
@@ -257,6 +258,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307419134}
   m_CullTransparentMesh: 1
+--- !u!114 &307419138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307419134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a6021084c977f459b3db6b5f1fe331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1108592592}
+  textMeshProUGUI: {fileID: 307419136}
 --- !u!1 &424875647
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,9 +772,17 @@ PrefabInstance:
       value: GameState
       objectReference: {fileID: 0}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
+      propertyPath: workTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: debugTruck
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
+      propertyPath: cargoSpawner
+      value: 
+      objectReference: {fileID: 6559840326346140841}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: truckSpawner
       value: 
@@ -995,6 +1018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1224546091}
   - component: {fileID: 1224546093}
+  - component: {fileID: 1224546094}
   - component: {fileID: 1224546092}
   m_Layer: 5
   m_Name: Trucks
@@ -1119,6 +1143,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224546090}
   m_CullTransparentMesh: 1
+--- !u!114 &1224546094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224546090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684f34672f82025439c6f879adc10b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1108592592}
+  textMeshProUGUI: {fileID: 1224546092}
 --- !u!1 &1269222961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,6 +1614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TruckSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7103760791787924140, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 1108592592}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b35d24ffbe5438f4da58c5b914e5ecb4, type: 3}
 --- !u!114 &1833132234 stripped
@@ -1888,6 +1930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2056600602}
   - component: {fileID: 2056600604}
+  - component: {fileID: 2056600605}
   - component: {fileID: 2056600603}
   m_Layer: 5
   m_Name: Money
@@ -2012,6 +2055,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056600601}
   m_CullTransparentMesh: 1
+--- !u!114 &2056600605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056600601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa023c16825a08b4ca5b9ebab7a27756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1108592592}
+  textMeshProUGUI: {fileID: 2056600603}
 --- !u!1001 &6559840326346140840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2069,3 +2126,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+--- !u!114 &6559840326346140841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 377440479314826534, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+  m_PrefabInstance: {fileID: 6559840326346140840}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e2dd0601f72e24ab15492955c486a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

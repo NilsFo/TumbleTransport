@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class TruckSpawner : MonoBehaviour
 {
+    public GameState gameState;
+    
     public TruckSpawnPoolScriptableObject spawnPool;
     
     public Transform spawnPoint;
@@ -41,6 +43,8 @@ public class TruckSpawner : MonoBehaviour
         {
             if (_truck.State == Truck.TruckState.Traveling)
             {
+                
+                GameState.score.AddDeliveryData(new DeliveryData(_truck.truckData, _truck.fastenedCargo, _truck.thrownCargo));
                 Destroy(_truckGameObject);
                 _truckGameObject = null;
                 _truck = null;
@@ -53,8 +57,7 @@ public class TruckSpawner : MonoBehaviour
                 _spawnTimer += Time.deltaTime;
                 if (_spawnTimer <= spawnTimerDelay)
                 {
-                    _truckGameObject = SpawnTruck();
-                    _truck = _truckGameObject.GetComponent<Truck>();
+                    SpawnTruck();
                 }
             }
         }
@@ -75,16 +78,16 @@ public class TruckSpawner : MonoBehaviour
         
         int pickWeight = Random.Range(0 ,spawnPool.totalWeight);
 
-        TruckScriptableObject init = spawnPool.pool[0];
-        GameObject spawnPrefab = init.truck;
-        pickWeight -= init.weight;
+        TruckScriptableObject myTruckData = spawnPool.pool[0];
+        GameObject spawnPrefab = myTruckData.truck;
+        pickWeight -= myTruckData.weight;
         for (int i = 1; i < spawnPool.pool.Length; i++)
         {
-            TruckScriptableObject myCargo = spawnPool.pool[i];
+            TruckScriptableObject myTruck = spawnPool.pool[i];
             if (pickWeight > 0)
             {
-                spawnPrefab = myCargo.truck;
-                pickWeight -= myCargo.weight;
+                myTruckData = myTruck;
+                pickWeight -= myTruck.weight;
             }
             else
             {
@@ -92,7 +95,17 @@ public class TruckSpawner : MonoBehaviour
             }
         }
 
-        GameObject myTruckGameObject = Instantiate(spawnPrefab, spawnPoint.position, Quaternion.identity);
+        GameObject myTruckGameObject = Instantiate(myTruckData.truck, spawnPoint.position, Quaternion.identity);
+        Truck myTruckComp = myTruckGameObject.GetComponent<Truck>();
+        if (myTruckComp != null)
+        {
+            myTruckComp.truckData = myTruckData;
+            _truck = myTruckComp;
+        }
+        _truckGameObject = myTruckGameObject;
+
+        gameState.cargoSpawner.SpawnFixNumberOfCargo(myTruckData.fixNumberOfCargoToSpawn);
+        
         return myTruckGameObject;
     }
 }

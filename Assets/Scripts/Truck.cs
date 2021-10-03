@@ -17,6 +17,12 @@ public class Truck : MonoBehaviour {
 
     private float _quoteWaitingTimer;
     
+    public TruckScriptableObject truckData;
+    
+    public List<CargoScriptableObject> fastenedCargo;
+    public List<CargoScriptableObject> thrownCargo;
+    public List<CargoScriptableObject> allCargo;
+    
     public enum TruckState
     {
         Spawned,
@@ -96,6 +102,10 @@ public class Truck : MonoBehaviour {
     void Start()
     {
         _state = TruckState.In;
+        
+        fastenedCargo = new List<CargoScriptableObject>();
+        thrownCargo = new List<CargoScriptableObject>();
+        allCargo = new List<CargoScriptableObject>();
         
         // Removing eyelets if needed
         for (int i = minEyeletsLeft; i < eyeletsLeft.Count; i++)
@@ -213,11 +223,18 @@ public class Truck : MonoBehaviour {
     }
 
     public void ThrowAllCargo() {
-        
         var cargo = GetComponentsInChildren<Cargo>();
         foreach (var c in cargo) {
-            if(!c.fastened)
+            allCargo.Add(c.dataObject);
+            if (!c.fastened)
+            {
                 c.ThrowCargo();
+                thrownCargo.Add(c.dataObject);
+            }
+            else
+            {
+                fastenedCargo.Add(c.dataObject);
+            }
         }
     }
 

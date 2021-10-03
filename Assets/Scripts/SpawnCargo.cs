@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 public class SpawnCargo : MonoBehaviour
@@ -14,10 +15,12 @@ public class SpawnCargo : MonoBehaviour
 
     public float minAirTime = 1.5f;
     public float maxAirTime = 2f;
+    
+    public float burstDelay = 0.4f;
 
-    public int maxNumberOfCargo = 20;
+    public int maxNumberOfCargo = 10;
 
-    public float spawnTime = 2f;
+    public float spawnTime = 5f;
     private float _currentTime = 0f;
 
     // Update is called once per frame
@@ -33,35 +36,73 @@ public class SpawnCargo : MonoBehaviour
         }
         else
         {
-            GameObject[] Cargo = GameObject.FindGameObjectsWithTag("Cargo");
-            if (Cargo.Length < maxNumberOfCargo)
-            {
-                SpawnCargoInArea();
-            }
+            TrySpawnCargo();
             _currentTime = 0f;
         }
     }
 
-    void SpawnCargoInArea()
+    public void SpawnFixNumberOfCargo(int numberToSpawn)
+    {
+        reminderToSpawn = numberToSpawn;
+        Invoke(nameof(_SpawnFixNumberOfCargo), burstDelay);
+    }
+
+    private int reminderToSpawn = 0;
+    private void  _SpawnFixNumberOfCargo()
+    {
+        TrySpawnCargo();
+        reminderToSpawn -= 1;
+        if (reminderToSpawn > 0)
+        {
+            Invoke(nameof(_SpawnFixNumberOfCargo), burstDelay);
+        }
+    }
+
+    void TrySpawnCargo()
+    {
+        Cargo[] CargoList = FindObjectsOfType<Cargo>();
+        Dictionary<string, bool> uniqueCargo =
+            new Dictionary<string, bool>();
+
+        for (int i = 0; i < CargoList.Length; i++)
+        {
+            Cargo myCargo = CargoList[i];
+            if (myCargo.dataObject && myCargo.dataObject.isUnique)
+            {
+                uniqueCargo.Add(myCargo.dataObject.sprite.name, true);
+            }
+        }
+            
+        if (CargoList.Length < maxNumberOfCargo)
+        {
+            SpawnCargoInArea(uniqueCargo);
+        }
+    }
+    
+    void SpawnCargoInArea(Dictionary<string, bool> uniqueCargo = null)
     {
         int pickWeight = Random.Range(0 ,spawnPool.totalWeight);
 
-        CargoScriptableObject init = spawnPool.pool[0];
-        GameObject spawnPrefab = init.sprite;
-        pickWeight -= init.weight;
+        CargoScriptableObject myCargoData = spawnPool.pool[0];
+        pickWeight -= myCargoData.weight;
         for (int i = 1; i < spawnPool.pool.Length; i++)
         {
-            CargoScriptableObject myCargo = spawnPool.pool[i];
-            if (pickWeight > 0)
+            CargoScriptableObject pick = spawnPool.pool[i];
+            if (pickWeight > 0 && uniqueCargo != null)
             {
-                spawnPrefab = myCargo.sprite;
-                pickWeight -= myCargo.weight;
+                if (!uniqueCargo.ContainsKey(pick.sprite.name))
+                {
+                    myCargoData = pick;
+                    pickWeight -= pick.weight;
+                }
             }
             else
             {
                 break;
             }
         }
+        
+        GameObject spawnPrefab = myCargoData.sprite;
 
         SpriteRenderer mySpriteRenderer = spawnPrefab.GetComponent<SpriteRenderer>();
 
@@ -85,6 +126,12 @@ public class SpawnCargo : MonoBehaviour
             myAnmimator.targetPos = endPos;
             myAnmimator.maxAirTime = Random.Range(minAirTime, maxAirTime);
             myAnmimator.bounceNumber = Random.Range(2, 5);
+        }
+        
+        Cargo myCargo = myCargoGameObject.GetComponent<Cargo>();
+        if (myCargo != null)
+        {
+            myCargo.dataObject = myCargoData;
         }
     }
 }

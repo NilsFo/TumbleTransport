@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TruckTwoDataObject
   m_EditorClassIdentifier: 
   weight: 100
-  truck: {fileID: 0}
+  truck: {fileID: 8317496335158412140, guid: bab7b5e77520aa542b29b857507f182c, type: 3}

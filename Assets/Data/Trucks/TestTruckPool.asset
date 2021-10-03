@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool:
   - {fileID: 11400000, guid: 62f15b961e6f68b4a9984bbcf4db4a33, type: 2}
-  totalWeight: 100
+  - {fileID: 11400000, guid: abd3e0aa345b3f747b262987976e3798, type: 2}
+  totalWeight: 200
