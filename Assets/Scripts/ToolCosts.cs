@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class ToolCosts : MonoBehaviour
 {
-    public string name;
+    public string toolName;
     public float cost;
 }

@@ -15,7 +15,7 @@ public class WorkingMaterialData
     
     public WorkingMaterialData(ToolCosts toolCosts)
     {
-        materialName = toolCosts.name;
+        materialName = toolCosts.toolName;
         materialCost = toolCosts.cost;
     }
 }

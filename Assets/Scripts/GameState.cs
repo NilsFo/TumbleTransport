@@ -2,9 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
+
+    public static int shift = 0;
+    public static Score score;
+    
     public enum SelectionState: UInt16
     {
         None,
@@ -21,8 +26,6 @@ public class GameState : MonoBehaviour
     public TruckSpawner truckSpawner;
     public SpawnCargo cargoSpawner;
 
-    public Score score;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,10 @@ public class GameState : MonoBehaviour
 
     void Update() {
         workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60;
+        if (workTimeLeft < 0)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
     }
 
     public bool HasSomethingSelected()

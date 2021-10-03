@@ -44,7 +44,7 @@ public class TruckSpawner : MonoBehaviour
             if (_truck.State == Truck.TruckState.Traveling)
             {
                 
-                gameState.score.AddDeliveryData(new DeliveryData(_truck.truckData, _truck.fastenedCargo, _truck.thrownCargo));
+                GameState.score.AddDeliveryData(new DeliveryData(_truck.truckData, _truck.fastenedCargo, _truck.thrownCargo));
                 Destroy(_truckGameObject);
                 _truckGameObject = null;
                 _truck = null;

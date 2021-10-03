@@ -11,6 +11,6 @@ public class SalesValueDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textMeshProUGUI.text = "$ " + gameState.score.totalEarnings;
+        textMeshProUGUI.text = "$ " + GameState.score.totalEarnings;
     }
 }
