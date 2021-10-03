@@ -8,12 +8,9 @@ using UnityEngine.UIElements;
 public class Cargo : MonoBehaviour {
     public Collider2D coll;
     public SpriteRenderer sprite;
-<<<<<<< HEAD
 
     public bool taped;
-=======
-    
->>>>>>> origin/pq
+
     public bool fastened;
     public bool grabbed;
 
