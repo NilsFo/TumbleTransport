@@ -8,8 +8,8 @@ public class TruckSpawner : MonoBehaviour
 {
     public GameState gameState;
     
-    public TruckSpawnPoolScriptableObject spawnPool;
-    
+    public TruckSpawnPoolScriptableObject[] spawnPools;
+
     public Transform spawnPoint;
 
     public float spawnTimerDelay = 5f;
@@ -73,8 +73,9 @@ public class TruckSpawner : MonoBehaviour
 
     private GameObject SpawnTruck()
     {
-        Debug.Log("Spawning Truck");
         FindObjectOfType<RadioManager>().ReadRandomQuote();
+
+        TruckSpawnPoolScriptableObject spawnPool = spawnPools[GameState.shift];
         
         int pickWeight = Random.Range(0 ,spawnPool.totalWeight);
 
