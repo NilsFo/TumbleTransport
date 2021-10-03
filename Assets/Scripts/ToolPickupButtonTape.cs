@@ -93,7 +93,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Tape");
             }
         }
 
@@ -114,7 +114,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 Cargo cargo2 = validAttachers[1].GetComponent<Cargo>();
                 RequestToolUse(selectionOrigin, selectionTarget, cargo1, cargo2);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Tape");
             }
         }
 

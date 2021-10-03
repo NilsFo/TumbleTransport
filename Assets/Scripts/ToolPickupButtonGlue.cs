@@ -25,7 +25,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
     public int conveyorIndex;
     private bool interactable = true;
     private float timeHeld = 0;
-    public int materialCost = 100;
+    public float materialCost = 100f;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +58,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Glue");
             }
         }
 
@@ -86,7 +86,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Glue");
             }
         }
 
