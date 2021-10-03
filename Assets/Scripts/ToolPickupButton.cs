@@ -68,6 +68,7 @@ public class ToolPickupButton : MonoBehaviour
             Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
             if (putawayArea.OverlapPoint(selectionTemp))
             {
+                // Putting the tool away
                 print("put away");
                 isDragging = false;
                 isSelected = false;
@@ -75,18 +76,19 @@ public class ToolPickupButton : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 
-                Invoke("EnableInteractable",0.5f);
+                Invoke("EnableInteractable",(float) (Time.smoothDeltaTime*13.37));
             }
 
             if (dumpsterArea.OverlapPoint(selectionTemp))
             {
+                // Deleting the selected tool
                 print("delete");
                 isDragging = false;
                 isSelected = false;
                 interactable = false;
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
-                conveyorCallback.Remove(conveyorIndex);
+                conveyorCallback.Remove(gameObject);
             }
         }
 
@@ -107,7 +109,7 @@ public class ToolPickupButton : MonoBehaviour
                 Vector3 secondCenter = validAttachers[1].GetComponent<Collider2D>().bounds.center;
 
                 RequestToolUse(firstCenter, secondCenter);
-                conveyorCallback.Remove(conveyorIndex);
+                conveyorCallback.Remove(gameObject);
             }
         }
 
@@ -146,6 +148,7 @@ public class ToolPickupButton : MonoBehaviour
         Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
         if (!gameState.HasSomethingSelected() && interactable && GetComponent<Collider2D>().OverlapPoint(selectionTemp))
         {
+            print("Tool click");
             isSelected = true;
             selectionOrigin = new Vector3();
             selectionTarget = new Vector3();
@@ -153,6 +156,10 @@ public class ToolPickupButton : MonoBehaviour
             toolUsageIndicator.gameObject.GetComponent<SpriteRenderer>().sprite = mySprite.sprite;
             toolUsageIndicator.gameObject.SetActive(true);
             gameState.currentSelectionState = GameState.SelectionState.Tool;
+        }
+        else
+        {
+            print("a click to be sure, but an illegal one");
         }
     }
 

@@ -74,12 +74,6 @@ public class ToolConveyor : MonoBehaviour
             spawnTimerCurrent = 0;
         }
 
-        // Debug Remove
-        if (Input.GetKeyDown("e"))
-        {
-            Remove(UnityEngine.Random.Range(1,GetToolCount())-1);
-        }
-        
         // Updating animation keyframe
         if (shouldMove && gameState.currentSelectionState != GameState.SelectionState.Tool)
         {
@@ -93,12 +87,17 @@ public class ToolConveyor : MonoBehaviour
         }
     }
 
-    public void Remove(int index)
+    public void Remove(GameObject obj)
     {
-        print("Removing index "+index);
-        GameObject toolToRemove = myTools[index];
-        myTools.RemoveAt(index);
-        Destroy(toolToRemove);
+        if (myTools.Contains(obj))
+        {
+            myTools.Remove(obj);
+            Destroy(obj);
+        }
+        else
+        {
+            Debug.LogWarning("Warning! Request to delete illegal tool!!! "+gameObject);
+        }
     }
 
     private void SpawnNext()
