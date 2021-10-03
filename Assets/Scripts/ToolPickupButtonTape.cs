@@ -105,14 +105,12 @@ public class ToolPickupButtonTape : MonoBehaviour
             toolUsageIndicator.gameObject.SetActive(false);
             gameState.currentSelectionState = GameState.SelectionState.None;
 
-            List<GameObject> validAttachers = CheckToolTapeValidPoints(selectionOrigin, selectionTarget);
+            List<GameObject> validAttachers = CheckToolTapeValidPoints(selectionOrigin);
             Destroy(lashingStrapPreview.gameObject);
             print("");
-            if (validAttachers.Count >= 2)
+            if (validAttachers.Count >= 1)
             {
-                Cargo cargo1 = validAttachers[0].GetComponent<Cargo>();
-                Cargo cargo2 = validAttachers[1].GetComponent<Cargo>();
-                RequestToolUse(selectionOrigin, selectionTarget, cargo1, cargo2);
+                RequestToolUse(selectionOrigin, selectionTarget);
                 conveyorCallback.Remove(gameObject);
                 gameState.SubtractMaterialCost(materialCost);
             }
@@ -139,7 +137,15 @@ public class ToolPickupButtonTape : MonoBehaviour
                 }
                 else
                 {
-                    selectionTarget = selectionTargetBestLength;
+                    /*var angle = Vector3.Angle(selectionOrigin, currentSelectionPos);
+                    
+                    var x = maximumDistance * Mathf.Cos(angle * Mathf.Deg2Rad);
+                    var y = maximumDistance * Mathf.Sin(angle * Mathf.Deg2Rad);
+                    var newPosition = selectionOrigin;
+                    newPosition.x += x;
+                    newPosition.y += y;*/
+                    
+                    selectionTarget = selectionOrigin + (currentSelectionPos - selectionOrigin).normalized * maximumDistance;
                     tooLong = true;
                 }
 
@@ -180,11 +186,8 @@ public class ToolPickupButtonTape : MonoBehaviour
         }
     }
 
-    private void RequestToolUse(Vector3 start, Vector3 end, Cargo cargo1, Cargo cargo2)
+    private void RequestToolUse(Vector3 start, Vector3 end)
     {
-        cargo1.OnTapeAttached(cargo2);
-        cargo2.OnTapeAttached(cargo1);
-        
         var strap = Instantiate(tapePrefab, FindObjectOfType<TruckBed>().transform);
         strap.SetLashingStrap(start, end);
     }
