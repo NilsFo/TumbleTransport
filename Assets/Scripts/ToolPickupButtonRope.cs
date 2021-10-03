@@ -90,6 +90,7 @@ public class ToolPickupButtonRope : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
+                conveyorCallback.AddPendingSpawns(1);
                 gameState.SubtractMaterialCost(materialCost);
             }
         }
