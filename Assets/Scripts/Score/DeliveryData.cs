@@ -32,8 +32,7 @@ public class DeliveryData
         {
             sum += cargo.purchaseValue;
         }
-
-        return 0;
+        return sum;
     }
     
     public float GetSalesValueOfCargo()
@@ -44,7 +43,7 @@ public class DeliveryData
             sum += cargo.salesValue;
         }
 
-        return 0;
+        return sum;
     }
     
     public int GetNumberOfCargo()

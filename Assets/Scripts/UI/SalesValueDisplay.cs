@@ -12,5 +12,6 @@ public class SalesValueDisplay : MonoBehaviour
     void Update()
     {
         textMeshProUGUI.text = "$ " + gameState.score.totalEarnings;
+        Debug.Log(gameState.score.ToString());
     }
 }

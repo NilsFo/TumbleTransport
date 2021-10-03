@@ -27,6 +27,7 @@ public class Score
         totalCountCargo += toAdd.GetNumberOfCargo();
         
         totalEarnings += toAdd.GetSalesValueOfCargo();
+        
         totalCost += toAdd.GetPurchaseValueOfCargo();
         totalCost += toAdd.truck.cost;
         
@@ -36,5 +37,10 @@ public class Score
     public float GetProfit()
     {
         return totalEarnings - totalCost - dailyFixedCosts - (workersCostPerH * workersHouers);
+    }
+
+    public override string ToString()
+    {
+        return "" + totalCountTrucks + ", " + totalCountCargo + ", " + totalCost + ", " + totalEarnings;
     }
 }
