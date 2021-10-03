@@ -96,7 +96,7 @@ public class TruckDialogueManager : MonoBehaviour
         }
         if (!gameState.tutorialHasLoadedTruckAtLeastOnce)
         {
-            quote = "Use the mouse to pick up and place some cargo on the truck.";
+            quote = "Use the mouse to pick up and place some cargo on the truck. Right click to rotate.";
         }
         return quote;
     }

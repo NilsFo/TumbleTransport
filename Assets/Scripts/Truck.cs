@@ -180,7 +180,6 @@ public class Truck : MonoBehaviour {
             gameState.forceNextDriverQuote = false;
             FindObjectOfType<TruckDialogueManager>().textBubbleManager.ClearDialogueBoxes();
         }
-        print(_quoteWaitingTimer);
         
         if (_quoteWaitingTimer < 0) {
             FindObjectOfType<TruckDialogueManager>().ReadRandomWaitingQuote();

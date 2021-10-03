@@ -31,7 +31,7 @@ public class RadioManager : MonoBehaviour
         "Don't even think about leaving early today. We got a big order coming up.",
         "This delivery is for a big client. Take extra effort, you hear?",
         "Failure to meet company standards will result in disciplinary actions!",
-        "I want everyone on their best behaviour, if the inspector sees this!",
+        "I want everyone on their best behaviour when the inspector is here!",
         "Come on, start earning some money!",
         "I can't talk right now, I have an important meeting!",
         "Quitters don't earn!",
@@ -40,7 +40,7 @@ public class RadioManager : MonoBehaviour
         "HR wants me to read this: You are a valuable member of this team and we are very proud of you.",
         "When I was your age, I already had a house and a car.",
         "Announcement: We are now owned by International Financing Ltd.",
-        "Announcement: We are now owned by the South Bay Fishery Inc.",
+        "Announcement: We are now owned by the North Bay Fishery Inc.",
         "Announcement: We are now owned by Southeast Airlines.",
         "Look at those incompetent idiots... wait, is this thing on?",
         "Dental care is cancelled for the month."
