@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4506583272528820205}
   - component: {fileID: -3495914514746081352}
   - component: {fileID: 770493609887959533}
-  - component: {fileID: -1693012827437983141}
   m_Layer: 3
   m_Name: Brett
   m_TagString: Cargo
@@ -101,8 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coll: {fileID: -3495914514746081352}
   sprite: {fileID: 7834008955049835877}
+  taped: 0
   fastened: 0
   grabbed: 0
+  dataObject: {fileID: 0}
 --- !u!114 &4506583272528820205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,16 +159,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 3
---- !u!114 &-1693012827437983141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3053956844719051675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myType: 0

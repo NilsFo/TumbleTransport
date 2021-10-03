@@ -22,6 +22,7 @@ public class Cargo : MonoBehaviour {
     
     private Vector3 grabPivot;
     private Vector3 grabbedFrom;
+    private Quaternion grabbedFromRot;
     private Camera cam;
     private ContactFilter2D _contactFilter;
 
@@ -89,7 +90,11 @@ public class Cargo : MonoBehaviour {
                 sprite.color = Color.red;
             }
         }
-        
+
+        if (grabbed && Input.GetMouseButtonDown(1)) {
+            Debug.Log("Rotate");
+            transform.rotation *= Quaternion.Euler(0,0,-90f);
+        }
     }
     // Update is called once per frame
     void OnMouseDown() {
@@ -110,6 +115,7 @@ public class Cargo : MonoBehaviour {
         }
         grabbed = true;
         grabbedFrom = transform.position;
+        grabbedFromRot = transform.rotation;
         grabPivot = transform.worldToLocalMatrix.MultiplyPoint(cam.ScreenToWorldPoint(Input.mousePosition));
         grabPivot.z = 0;
         _gameState.currentSelectionState = GameState.SelectionState.Cargo;
@@ -132,6 +138,7 @@ public class Cargo : MonoBehaviour {
             transform.position = t;
         } else {
             transform.position = grabbedFrom;
+            transform.rotation = grabbedFromRot;
         }
     }
 
@@ -150,5 +157,5 @@ public class Cargo : MonoBehaviour {
         
         print("i am a cargo. i just got taped");
     }
-    
+
 }
