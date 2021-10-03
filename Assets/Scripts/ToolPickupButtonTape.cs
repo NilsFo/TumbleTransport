@@ -17,15 +17,18 @@ public class ToolPickupButtonTape : MonoBehaviour
     private Camera cam;
     private bool isDragging;
     private Vector3 selectionOrigin;
+    private Vector3 selectionTargetBestLength;
     private Vector3 selectionTarget;
 
     public Collider2D putawayArea;
-    public Collider2D dumpsterArea; 
+    public Collider2D dumpsterArea;
     public GameObject toolUsageIndicator;
     public Vector2 toolFrameOffset = new Vector2();
 
     public ToolConveyor conveyorCallback;
     private bool interactable = true;
+    public bool tooLong;
+    public int materialCost = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +67,7 @@ public class ToolPickupButtonTape : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0)&& isSelected)
+        if (Input.GetMouseButtonDown(0) && isSelected)
         {
             Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
             if (putawayArea.OverlapPoint(selectionTemp))
@@ -76,8 +79,8 @@ public class ToolPickupButtonTape : MonoBehaviour
                 interactable = false;
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
-                
-                Invoke("EnableInteractable",(float) (Time.smoothDeltaTime*13.37));
+
+                Invoke("EnableInteractable", (float) (Time.smoothDeltaTime * 13.37));
             }
 
             if (dumpsterArea.OverlapPoint(selectionTemp))
@@ -90,6 +93,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
+                gameState.SubtractMaterialCost(materialCost);
             }
         }
 
@@ -103,14 +107,14 @@ public class ToolPickupButtonTape : MonoBehaviour
 
             List<GameObject> validAttachers = CheckToolTapeValidPoints(selectionOrigin, selectionTarget);
             Destroy(lashingStrapPreview.gameObject);
+            print("");
             if (validAttachers.Count >= 2)
             {
                 Cargo cargo1 = validAttachers[0].GetComponent<Cargo>();
                 Cargo cargo2 = validAttachers[1].GetComponent<Cargo>();
-                if (cargo1 != cargo2) {
-                    RequestToolUse(selectionOrigin, selectionTarget, cargo1, cargo2);
-                    conveyorCallback.Remove(gameObject);
-                }
+                RequestToolUse(selectionOrigin, selectionTarget, cargo1, cargo2);
+                conveyorCallback.Remove(gameObject);
+                gameState.SubtractMaterialCost(materialCost);
             }
         }
 
@@ -126,9 +130,21 @@ public class ToolPickupButtonTape : MonoBehaviour
             // While it is dragging, draw a line
             if (isDragging)
             {
-                print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
-                lashingStrapPreview.SetLashingStrap(selectionOrigin, currentSelectionPos);
-                selectionTarget = currentSelectionPos;
+                float d = Vector3.Distance(selectionOrigin, currentSelectionPos);
+                if (d < maximumDistance)
+                {
+                    selectionTarget = currentSelectionPos;
+                    selectionTargetBestLength = currentSelectionPos;
+                    tooLong = false;
+                }
+                else
+                {
+                    selectionTarget = selectionTargetBestLength;
+                    tooLong = true;
+                }
+
+                print("Dragging from " + selectionOrigin + " to " + currentSelectionPos + ". Too long? " + tooLong);
+                lashingStrapPreview.SetLashingStrap(selectionOrigin, selectionTarget);
             }
             // If it is not dragging, draw the current icon as an indicator
             else

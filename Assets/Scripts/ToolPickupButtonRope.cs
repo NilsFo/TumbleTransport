@@ -26,6 +26,7 @@ public class ToolPickupButtonRope : MonoBehaviour
     public ToolConveyor conveyorCallback;
     public int conveyorIndex;
     private bool interactable = true;
+    public int materialCost = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +90,7 @@ public class ToolPickupButtonRope : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
+                gameState.SubtractMaterialCost(materialCost);
             }
         }
 
@@ -110,6 +112,7 @@ public class ToolPickupButtonRope : MonoBehaviour
 
                 RequestToolUse(firstCenter, secondCenter);
                 conveyorCallback.Remove(gameObject);
+                gameState.SubtractMaterialCost(materialCost);
             }
         }
 
