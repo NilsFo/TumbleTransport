@@ -25,7 +25,7 @@ public class ToolPickupButtonRope : MonoBehaviour
 
     public ToolConveyor conveyorCallback;
     public int conveyorIndex;
-    public int materialCost = 100;
+    public float materialCost = 100;
     private bool interactable = true;
     private float timeHeld = 0;
     private bool pickedUpThisFrame = false;
@@ -98,7 +98,7 @@ public class ToolPickupButtonRope : MonoBehaviour
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Rope");
             }
         }
 
@@ -120,7 +120,7 @@ public class ToolPickupButtonRope : MonoBehaviour
 
                 RequestToolUse(firstCenter, secondCenter);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Rope");
             }
         }
 
