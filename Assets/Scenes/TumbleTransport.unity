@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &164979795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1055531983809665363, guid: 66e57ec59868b7b4c8246a96b2cdf23b, type: 3}
+  m_PrefabInstance: {fileID: 659118954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &307419134
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +846,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6559840326346140841}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
+      propertyPath: toolConveyor
+      value: 
+      objectReference: {fileID: 1397799408}
+    - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: truckSpawner
       value: 
       objectReference: {fileID: 1833132234}
@@ -1296,6 +1305,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1397799408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+  m_PrefabInstance: {fileID: 1475993720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c24bcbb46eecd4db63bfb04245566b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1457953325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1358,10 @@ PrefabInstance:
       propertyPath: maxDistance
       value: 5.65
       objectReference: {fileID: 0}
+    - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+      propertyPath: dumpsterArea
+      value: 
+      objectReference: {fileID: 164979795}
     - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: toolPositionOffset
       value: 0.98

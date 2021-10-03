@@ -26,6 +26,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
     private bool interactable = true;
     private float timeHeld = 0;
     public int materialCost = 100;
+    private bool pickedUpThisFrame = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,10 @@ public class ToolPickupButtonGlue : MonoBehaviour
     {
         // Updating rendered sprite
         mySprite.enabled = !isSelected;
+        if (pickedUpThisFrame) {
+            pickedUpThisFrame = false;
+            return;
+        }
 
         // Checking if this tool is selected and if drag should be initiated
         if (Input.GetMouseButton(0) && isSelected)
@@ -74,7 +79,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
 
-                Invoke("EnableInteractable", (float) (Time.smoothDeltaTime * 13.37));
+                Invoke("EnableInteractable", (float) (Time.smoothDeltaTime * 2.2237));
             }
 
             if (dumpsterArea.OverlapPoint(selectionTemp))
@@ -111,13 +116,14 @@ public class ToolPickupButtonGlue : MonoBehaviour
         }
     }
 
-    private void OnMouseUp()
+    private void OnMouseDown()
     {
         Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
         if (!gameState.HasSomethingSelected() && interactable && GetComponent<Collider2D>().OverlapPoint(selectionTemp))
         {
             print("glue picked up");
             isSelected = true;
+            pickedUpThisFrame = true;
             selectionOrigin = new Vector3();
             selectionTarget = new Vector3();
             timeHeld = 0;

@@ -25,8 +25,10 @@ public class ToolPickupButtonRope : MonoBehaviour
 
     public ToolConveyor conveyorCallback;
     public int conveyorIndex;
-    private bool interactable = true;
     public int materialCost = 100;
+    private bool interactable = true;
+    private float timeHeld = 0;
+    private bool pickedUpThisFrame = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class ToolPickupButtonRope : MonoBehaviour
         gameState = FindObjectOfType<GameState>();
         selectionOrigin = new Vector3();
         selectionTarget = new Vector3();
+        timeHeld = 0;
     }
 
     // Update is called once per frame
@@ -45,6 +48,10 @@ public class ToolPickupButtonRope : MonoBehaviour
     {
         // Updating rendered sprite
         mySprite.enabled = !isSelected;
+        if (pickedUpThisFrame) {
+            pickedUpThisFrame = false;
+            return;
+        }
 
         // Checking if this tool is selected and if drag should be initiated
         if (Input.GetMouseButton(0) && isSelected && !isDragging)
@@ -64,7 +71,7 @@ public class ToolPickupButtonRope : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0)&& isSelected)
+        if (Input.GetMouseButtonDown(0)&& isSelected && timeHeld > .5)
         {
             Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
             if (putawayArea.OverlapPoint(selectionTemp))
@@ -77,7 +84,7 @@ public class ToolPickupButtonRope : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 
-                Invoke("EnableInteractable",(float) (Time.smoothDeltaTime*13.37));
+                Invoke("EnableInteractable",(float) (Time.smoothDeltaTime*2.22));
             }
 
             if (dumpsterArea.OverlapPoint(selectionTemp))
@@ -120,6 +127,7 @@ public class ToolPickupButtonRope : MonoBehaviour
         // Checking if this tool is currently selected
         if (isSelected)
         {
+            timeHeld = timeHeld + Time.deltaTime;
             if (toolUsageIndicator != null)
             {
                 toolUsageIndicator.gameObject.SetActive(false);
@@ -147,15 +155,17 @@ public class ToolPickupButtonRope : MonoBehaviour
         }
     }
 
-    private void OnMouseUp()
+    private void OnMouseDown()
     {
         Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
         if (!gameState.HasSomethingSelected() && interactable && GetComponent<Collider2D>().OverlapPoint(selectionTemp))
         {
             print("Tool click");
+            pickedUpThisFrame = true;
             isSelected = true;
             selectionOrigin = new Vector3();
             selectionTarget = new Vector3();
+            timeHeld = 0;
 
             toolUsageIndicator.gameObject.GetComponent<SpriteRenderer>().sprite = mySprite.sprite;
             toolUsageIndicator.gameObject.SetActive(true);

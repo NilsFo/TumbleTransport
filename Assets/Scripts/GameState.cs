@@ -24,6 +24,7 @@ public class GameState : MonoBehaviour
 
     public TruckSpawner truckSpawner;
     public SpawnCargo cargoSpawner;
+    public ToolConveyor toolConveyor;
 
     // Start is called before the first frame update
     void Start()

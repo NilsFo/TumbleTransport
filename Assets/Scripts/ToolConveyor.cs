@@ -160,7 +160,7 @@ public class ToolConveyor : MonoBehaviour
     public void AddPendingSpawns(int count)
     {
         pendingSpawnCount = pendingSpawnCount + count;
-        if (pendingSpawnCount > maxSpawnedItems)
+        if (GetToolCount() + pendingSpawnCount > maxSpawnedItems)
         {
             pendingSpawnCount = maxSpawnedItems - GetToolCount();
         }
