@@ -131,7 +131,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
     private void RequestToolUse(Vector3 start)
     {
         var splat = Instantiate(GlueSplatPrefab, FindObjectOfType<TruckBed>().transform);
-        selectionOrigin.z = -8;
+        selectionOrigin.z = -0.5f;
         splat.transform.position = selectionOrigin;
         print("mew glue splat");
     }

@@ -10,7 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7735513457650606994}
   - component: {fileID: 337181871019842477}
-  m_Layer: 0
+  - component: {fileID: 957461632586279060}
+  - component: {fileID: 1335957786206453991}
+  - component: {fileID: 7739513388656401850}
+  m_Layer: 8
   m_Name: GlueSplat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,6 +70,44 @@ PolygonCollider2D:
       - {x: 0.10900399, y: -0.21138924}
       - {x: 0.21511003, y: -0.122213595}
       - {x: 0.23864758, y: 0.008787662}
+--- !u!114 &957461632586279060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629341880259863042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 1
+--- !u!114 &1335957786206453991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629341880259863042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0f5023e8370054f8ec9aa4329dd1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7739513388656401850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629341880259863042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a0a51c87776d2438e257a9fb2680ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedOnTruck: 1
 --- !u!1 &6453419535656932125
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8761842407933060098}
   - component: {fileID: 5644478306239117553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gluepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

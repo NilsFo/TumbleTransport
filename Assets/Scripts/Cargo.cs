@@ -65,7 +65,9 @@ public class Cargo : MonoBehaviour {
                 Truck _truck = null;
                 for (var i = 0; i < collisions; i++) {
                     var colliderResult = colliderResults [i];
-                    if (!colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("CrateDropArea"))) {
+                    if (!colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("CrateDropArea"))  // Can only place on CrateDropAreas
+                            && !(colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("Straps")) && colliderResult.GetComponent<Glue>() != null))  // Or on Glue 
+                    {
                         _droppable = false;
                         break;
                     } 

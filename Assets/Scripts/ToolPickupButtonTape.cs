@@ -8,7 +8,7 @@ using UnityEngine.TextCore;
 public class ToolPickupButtonTape : MonoBehaviour
 {
     private GameState gameState;
-    public LashingStrap lashingStrapPrefab;
+    public LashingStrap tapePrefab;
     public LashingStrap lashingStrapPreview;
     public float maximumDistance = 2.0f;
     public SpriteRenderer mySprite;
@@ -53,7 +53,7 @@ public class ToolPickupButtonTape : MonoBehaviour
             if (validAttachers.Count > 0)
             {
                 isDragging = true;
-                lashingStrapPreview = Instantiate(lashingStrapPrefab);
+                lashingStrapPreview = Instantiate(tapePrefab);
                 lashingStrapPreview.GetComponent<Collider2D>().enabled = false;
                 selectionOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
             }
@@ -166,10 +166,10 @@ public class ToolPickupButtonTape : MonoBehaviour
 
     private void RequestToolUse(Vector3 start, Vector3 end, Cargo cargo1, Cargo cargo2)
     {
-            cargo1.OnTapeAttached(cargo2);
-            cargo2.OnTapeAttached(cargo1);
+        cargo1.OnTapeAttached(cargo2);
+        cargo2.OnTapeAttached(cargo1);
         
-        var strap = Instantiate(lashingStrapPrefab, FindObjectOfType<TruckBed>().transform);
+        var strap = Instantiate(tapePrefab, FindObjectOfType<TruckBed>().transform);
         strap.SetLashingStrap(start, end);
     }
 

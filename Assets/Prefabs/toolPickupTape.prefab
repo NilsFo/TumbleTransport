@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2c34f40e467a142924b6f9dc5492c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lashingStrapPrefab: {fileID: 6669530834156549585, guid: 308f71f474b67ba4cbca76a1709533e2, type: 3}
-  lashingStrapPreview: {fileID: 6669530834156549585, guid: 308f71f474b67ba4cbca76a1709533e2, type: 3}
+  tapePrefab: {fileID: 6669530834156549585, guid: ca6071f83eaeace43a93515dc6238fda, type: 3}
+  lashingStrapPreview: {fileID: 6669530834156549585, guid: ca6071f83eaeace43a93515dc6238fda, type: 3}
   maximumDistance: 2
   mySprite: {fileID: 184259756983728990}
   isSelected: 0

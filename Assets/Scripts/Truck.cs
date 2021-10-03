@@ -164,27 +164,37 @@ public class Truck : MonoBehaviour {
         var cargo = GetComponentsInChildren<Cargo>();
         Debug.Log("Found " + cargo.Length + " cargo on truck");
         Node rootNode = new Node(null);
+        Dictionary<GameObject, Node> found = new Dictionary<GameObject, Node>();
 
         foreach (var strap in straps) {
-            if(!strap.fixedOnTruck)
-                continue;
             var strapnode = new Node(strap.gameObject);
-            rootNode.nodes.Add(strapnode);
-            Debug.Log("Found Strap " + strap + " on Truck");
+            
+            if(strap.fixedOnTruck)
+                rootNode.nodes.Add(strapnode);
+            
+            Debug.Log("Found Strap or Glue " + strap + " on Truck");
             var coll = strap.GetComponent<Collider2D>();
-            
+
             var collResults = new List<Collider2D>();
-            
+
             var nCollisions = coll.OverlapCollider(new ContactFilter2D() {
                 layerMask = LayerMask.NameToLayer("Crate")
             }, collResults);
-            
-            
+
+            // This is a lashing strap or glue
             foreach (var c in collResults) {
                 var cgo = c.GetComponent<Cargo>();
                 if (cgo != null) {
-                    Debug.Log("Found Cargo " + cgo + " on Strap");
-                    strapnode.nodes.Add(new Node(cgo.gameObject));
+                    Debug.Log("Found Cargo " + cgo + " on Strap or Glue");
+                    
+                    var node = new Node(cgo.gameObject);
+                    if (found.ContainsKey(cgo.gameObject)) {
+                        node = found [cgo.gameObject];
+                    } else {
+                        found.Add(cgo.gameObject, node);
+                    }
+                    strapnode.nodes.Add(node);
+                    node.nodes.Add(strapnode);
                 }
             }
         }
@@ -204,12 +214,15 @@ public class Truck : MonoBehaviour {
     private List<GameObject> traverseTree(Node rootNode) {
         Queue<Node> discovered = new Queue<Node>();
         List<GameObject> found = new List<GameObject>();
+        HashSet<Node> visited = new HashSet<Node>();
         discovered.Enqueue(rootNode);
         while (discovered.Count > 0) {
             Node active = discovered.Dequeue();
+            visited.Add(active);
             found.Add(active.gameObject);
             foreach (var n in active.nodes) {
-                discovered.Enqueue(n);
+                if(!visited.Contains(n))
+                    discovered.Enqueue(n);
             }
         }
 
