@@ -53,13 +53,14 @@ public class ToolPickupButtonTape : MonoBehaviour
             if (validAttachers.Count > 0)
             {
                 isDragging = true;
-                selectionOrigin = validAttachers[0].GetComponent<Collider2D>().bounds.center;
                 lashingStrapPreview = Instantiate(lashingStrapPrefab);
                 lashingStrapPreview.GetComponent<Collider2D>().enabled = false;
+                selectionOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
             }
             else
             {
                 // Dragging nowhere special
+                selectionOrigin = new Vector3();
             }
         }
 
@@ -104,13 +105,9 @@ public class ToolPickupButtonTape : MonoBehaviour
             Destroy(lashingStrapPreview.gameObject);
             if (validAttachers.Count >= 2)
             {
-                // Updating centers
-                Vector3 firstCenter = validAttachers[0].GetComponent<Collider2D>().bounds.center;
-                Vector3 secondCenter = validAttachers[1].GetComponent<Collider2D>().bounds.center;
-
                 Cargo cargo1 = validAttachers[0].GetComponent<Cargo>();
                 Cargo cargo2 = validAttachers[0].GetComponent<Cargo>();
-                RequestToolUse(firstCenter, secondCenter,cargo1,cargo2);
+                RequestToolUse(selectionOrigin, selectionTarget,cargo1,cargo2);
                 conveyorCallback.Remove(gameObject);
             }
         }
