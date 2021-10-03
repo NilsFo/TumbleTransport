@@ -10,8 +10,10 @@ public class Truck : MonoBehaviour {
 
     public List<GameObject> eyeletsLeft;
     public List<GameObject> eyeletsRight;
+    public List<GameObject> eyeletsExtra;
     public int minEyeletsLeft = 1;
     public int minEyeletsRight = 1;
+    public int minEyeletsExtra = 0;
 
     public Transform dialoguePosition;
 
@@ -123,6 +125,15 @@ public class Truck : MonoBehaviour {
             {
                 GameObject eye = eyeletsRight[UnityEngine.Random.Range(0, eyeletsRight.Count)];
                 eyeletsRight.Remove(eye);
+                Destroy(eye);
+            }
+        }
+        for (int i = minEyeletsExtra; i < eyeletsExtra.Count; i++)
+        {
+            if (UnityEngine.Random.Range(0,1)==0)
+            {
+                GameObject eye = eyeletsExtra[UnityEngine.Random.Range(0, eyeletsExtra.Count)];
+                eyeletsExtra.Remove(eye);
                 Destroy(eye);
             }
         }

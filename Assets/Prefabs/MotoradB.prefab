@@ -689,8 +689,12 @@ MonoBehaviour:
   - {fileID: 192179302963897842}
   - {fileID: 8698238666707277268}
   - {fileID: 202657385544618793}
+  eyeletsExtra:
+  - {fileID: 2913479450773083906}
+  - {fileID: 251232387805361381}
   minEyeletsLeft: 1
   minEyeletsRight: 1
+  minEyeletsExtra: 1
   dialoguePosition: {fileID: 4756674976144342999}
   truckData: {fileID: 0}
   fastenedCargo: []
@@ -1523,7 +1527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6582130430030151372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.956, y: 1.518, z: 0}
+  m_LocalPosition: {x: -0.787, y: 0.771, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2496941607833418898}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2372246512250730365}
   - component: {fileID: 1044419969404865951}
   - component: {fileID: 5182171831083201677}
+  - component: {fileID: 3546018684274638691}
   m_Layer: 0
   m_Name: Bodybag
   m_TagString: Untagged
@@ -157,3 +158,16 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   maxAirTime: 2
   bounceNumber: 2
+--- !u!114 &3546018684274638691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221539194365009423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131064889959850105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.956, y: 1.518, z: 0}
+  m_LocalPosition: {x: -0.762, y: 0.802, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8660181546548126247}
@@ -884,12 +884,14 @@ MonoBehaviour:
   truckAnimator: {fileID: 8660181547102082020}
   eyeletsLeft:
   - {fileID: 3861653349245950643}
-  - {fileID: 5594552740486846998}
-  eyeletsRight:
   - {fileID: 6350933217644723015}
+  eyeletsRight:
+  - {fileID: 5594552740486846998}
   - {fileID: 6360830637889703324}
+  eyeletsExtra: []
   minEyeletsLeft: 1
   minEyeletsRight: 1
+  minEyeletsExtra: 0
   dialoguePosition: {fileID: 1768459597199958370}
   truckData: {fileID: 0}
   fastenedCargo: []

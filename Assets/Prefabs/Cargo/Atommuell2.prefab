@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1046876015213207212}
   - component: {fileID: 6539393907464535940}
   - component: {fileID: 2374711933977578720}
+  - component: {fileID: -7289787738043025292}
   m_Layer: 0
   m_Name: Atommuell2
   m_TagString: Untagged
@@ -145,3 +146,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.6111026}
   m_EdgeRadius: 0
+--- !u!114 &-7289787738043025292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246668453684747050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3
