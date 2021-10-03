@@ -9,7 +9,7 @@ public class Cargo : MonoBehaviour {
     public Collider2D coll;
     public SpriteRenderer sprite;
 
-
+    public bool taped;
     public bool fastened;
     public bool grabbed;
 
@@ -22,7 +22,9 @@ public class Cargo : MonoBehaviour {
     private Truck truck;
     private bool _droppable;
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
+        taped = false;
         cam = Camera.main;
         _contactFilter = new ContactFilter2D {
             layerMask = LayerMask.GetMask(new String[]{"CrateDropArea", "CrateForbiddenArea"}),
@@ -109,4 +111,13 @@ public class Cargo : MonoBehaviour {
         transform.position = t;
         flying = true;
     }
+
+    public void OnTapeAttached(Cargo partner)
+    {
+        // TODO implement
+        taped = true;
+        
+        print("i am a cargo. i just got taped");
+    }
+    
 }

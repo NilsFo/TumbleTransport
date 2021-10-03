@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7530977097876661237}
   - component: {fileID: 6606047310991654445}
   - component: {fileID: 4292287388254698846}
+  - component: {fileID: 5247796746366738469}
   m_Layer: 3
   m_Name: Cheese
   m_TagString: Cargo
@@ -153,3 +154,16 @@ PolygonCollider2D:
       - {x: 0.8667021, y: -0.28646106}
       - {x: 0.80455685, y: 0.4474753}
       - {x: 0.38471365, y: 0.83995557}
+--- !u!114 &5247796746366738469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766076130593335162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3

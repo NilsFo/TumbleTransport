@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758412274975172808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 2, z: -3.29}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9191020358048414656}
@@ -329,11 +329,17 @@ MonoBehaviour:
   spawnTimer: 1.5
   speed: 2
   maxSpawnItems: 4
-  spwawnables: []
-  toolPositionOffset: 1.45
-  maxDistance: 5
+  spwawnables:
+  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
+  - {fileID: 1831999681353445027, guid: 3d5f2c17f46c2d24ebf00162f157a348, type: 3}
+  - {fileID: 1831999681353445027, guid: 48f70a8f98d0fd44ab6646e7d3da7fed, type: 3}
+  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
+  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
+  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
+  - {fileID: 1831999681353445027, guid: 3d5f2c17f46c2d24ebf00162f157a348, type: 3}
+  toolPositionOffset: 0.98
+  maxDistance: 5.65
   creationXPos: 0
-  debugSpawn: {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
   putAwayArea: {fileID: 3585295347761983652}
   dumpsterArea: {fileID: 8260380640968364669}
   mySprite: {fileID: 618897983675800934}

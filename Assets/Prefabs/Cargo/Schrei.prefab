@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7386782719744973973}
   - component: {fileID: 5993578008846165436}
   - component: {fileID: 7520710383847430037}
+  - component: {fileID: -848870834639459803}
   m_Layer: 3
   m_Name: Schrei
   m_TagString: Cargo
@@ -143,3 +144,16 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   maxAirTime: 10
   bounceNumber: 5
+--- !u!114 &-848870834639459803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4684218879388996210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3

@@ -204,6 +204,12 @@ public class Truck : MonoBehaviour {
         return found;
     }
 
+    public bool canPlaceGlue(Vector3 position)
+    {
+        // TODO Implement this!
+        return true;
+    }
+
     public void ThrowAllCargo() {
         
         var cargo = GetComponentsInChildren<Cargo>();

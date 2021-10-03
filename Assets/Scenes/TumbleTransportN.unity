@@ -257,6 +257,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307419134}
   m_CullTransparentMesh: 1
+--- !u!1 &424875647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424875649}
+  - component: {fileID: 424875648}
+  - component: {fileID: 424875650}
+  m_Layer: 0
+  m_Name: Radio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &424875648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424875647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55661b2175523d4eac1e1fb97fda048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radioPos: {fileID: 424875649}
+  gameState: {fileID: 1108592592}
+--- !u!4 &424875649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424875647}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.4375, y: 3.59375, z: 0.6199999}
+  m_LocalScale: {x: 0.015625, y: 0.015625, z: 0.015625}
+  m_Children: []
+  m_Father: {fileID: 807417795}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424875650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424875647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71100a6095eec5c469e08ac8e5eb1cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxPrefab: {fileID: 6652207136580568648, guid: a5b795ce4dd66484d85f34ff5baf030b, type: 3}
 --- !u!1 &583533400
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +560,7 @@ RectTransform:
   - {fileID: 1224546091}
   - {fileID: 307419135}
   - {fileID: 1986880950}
+  - {fileID: 424875649}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1003,14 +1063,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
-      propertyPath: maxDistance
-      value: 5.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
-      propertyPath: toolPositionOffset
-      value: 0.98
-      objectReference: {fileID: 0}
     - target: {fileID: 9191020358048414656, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1207,7 +1259,7 @@ GameObject:
   - component: {fileID: 1557033050}
   - component: {fileID: 1557033049}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
