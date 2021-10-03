@@ -22,6 +22,8 @@ public class ToolConveyor : MonoBehaviour
     public float creationXPos = 10;
 
     public GameObject debugSpawn;
+    public GameObject putAwayArea;
+    public GameObject dumpsterArea;
 
     public SpriteRenderer mySprite;
     public float animationSpeed = 1;
@@ -106,6 +108,9 @@ public class ToolConveyor : MonoBehaviour
         myTools.Add(newTool);
         newTool.transform.localPosition = new Vector3(creationXPos, 0, transform.localPosition.z-1);
         newTool.GetComponent<ToolPickupButton>().conveyorCallback = this;
+        newTool.GetComponent<ToolPickupButton>().conveyorIndex = myTools.Count-1;
+        newTool.GetComponent<ToolPickupButton>().putawayArea = putAwayArea.GetComponent<Collider2D>();
+        newTool.GetComponent<ToolPickupButton>().dumpsterArea = dumpsterArea.GetComponent<Collider2D>();
         
         ToolPickupButton buttonAI = newTool.GetComponent<ToolPickupButton>();
         buttonAI.toolUsageIndicator = toolIndicator;

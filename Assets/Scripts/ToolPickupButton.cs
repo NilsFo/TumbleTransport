@@ -7,7 +7,6 @@ using UnityEngine.TextCore;
 
 public class ToolPickupButton : MonoBehaviour
 {
-
     private GameState gameState;
     public LashingStrap lashingStrapPrefab;
     public LashingStrap lashingStrapPreview;
@@ -19,16 +18,20 @@ public class ToolPickupButton : MonoBehaviour
     private Vector3 selectionOrigin;
     private Vector3 selectionTarget;
 
+    public Collider2D putawayArea;
+    public Collider2D dumpsterArea; 
     public GameObject toolUsageIndicator;
     public Vector2 toolFrameOffset = new Vector2();
 
     public ToolConveyor conveyorCallback;
     public int conveyorIndex;
-    
+    private bool interactable = true;
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        interactable = true;
         isSelected = false;
         isDragging = false;
         gameState = FindObjectOfType<GameState>();
@@ -41,14 +44,50 @@ public class ToolPickupButton : MonoBehaviour
     {
         // Updating rendered sprite
         mySprite.enabled = !isSelected;
-        
+
         // Checking if this tool is selected and if drag should be initiated
-        if (Input.GetMouseButton(0) && isSelected &&!isDragging)
+        if (Input.GetMouseButton(0) && isSelected && !isDragging)
         {
-            isDragging = true;
             selectionOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
-            lashingStrapPreview = Instantiate(lashingStrapPrefab);
-            lashingStrapPreview.GetComponent<Collider2D>().enabled = false;
+            List<GameObject> validAttachers = CheckToolRopeValidPoints(selectionOrigin);
+            if (validAttachers.Count > 0)
+            {
+                isDragging = true;
+                selectionOrigin = validAttachers[0].GetComponent<Collider2D>().bounds.center;
+                lashingStrapPreview = Instantiate(lashingStrapPrefab);
+                lashingStrapPreview.GetComponent<Collider2D>().enabled = false;
+            }
+            else
+            {
+                // Dragging nowhere special
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0)&& isSelected)
+        {
+            Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
+            if (putawayArea.OverlapPoint(selectionTemp))
+            {
+                print("put away");
+                isDragging = false;
+                isSelected = false;
+                interactable = false;
+                gameState.currentSelectionState = GameState.SelectionState.None;
+                toolUsageIndicator.gameObject.SetActive(false);
+                
+                Invoke("EnableInteractable",0.5f);
+            }
+
+            if (dumpsterArea.OverlapPoint(selectionTemp))
+            {
+                print("delete");
+                isDragging = false;
+                isSelected = false;
+                interactable = false;
+                gameState.currentSelectionState = GameState.SelectionState.None;
+                toolUsageIndicator.gameObject.SetActive(false);
+                conveyorCallback.Remove(conveyorIndex);
+            }
         }
 
         // Checking if this tool is dragging and mouse has been released
@@ -59,13 +98,14 @@ public class ToolPickupButton : MonoBehaviour
             toolUsageIndicator.gameObject.SetActive(false);
             gameState.currentSelectionState = GameState.SelectionState.None;
 
-            List<GameObject> validAttachers = CheckToolRopeValidPoints(selectionOrigin,selectionTarget);
+            List<GameObject> validAttachers = CheckToolRopeValidPoints(selectionOrigin, selectionTarget);
             Destroy(lashingStrapPreview.gameObject);
-            if (validAttachers.Count >= 2) {
+            if (validAttachers.Count >= 2)
+            {
                 // Updating centers
                 Vector3 firstCenter = validAttachers[0].GetComponent<Collider2D>().bounds.center;
                 Vector3 secondCenter = validAttachers[1].GetComponent<Collider2D>().bounds.center;
-                
+
                 RequestToolUse(firstCenter, secondCenter);
                 conveyorCallback.Remove(conveyorIndex);
             }
@@ -78,21 +118,20 @@ public class ToolPickupButton : MonoBehaviour
             {
                 toolUsageIndicator.gameObject.SetActive(false);
             }
+
             Vector3 currentSelectionPos = cam.ScreenToWorldPoint(Input.mousePosition);
             // While it is dragging, draw a line
             if (isDragging)
             {
-//                print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
-                Debug.DrawLine(selectionOrigin,currentSelectionPos);
+                print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
                 lashingStrapPreview.SetLashingStrap(selectionOrigin, currentSelectionPos);
                 selectionTarget = currentSelectionPos;
             }
             // If it is not dragging, draw the current icon as an indicator
             else
             {
-//                print("following");
                 //offsetPoint = currentSelectionPos;
-                Vector3 offsetPoint = currentSelectionPos;//- toolFrameOffset;
+                Vector3 offsetPoint = currentSelectionPos;
                 toolUsageIndicator.gameObject.SetActive(true);
                 offsetPoint.x = offsetPoint.x - toolFrameOffset.x;
                 offsetPoint.y = offsetPoint.y - toolFrameOffset.y;
@@ -100,26 +139,51 @@ public class ToolPickupButton : MonoBehaviour
                 toolUsageIndicator.gameObject.transform.position = offsetPoint;
             }
         }
-        //toolUsageIndicator.gameObject.SetActive(true);
     }
 
     private void OnMouseUp()
     {
-        if (!gameState.HasSomethingSelected())
+        Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (!gameState.HasSomethingSelected() && interactable && GetComponent<Collider2D>().OverlapPoint(selectionTemp))
         {
             isSelected = true;
             selectionOrigin = new Vector3();
             selectionTarget = new Vector3();
-            
+
             toolUsageIndicator.gameObject.GetComponent<SpriteRenderer>().sprite = mySprite.sprite;
             toolUsageIndicator.gameObject.SetActive(true);
             gameState.currentSelectionState = GameState.SelectionState.Tool;
         }
     }
 
-    private void RequestToolUse(Vector3 start, Vector3 end) {
+    private void RequestToolUse(Vector3 start, Vector3 end)
+    {
         var strap = Instantiate(lashingStrapPrefab, FindObjectOfType<TruckBed>().transform);
         strap.SetLashingStrap(start, end);
+    }
+
+    private List<GameObject> CheckToolRopeValidPoints(Vector3 start)
+    {
+        List<GameObject> validAttachers = new List<GameObject>();
+        GameObject truck = gameState.GetCurrentTruck();
+        bool startValid = false;
+
+        ToolAttachment[] attachments = truck.GetComponentsInChildren<ToolAttachment>(true);
+        foreach (var attachment in attachments)
+        {
+            if (attachment.GetComponent<Collider2D>().OverlapPoint(start))
+            {
+                startValid = true;
+                validAttachers.Add(attachment.gameObject);
+            }
+        }
+
+        if (!startValid)
+        {
+            validAttachers.Clear();
+        }
+
+        return validAttachers;
     }
 
     private List<GameObject> CheckToolRopeValidPoints(Vector3 start, Vector3 end)
@@ -128,7 +192,7 @@ public class ToolPickupButton : MonoBehaviour
         GameObject truck = gameState.GetCurrentTruck();
         bool startValid = false;
         bool endValid = false;
-        
+
         // TODO ref truck here
 
         ToolAttachment[] attachments = truck.GetComponentsInChildren<ToolAttachment>(true);
@@ -139,6 +203,7 @@ public class ToolPickupButton : MonoBehaviour
                 startValid = true;
                 validAttachers.Add(attachment.gameObject);
             }
+
             if (attachment.GetComponent<Collider2D>().OverlapPoint(end))
             {
                 endValid = true;
@@ -156,7 +221,9 @@ public class ToolPickupButton : MonoBehaviour
 
         return validAttachers;
     }
-    
-    
-    
+
+    public void EnableInteractable()
+    {
+        this.interactable = true;
+    }
 }
