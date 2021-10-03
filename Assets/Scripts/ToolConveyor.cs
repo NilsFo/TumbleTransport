@@ -33,6 +33,8 @@ public class ToolConveyor : MonoBehaviour
     public List<Sprite> animationKeyFrames;
 
     public int pendingSpawnCount = 4;
+    public bool ropeGuaranteed = true;
+    public GameObject ropePrefab;
 
     private void Start()
     {
@@ -43,6 +45,7 @@ public class ToolConveyor : MonoBehaviour
         mySpriteLower.sprite = animationKeyFrames[currentKeyFrame];
         mySpriteUpper.sprite = animationKeyFrames[currentKeyFrame];
         gameState = FindObjectOfType<GameState>();
+        pendingSpawnCount = maxSpawnedItems;
     }
 
     private void Update()
@@ -75,7 +78,7 @@ public class ToolConveyor : MonoBehaviour
         if (GetToolCount() < maxSpawnedItems)
         {
             spawnTimerCurrent = spawnTimerCurrent + Time.deltaTime;
-            if (spawnTimerCurrent > spawnTimer && pendingSpawnCount>0)
+            if (spawnTimerCurrent > spawnTimer && pendingSpawnCount > 0)
             {
                 SpawnNext();
             }
@@ -154,7 +157,14 @@ public class ToolConveyor : MonoBehaviour
     public GameObject SelectNextTool()
     {
         int i = UnityEngine.Random.Range(0, spwawnables.Count - 1);
-        return spwawnables[i];
+        GameObject s = spwawnables[i];
+        if (ropeGuaranteed)
+        {
+            s = ropePrefab;
+            ropeGuaranteed = false;
+        }
+
+        return s;
     }
 
     public void AddPendingSpawns(int count)
@@ -164,6 +174,21 @@ public class ToolConveyor : MonoBehaviour
         {
             pendingSpawnCount = maxSpawnedItems - GetToolCount();
         }
+    }
+
+    public bool HasRope()
+    {
+        bool rope = false;
+        foreach (var tool in myTools)
+        {
+            ToolPickupButtonRope r = tool.gameObject.GetComponent<ToolPickupButtonRope>();
+            if (r != null)
+            {
+                rope = true;
+            }
+        }
+
+        return rope;
     }
 
     public int GetToolCount()
