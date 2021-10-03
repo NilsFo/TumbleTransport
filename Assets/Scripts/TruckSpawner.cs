@@ -107,6 +107,9 @@ public class TruckSpawner : MonoBehaviour
 
         gameState.cargoSpawner.SpawnFixNumberOfCargo(myTruckData.fixNumberOfCargoToSpawn);
         gameState.toolConveyor.AddPendingSpawns(4);
+        if (!gameState.toolConveyor.HasRope()) {
+            gameState.toolConveyor.ropeGuaranteed = true;
+        }
         
         return myTruckGameObject;
     }

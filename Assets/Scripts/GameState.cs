@@ -57,10 +57,9 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void SubtractMaterialCost(int cost)
+    public void SubtractMaterialCost(float cost, string toolname)
     {
-        //TODO: Remove cost from pay
-        Debug.LogWarning("TODO: COST NEEDS TO BE DEDUCTED FROM SCORE: " + cost);
+        score.AddWorkingMaterialData(new WorkingMaterialData(cost, toolname));
     }
 
     public bool HasSomethingSelected()

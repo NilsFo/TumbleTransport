@@ -26,7 +26,7 @@ public class RadioManager : MonoBehaviour
         "Smoke breaks are deducted from your pay.",
         "You break it, you pay for it!",
         "Back in the day, we'd have loaded that truck in half the time!",
-        "Pull those bootstraps, son!",
+        "Pull those bootstraps, kid!",
         "Do I hear someone takin' a break?",
         "Don't even think about leaving early today. We got a big order coming up.",
         "This delivery is for a big client. Take extra effort, you hear?",
@@ -84,7 +84,7 @@ public class RadioManager : MonoBehaviour
 
     public void DialogueLine1() {
         textBubbleManager.ClearDialogueBoxes();
-        textBubbleManager.Say(radioPos, "Get stacking son! I don't pay you for standing around!", 5);
+        textBubbleManager.Say(radioPos, "Get stacking kid! I don't pay you for standing around!", 5);
         busyTimer = 8;
     }
 

@@ -24,6 +24,8 @@ public class Truck : MonoBehaviour {
     public List<CargoScriptableObject> fastenedCargo;
     public List<CargoScriptableObject> thrownCargo;
     public List<CargoScriptableObject> allCargo;
+
+    public AudioSource truckLeaveAudio;
     
     public enum TruckState
     {
@@ -145,6 +147,9 @@ public class Truck : MonoBehaviour {
 
         destination = possibleDestinations [Random.Range(0, possibleDestinations.Length)];
         GameObject.Find("/Canvas/DestinationDisplay").GetComponent<TextMeshProUGUI>().text = destination;
+
+        GameObject.Find("/Audio/TruckArriveAudio").GetComponent<AudioSource>().Play();
+        truckLeaveAudio = GameObject.Find("/Audio/TruckLeaveAudio").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -159,6 +164,7 @@ public class Truck : MonoBehaviour {
             else if (_state == TruckState.Out)
             {
                 truckAnimator.Play("TruckExit");
+                truckLeaveAudio.Play();
                 Invoke(nameof(ThrowAllCargo), 0.8f);
                 Invoke(nameof(SetTraveling), 2.0f);
                 BuildGraph();

@@ -101,7 +101,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Tape");
             }
         }
 
@@ -120,7 +120,7 @@ public class ToolPickupButtonTape : MonoBehaviour
             {
                 RequestToolUse(selectionOrigin, selectionTarget);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost);
+                gameState.SubtractMaterialCost(materialCost, "Tape");
             }
         }
 
