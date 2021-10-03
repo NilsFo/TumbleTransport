@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12867280dc4d24a45b89240860b0ed8c, type: 3}
+  m_Name: DayThreeSpawnPoolDataObject
+  m_EditorClassIdentifier: 
+  pool:
+  - {fileID: 11400000, guid: 45bc04a9af91c5b4f9bea87679ed9971, type: 2}
+  - {fileID: 11400000, guid: d2c36a7d74083884388e8b409f1f345a, type: 2}
+  - {fileID: 11400000, guid: c244465cfddd66b4c8ebf798e05d1e48, type: 2}
+  - {fileID: 11400000, guid: 83ad26cf0c050694a838795f638d3464, type: 2}
+  - {fileID: 11400000, guid: ddd41c2887ce9cc499c3d62e0901defa, type: 2}
+  - {fileID: 11400000, guid: 092f56852e4b2f941a048266e76e826a, type: 2}
+  - {fileID: 11400000, guid: 2081c364d7dc89942baf679fdef5b5ae, type: 2}
+  - {fileID: 11400000, guid: 3d683f394dd450d4f8471c5f184dcdbb, type: 2}
+  - {fileID: 11400000, guid: 142d34f1901236f4d9b5e4b48a6fd5f5, type: 2}
+  - {fileID: 11400000, guid: 608015c7794621b4f94901cf3e2d8d08, type: 2}
+  - {fileID: 11400000, guid: 89060ad54511e6e42be856eb109148c9, type: 2}
+  - {fileID: 11400000, guid: 8f8f9e90c1c97a543acbddc39b328535, type: 2}
+  - {fileID: 11400000, guid: 3d3268b1429647242a14c34468a8f1bc, type: 2}
+  - {fileID: 11400000, guid: c70924dcdccd29245956ef395299850f, type: 2}
+  - {fileID: 11400000, guid: f76438d7acddfe44296ea000644c20f8, type: 2}
+  - {fileID: 11400000, guid: 8f5aa6402273157429f8012e6e3be0d4, type: 2}
+  totalWeight: 4400

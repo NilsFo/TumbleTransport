@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
+  m_Name: KuerbisCargoDataObject
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1240773048399992842, guid: 8373823407d5a964d97b49e28e59e6b6, type: 3}
+  weight: 100
+  isUnique: 0
+  purchaseValue: 30
+  salesValue: 90

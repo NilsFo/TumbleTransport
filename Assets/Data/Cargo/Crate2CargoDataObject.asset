@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39b79843e58ed7409912db75cca30af, type: 3}
-  m_Name: TestTruckPool
+  m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
+  m_Name: Crate2CargoDataObject
   m_EditorClassIdentifier: 
-  pool:
-  - {fileID: 11400000, guid: 62f15b961e6f68b4a9984bbcf4db4a33, type: 2}
-  - {fileID: 11400000, guid: abd3e0aa345b3f747b262987976e3798, type: 2}
-  totalWeight: 200
+  sprite: {fileID: 5834841123164719433, guid: 9196c4be750446a41b262b920b447d7b, type: 3}
+  weight: 500
+  isUnique: 0
+  purchaseValue: 30
+  salesValue: 90
