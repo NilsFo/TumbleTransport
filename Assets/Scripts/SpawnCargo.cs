@@ -7,8 +7,7 @@ using Random = UnityEngine.Random;
 
 public class SpawnCargo : MonoBehaviour
 {
-
-    public SpawnPoolScriptableObject spawnPool;
+    public SpawnPoolScriptableObject[] spawnPools;
 
     public BoxCollider2D spawnArea;
     public Transform spawnPoint;
@@ -81,6 +80,8 @@ public class SpawnCargo : MonoBehaviour
     
     void SpawnCargoInArea(Dictionary<string, bool> uniqueCargo = null)
     {
+        SpawnPoolScriptableObject spawnPool = spawnPools[GameState.shift];
+        
         int pickWeight = Random.Range(0 ,spawnPool.totalWeight);
 
         CargoScriptableObject myCargoData = spawnPool.pool[0];

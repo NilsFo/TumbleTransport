@@ -2076,6 +2076,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 377440479314826534, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+      propertyPath: spawnPools.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 377440479314826534, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+      propertyPath: spawnPools.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 603dade851003a342ac7093edca2d22d, type: 2}
+    - target: {fileID: 377440479314826534, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+      propertyPath: spawnPools.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e5cbaf85419d1e4a813e372ad015067, type: 2}
+    - target: {fileID: 377440479314826534, guid: 681fe886d70c675458960636afd8eb16, type: 3}
+      propertyPath: spawnPools.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 87cbf80245beb0740956bf6a2de59672, type: 2}
     - target: {fileID: 2321064418690842452, guid: 681fe886d70c675458960636afd8eb16, type: 3}
       propertyPath: m_RootOrder
       value: 6
