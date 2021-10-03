@@ -26,6 +26,15 @@ public class GameState : MonoBehaviour
     public SpawnCargo cargoSpawner;
     public ToolConveyor toolConveyor;
 
+    public bool forceNextDriverQuote = false;
+    public bool tutorialHasLoadedTruckAtLeastOnce=false;
+    public bool tutorialHasDepartedAtLeastOnce = false;
+    public bool tutorialHasTooledAtLeastOnce = false;
+    
+    public bool tutorialHasRopedAtLeastOnce = false;
+    public bool tutorialHasGluedAtLeastOnce = false;
+    public bool tutorialHasTapedAtLeastOnce = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +43,9 @@ public class GameState : MonoBehaviour
         workTimeLeft = workTime;
 
         score = new Score();
+        
+        // TODO if not the first level, clear tutorial flags!
+        
     }
 
     void Update()

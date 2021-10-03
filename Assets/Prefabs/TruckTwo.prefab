@@ -1324,7 +1324,7 @@ MonoBehaviour:
   minEyeletsLeft: 1
   minEyeletsRight: 1
   minEyeletsExtra: 0
-  dialoguePosition: {fileID: 0}
+  dialoguePosition: {fileID: 6202757903457407175}
   truckData: {fileID: 0}
   fastenedCargo: []
   thrownCargo: []

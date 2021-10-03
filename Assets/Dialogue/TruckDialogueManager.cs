@@ -9,33 +9,41 @@ public class TruckDialogueManager : MonoBehaviour
     public Transform radioPos;
     public GameState gameState;
     
-    private TextBubbleManager textBubbleManager;
+    public TextBubbleManager textBubbleManager;
 
     private float busyTimer = 0;
 
     public String[] truckerWaitQuotes = {
-        "Let's go, I've got places to be",
-        "I'll just leave the motor running",
+        "Let's go, I've got places to be!",
+        "I'll just leave the motor running.",
         "What's the hold up?",
         "Is there a problem?",
-        "Get on with it",
+        "Get on with it!",
         "I'm waiting!",
         "This stuff has to get out there ASAP!",
         "What are you doing? My job's on the line here!",
-        "Gotta be home for dinner with the missus soon",
-        "Do your job so I can do mine",
+        "Gotta be home for dinner with the missus soon!",
+        "Do your job so I can do mine!",
         "Let's go, let's go!",
-        "No time for hanging around",
+        "No time for hanging around!",
         "What is this? The daycare?",
-        "I've had inspections that were faster than this",
+        "I've had inspections that were faster than this!",
         "Did you fall asleep?",
+        "I'm already on overtime, so make this quick.",
+        "Hurry up, slowpoke!",
+        "What's keeping you so long... geez?",
+        "Sorry, I don't mean to be mean. It's just the booze talking...",
+        "Hurry up, or I'll speak with your foreman!",
+        "Want me to come up there and load this thing by myself?",
         "Hello? Load me up!"
     };
+    
     
     // Start is called before the first frame update
     void Start()
     {
         textBubbleManager = GetComponent<TextBubbleManager>();
+        gameState = FindObjectOfType<GameState>();
     }
 
     public void RadioMessage(string message, float duration) {
@@ -68,10 +76,29 @@ public class TruckDialogueManager : MonoBehaviour
     public void ReadRandomWaitingQuote() {
         if (busyTimer > 0)
             return;
-        var i = Random.Range(0, truckerWaitQuotes.Length);
-        var quote = truckerWaitQuotes [i];
+        var quote = GetNextDriverQuote();
         textBubbleManager.ClearDialogueBoxes();
         textBubbleManager.Say(radioPos, quote);
+    }
+
+    public String GetNextDriverQuote()
+    {
+        var i = Random.Range(0, truckerWaitQuotes.Length);
+        var quote = truckerWaitQuotes [i];
+
+        if (!gameState.tutorialHasDepartedAtLeastOnce)
+        {
+            quote = "Thanks kid! Load up as much as you can. When you are done use the 'Dispatch' button above.";
+        }
+        if (!gameState.tutorialHasTooledAtLeastOnce)
+        {
+            quote = "Use the tools on the conveyor belt to fasten the cargo.";
+        }
+        if (!gameState.tutorialHasLoadedTruckAtLeastOnce)
+        {
+            quote = "Use the mouse to pick up and place some cargo on the truck.";
+        }
+        return quote;
     }
     
 }

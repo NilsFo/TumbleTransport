@@ -127,9 +127,11 @@ public class Cargo : MonoBehaviour {
         sprite.color = Color.white;
         _gameState.currentSelectionState = GameState.SelectionState.None;
         if (_droppable) {
-
             if (truck != null)
+            {
                 transform.SetParent(truck.GetComponentInChildren<TruckBed>().transform);
+                _gameState.tutorialHasLoadedTruckAtLeastOnce = true;
+            }
             else {
                 transform.SetParent(null);
             }

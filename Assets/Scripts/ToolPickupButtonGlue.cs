@@ -143,6 +143,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
         var splat = Instantiate(GlueSplatPrefab, FindObjectOfType<TruckBed>().transform);
         selectionOrigin.z = 0.5f;
         splat.transform.position = selectionOrigin;
+        gameState.tutorialHasTooledAtLeastOnce = true;
         print("mew glue splat");
     }
 

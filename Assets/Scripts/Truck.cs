@@ -33,7 +33,8 @@ public class Truck : MonoBehaviour {
         Out,
         Traveling
     }
-    
+
+    private GameState gameState;
     private TruckState _state = TruckState.Spawned;
     private TruckState _lastState = TruckState.Spawned;
 
@@ -104,6 +105,7 @@ public class Truck : MonoBehaviour {
     void Start()
     {
         _state = TruckState.In;
+        gameState = FindObjectOfType<GameState>();
         
         fastenedCargo = new List<CargoScriptableObject>();
         thrownCargo = new List<CargoScriptableObject>();
@@ -160,10 +162,20 @@ public class Truck : MonoBehaviour {
                 Invoke(nameof(ThrowAllCargo), 0.8f);
                 Invoke(nameof(SetTraveling), 2.0f);
                 BuildGraph();
+                gameState.tutorialHasDepartedAtLeastOnce = true;
             }
             _lastState = _state;
         }
+        
         _quoteWaitingTimer -= Time.deltaTime;
+        if (gameState.forceNextDriverQuote)
+        {
+            _quoteWaitingTimer = -10;
+            gameState.forceNextDriverQuote = false;
+            FindObjectOfType<TruckDialogueManager>().textBubbleManager.ClearDialogueBoxes();
+        }
+        print(_quoteWaitingTimer);
+        
         if (_quoteWaitingTimer < 0) {
             FindObjectOfType<TruckDialogueManager>().ReadRandomWaitingQuote();
             SetQuoteWaitingTimer();
@@ -291,5 +303,15 @@ public class Truck : MonoBehaviour {
 
     private void SetQuoteWaitingTimer() {
         _quoteWaitingTimer = Random.Range(10f, 20f);
+
+        if (!gameState.tutorialHasLoadedTruckAtLeastOnce)
+        {
+            _quoteWaitingTimer = _quoteWaitingTimer * .8f;
+        }
+
+        if (!gameState.tutorialHasLoadedTruckAtLeastOnce || !gameState.tutorialHasDepartedAtLeastOnce || !gameState.tutorialHasTooledAtLeastOnce)
+        {
+            _quoteWaitingTimer = _quoteWaitingTimer * .6f;
+        }
     }
 }

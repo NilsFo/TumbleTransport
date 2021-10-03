@@ -201,6 +201,7 @@ public class ToolPickupButtonTape : MonoBehaviour
     {
         var strap = Instantiate(tapePrefab, FindObjectOfType<TruckBed>().transform);
         strap.SetLashingStrap(start, end);
+        gameState.tutorialHasTooledAtLeastOnce = true;
     }
 
     private List<GameObject> CheckToolTapeValidPoints(Vector3 start)
