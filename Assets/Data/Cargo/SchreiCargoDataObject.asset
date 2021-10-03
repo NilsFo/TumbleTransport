@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
   m_Name: SchreiCargoDataObject
   m_EditorClassIdentifier: 
-  weight: 100
   sprite: {fileID: 4684218879388996210, guid: 34ea4b29d5f7c1541ac63299cf32ca2a, type: 3}
+  weight: 100
+  isUnique: 1
+  purchaseValue: 10
+  salesValue: 500

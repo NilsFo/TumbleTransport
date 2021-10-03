@@ -19,6 +19,9 @@ public class GameState : MonoBehaviour
     public SelectionState currentSelectionState;
     
     public TruckSpawner truckSpawner;
+    public SpawnCargo cargoSpawner;
+
+    public Score score;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,8 @@ public class GameState : MonoBehaviour
         currentSelectionState = SelectionState.None;
         truckSpawner.CurrentSpawnerState = TruckSpawner.SpawnerState.On;
         workTimeLeft = workTime;
+        
+        score = new Score();
     }
 
     void Update() {
@@ -41,6 +46,4 @@ public class GameState : MonoBehaviour
     {
         return truckSpawner.TruckGameObject;
     }
-    
-    
 }

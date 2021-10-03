@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534393367264757663}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.53125, y: -2.09375, z: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -1, y: -2.9, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2213611920043566464}
   m_Father: {fileID: 3448596052258287330}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &2326814732312504165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,14 +97,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2989576565372509160}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 1.53125, y: -2.125, z: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1, y: -2.9, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3508237814640425463}
   m_Father: {fileID: 3448596052258287330}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1035008020412218130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1057,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b828b6bd1b243f349bd66ad852045528, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ae9d22d2fdb2774884c4e303e9519b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1166,6 +1166,10 @@ MonoBehaviour:
   - {fileID: 5982115254518471957}
   minEyeletsLeft: 1
   minEyeletsRight: 1
+  truckData: {fileID: 0}
+  fastenedCargo: []
+  thrownCargo: []
+  allCargo: []
 --- !u!95 &8317496335158412141
 Animator:
   serializedVersion: 3

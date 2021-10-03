@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
   m_Name: BrettCargoDataObject
   m_EditorClassIdentifier: 
-  weight: 100
   sprite: {fileID: 3053956844719051675, guid: 56997fa0d74032a48b20a2436c25a841, type: 3}
+  weight: 500
+  isUnique: 0
+  purchaseValue: 12
+  salesValue: 36

@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CargoDataObject", menuName = "CargoData/CargoDataObject", order = 1)]
 public class CargoScriptableObject : ScriptableObject
 {
-    public int weight = 100;
     public GameObject sprite;
+    public int weight = 100;
+    
+    public bool isUnique = false;
+    
+    public float purchaseValue = 30f;
+    public float salesValue = 90f;
 }

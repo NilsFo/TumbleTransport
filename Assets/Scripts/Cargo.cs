@@ -8,12 +8,16 @@ using UnityEngine.UIElements;
 public class Cargo : MonoBehaviour {
     public Collider2D coll;
     public SpriteRenderer sprite;
-
-
+    
     public bool fastened;
     public bool grabbed;
 
+    public CargoScriptableObject dataObject;
+
     private bool flying;
+    private float _flyingTimer = 0f;
+    private float _maxFlyingTimer = 5f;
+    
     private Vector3 grabPivot;
     private Vector3 grabbedFrom;
     private Camera cam;
@@ -31,9 +35,14 @@ public class Cargo : MonoBehaviour {
     }
 
     void Update() {
-        if (flying) {
+        if (_flyingTimer > _maxFlyingTimer)
+        {
+            Destroy(gameObject);
+        }
+        else if (flying) {
             transform.position += Vector3.down * Time.deltaTime * 5f;
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, 180f * Time.deltaTime);
+            _flyingTimer += Time.deltaTime;
         }
         else if (!fastened & grabbed) {
             _droppable = false;

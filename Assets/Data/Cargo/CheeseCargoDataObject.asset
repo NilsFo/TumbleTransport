@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
   m_Name: CheeseCargoDataObject
   m_EditorClassIdentifier: 
-  weight: 100
   sprite: {fileID: 7766076130593335162, guid: 94521795015e22f408ad27f4d2470ce8, type: 3}
+  weight: 100
+  isUnique: 0
+  purchaseValue: 2.5
+  salesValue: 55
