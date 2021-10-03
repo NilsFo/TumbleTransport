@@ -123,7 +123,7 @@ public class ToolPickupButton : MonoBehaviour
             // While it is dragging, draw a line
             if (isDragging)
             {
-                // print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
+                print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
                 lashingStrapPreview.SetLashingStrap(selectionOrigin, currentSelectionPos);
                 selectionTarget = currentSelectionPos;
             }

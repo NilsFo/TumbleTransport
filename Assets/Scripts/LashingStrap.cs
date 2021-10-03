@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,11 @@ public class LashingStrap : MonoBehaviour
         
     }
 
-    public void SetLashingStrap(Vector3 start, Vector3 end) {
+    public void SetLashingStrap(Vector3 start, Vector3 end)
+    {
+        float ourZ = Math.Min(start.z, end.z);
+        start.z = ourZ;
+        end.z = ourZ;
         var pos = (start + end) / 2;
         pos.z = -5;
         transform.position = pos;
