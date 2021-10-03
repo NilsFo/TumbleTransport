@@ -106,9 +106,11 @@ public class ToolPickupButtonTape : MonoBehaviour
             if (validAttachers.Count >= 2)
             {
                 Cargo cargo1 = validAttachers[0].GetComponent<Cargo>();
-                Cargo cargo2 = validAttachers[0].GetComponent<Cargo>();
-                RequestToolUse(selectionOrigin, selectionTarget,cargo1,cargo2);
-                conveyorCallback.Remove(gameObject);
+                Cargo cargo2 = validAttachers[1].GetComponent<Cargo>();
+                if (cargo1 != cargo2) {
+                    RequestToolUse(selectionOrigin, selectionTarget, cargo1, cargo2);
+                    conveyorCallback.Remove(gameObject);
+                }
             }
         }
 
