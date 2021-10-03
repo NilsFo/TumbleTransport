@@ -30,6 +30,7 @@ public class ToolPickupButtonRope : MonoBehaviour
     private float timeHeld = 0;
     private bool pickedUpThisFrame = false;
 
+    public AudioClip ropeEndSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -180,6 +181,9 @@ public class ToolPickupButtonRope : MonoBehaviour
     private void RequestToolUse(Vector3 start, Vector3 end)
     {
         var strap = Instantiate(lashingStrapPrefab, FindObjectOfType<TruckBed>().transform);
+        var ac = strap.GetComponent<AudioSource>();
+        ac.clip = ropeEndSound;
+        ac.Play();
         strap.SetLashingStrap(start, end);
     }
 

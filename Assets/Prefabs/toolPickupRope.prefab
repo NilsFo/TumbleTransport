@@ -56,6 +56,7 @@ MonoBehaviour:
   conveyorCallback: {fileID: 0}
   conveyorIndex: 0
   materialCost: 100
+  ropeEndSound: {fileID: 8300000, guid: a306435c9b5cfcd4694fe9664dc31044, type: 3}
 --- !u!61 &1037265484885433245
 BoxCollider2D:
   m_ObjectHideFlags: 0
