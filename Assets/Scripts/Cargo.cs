@@ -25,6 +25,8 @@ public class Cargo : MonoBehaviour {
     private Camera cam;
     private ContactFilter2D _contactFilter;
 
+    private GameState _gameState;
+
     private Truck truck;
     private bool _droppable;
     // Start is called before the first frame update
@@ -36,6 +38,7 @@ public class Cargo : MonoBehaviour {
             layerMask = LayerMask.GetMask(new String[]{"CrateDropArea", "CrateForbiddenArea"}),
             useTriggers = true
         };
+        _gameState = FindObjectOfType<GameState>();
     }
 
     void Update() {
@@ -85,6 +88,9 @@ public class Cargo : MonoBehaviour {
     }
     // Update is called once per frame
     void OnMouseDown() {
+        if(_gameState.HasSomethingSelected())
+            return;
+        
         List<Collider2D> results = new List<Collider2D>();
         if (coll.OverlapCollider(new ContactFilter2D().NoFilter(), results) > 0) {
             foreach (var result in results) {
@@ -101,8 +107,11 @@ public class Cargo : MonoBehaviour {
         grabbedFrom = transform.position;
         grabPivot = transform.worldToLocalMatrix.MultiplyPoint(cam.ScreenToWorldPoint(Input.mousePosition));
         grabPivot.z = 0;
+        _gameState.currentSelectionState = GameState.SelectionState.Cargo;
     }
     void OnMouseUp() {
+        if (!grabbed)
+            return;
         grabbed = false;
         sprite.color = Color.white;
         if (_droppable) {
@@ -116,6 +125,7 @@ public class Cargo : MonoBehaviour {
         } else {
             transform.position = grabbedFrom;
         }
+        _gameState.currentSelectionState = GameState.SelectionState.None;
     }
 
     public void ThrowCargo() {
