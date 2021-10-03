@@ -58,6 +58,7 @@ public class Truck : MonoBehaviour {
         "Whiterun",
         "Pallet Town",
         "New Londo",
+        "New York",
         "Tattoine",
         "Umbrella Corp. Logistics",
         "Eyjafjallajökull",
@@ -80,6 +81,7 @@ public class Truck : MonoBehaviour {
         "The Boneyard",
         "Großpösna, Lower-Saxony",
         "Necropolis",
+        "Atlantis",
         "Vienna",
         "Stockholm",
         "Rome",
@@ -93,6 +95,7 @@ public class Truck : MonoBehaviour {
         "Québec",
         "Seattle",
         "Sen's Building Co.",
+        "Libery City",
         "Teufort",
         "Outset Island",
         "Bob-Omb Battlefield"
@@ -180,7 +183,6 @@ public class Truck : MonoBehaviour {
             gameState.forceNextDriverQuote = false;
             FindObjectOfType<TruckDialogueManager>().textBubbleManager.ClearDialogueBoxes();
         }
-        print(_quoteWaitingTimer);
         
         if (_quoteWaitingTimer < 0) {
             FindObjectOfType<TruckDialogueManager>().ReadRandomWaitingQuote();
