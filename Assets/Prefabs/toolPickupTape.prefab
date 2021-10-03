@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tapePrefab: {fileID: 6669530834156549585, guid: ca6071f83eaeace43a93515dc6238fda, type: 3}
   lashingStrapPreview: {fileID: 6669530834156549585, guid: ca6071f83eaeace43a93515dc6238fda, type: 3}
-  maximumDistance: 2
+  maximumDistance: 1
   mySprite: {fileID: 184259756983728990}
   isSelected: 0
   putawayArea: {fileID: 0}
@@ -55,6 +55,8 @@ MonoBehaviour:
   toolUsageIndicator: {fileID: 0}
   toolFrameOffset: {x: 0, y: 0}
   conveyorCallback: {fileID: 0}
+  tooLong: 0
+  materialCost: 100
 --- !u!61 &1037265484885433245
 BoxCollider2D:
   m_ObjectHideFlags: 0

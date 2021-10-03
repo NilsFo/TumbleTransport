@@ -20,6 +20,7 @@ public class Score
     public Score()
     {
         listOfDeliveries = new List<DeliveryData>();
+        listOfWorkingMaterialsUsed = new List<WorkingMaterialData>();
     }
 
     public void AddDeliveryData(DeliveryData toAdd)
