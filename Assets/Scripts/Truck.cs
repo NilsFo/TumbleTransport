@@ -82,7 +82,9 @@ public class Truck : MonoBehaviour {
         "Québec",
         "Seattle",
         "Sen's Building Co.",
-        "Teufort"
+        "Teufort",
+        "Outset Island",
+        "Bob-Omb Battlefield"
     };
     
     public TruckState State
