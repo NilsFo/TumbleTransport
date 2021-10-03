@@ -416,10 +416,9 @@ MonoBehaviour:
   - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
   - {fileID: 1831999681353445027, guid: 3d5f2c17f46c2d24ebf00162f157a348, type: 3}
   - {fileID: 1831999681353445027, guid: 48f70a8f98d0fd44ab6646e7d3da7fed, type: 3}
-  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
-  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
-  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
   - {fileID: 1831999681353445027, guid: 3d5f2c17f46c2d24ebf00162f157a348, type: 3}
+  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
+  - {fileID: 1831999681353445027, guid: 9da05fa43bd6c5543888c1efe49d8427, type: 3}
   toolPositionOffset: 0.5
   maxDistance: 5.25
   creationOffsetX: 0

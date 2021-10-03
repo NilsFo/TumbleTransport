@@ -229,10 +229,19 @@ public class Truck : MonoBehaviour {
         return found;
     }
 
-    public bool canPlaceGlue(Vector3 position)
-    {
-        // TODO Implement this!
-        return true;
+    public bool canPlaceGlue(Vector3 position) {
+        bool canPlace = false;
+        foreach (var collider in GetComponentsInChildren<Collider2D>()) {
+            if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("CrateDropArea"))) {
+                if (collider.OverlapPoint(position))
+                    canPlace = true;
+            } else if(collider.gameObject.layer.Equals(LayerMask.NameToLayer("CrateForbiddenArea")))
+            {
+                if (collider.OverlapPoint(position))
+                    return false;
+            }
+        }
+        return canPlace;
     }
 
     public void ThrowAllCargo() {

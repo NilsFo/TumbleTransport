@@ -70,7 +70,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15763053, y: 0.3440413}
+  m_Size: {x: 0.31, y: 0.64}
   m_EdgeRadius: 0
 --- !u!1 &2989576565372509160
 GameObject:
@@ -142,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15763053, y: 0.3440413}
+  m_Size: {x: 0.31, y: 0.64}
   m_EdgeRadius: 0
 --- !u!1 &3049814111805086486
 GameObject:
@@ -296,7 +296,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15763053, y: 0.3440413}
+  m_Size: {x: 0.31, y: 0.64}
   m_EdgeRadius: 0
 --- !u!1 &4591120850637540508
 GameObject:
@@ -614,7 +614,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15763053, y: 0.3440413}
+  m_Size: {x: 0.31, y: 0.64}
   m_EdgeRadius: 0
 --- !u!1 &5937886810216930227
 GameObject:
@@ -768,7 +768,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15763053, y: 0.3440413}
+  m_Size: {x: 0.31, y: 0.64}
   m_EdgeRadius: 0
 --- !u!1 &6008232904308796366
 GameObject:
@@ -840,7 +840,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15763053, y: 0.3440413}
+  m_Size: {x: 0.31, y: 0.64}
   m_EdgeRadius: 0
 --- !u!1 &7771178688699373078
 GameObject:
@@ -1166,10 +1166,67 @@ MonoBehaviour:
   - {fileID: 5982115254518471957}
   minEyeletsLeft: 1
   minEyeletsRight: 1
+  dialoguePosition: {fileID: 0}
   truckData: {fileID: 0}
   fastenedCargo: []
   thrownCargo: []
   allCargo: []
+  destination: 
+  possibleDestinations:
+  - Downtown Coolsville
+  - Central Airport, Terminal 3
+  - Jammer Loggin Corp.
+  - 49th East, Ludum Dare Ave.
+  - Southwest Garbage Dump
+  - Nevergreen Shipping Co.
+  - Springfield
+  - Gorleben
+  - Goodsprings
+  - Timbuktu
+  - 1600 Pennsylvania Avenue
+  - Bochum-Wattenscheid, NRW
+  - Marl
+  - Whiterun
+  - Pallet Town
+  - New Londo
+  - Tattoine
+  - Umbrella Corp. Logistics
+  - "Eyjafjallaj\xF6kull"
+  - Pripyat, UKR
+  - Weyland-Yutani Corp.
+  - 221B Baker Street, London
+  - Ableben Funeral Home
+  - Chicago
+  - San Diego
+  - Innsmouth
+  - Truth or Consequences, NM
+  - Qo'noS
+  - Berlin
+  - Rotterdam
+  - Tokyo
+  - Sidney
+  - Hong Kong
+  - 3838 Piermont Drive, Albuquerque, NM
+  - Wacken
+  - The Boneyard
+  - "Gro\xDFp\xF6sna, Lower-Saxony"
+  - Necropolis
+  - Vienna
+  - Stockholm
+  - Rome
+  - Stratholme
+  - Nowhere in particular
+  - Just around the corner
+  - Hudson River
+  - "Reykjav\xEDk"
+  - Bermuda Triangle
+  - Blackreach
+  - "Qu\xE9bec"
+  - Seattle
+  - Sen's Building Co.
+  - Teufort
+  - Outset Island
+  - Bob-Omb Battlefield
 --- !u!95 &8317496335158412141
 Animator:
   serializedVersion: 3
