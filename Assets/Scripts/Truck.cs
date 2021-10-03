@@ -156,6 +156,8 @@ public class Truck : MonoBehaviour {
         Node rootNode = new Node(null);
 
         foreach (var strap in straps) {
+            if(!strap.fixedOnTruck)
+                continue;
             var strapnode = new Node(strap.gameObject);
             rootNode.nodes.Add(strapnode);
             Debug.Log("Found Strap " + strap + " on Truck");

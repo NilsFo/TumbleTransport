@@ -83,6 +83,9 @@ public class Cargo : MonoBehaviour {
                 }
             }
         }
+        if (taped) {
+            return;
+        }
         grabbed = true;
         grabbedFrom = transform.position;
         grabPivot = transform.worldToLocalMatrix.MultiplyPoint(cam.ScreenToWorldPoint(Input.mousePosition));

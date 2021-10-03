@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LashingStrap : MonoBehaviour
-{
+public class LashingStrap : MonoBehaviour {
+    public bool fixedOnTruck = true;
     // Start is called before the first frame update
     void Start()
     {
