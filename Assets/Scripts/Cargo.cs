@@ -54,7 +54,7 @@ public class Cargo : MonoBehaviour {
         else if (!fastened & grabbed) {
             _droppable = false;
             var pos = cam.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = -1;
+            pos.z = -5;
             //Debug.Log(pos);
             transform.position = pos - grabPivot;
 
@@ -69,8 +69,11 @@ public class Cargo : MonoBehaviour {
                             && !(colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("Straps")) && colliderResult.GetComponent<Glue>() != null))  // Or on Glue 
                     {
                         _droppable = false;
-                        break;
-                    } 
+                    } else if (colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("CrateDropArea"))
+                            && !colliderResult.gameObject.tag.Equals("Truck")) {
+                        // Sonderregel für rechts droppen
+                        _droppable = true;
+                    }
                     if (colliderResult.gameObject.CompareTag("Truck")) {
                         _truck = colliderResult.GetComponentInParent<Truck>();
                     }
@@ -116,18 +119,20 @@ public class Cargo : MonoBehaviour {
             return;
         grabbed = false;
         sprite.color = Color.white;
+        _gameState.currentSelectionState = GameState.SelectionState.None;
         if (_droppable) {
-            
 
             if (truck != null)
                 transform.SetParent(truck.GetComponentInChildren<TruckBed>().transform);
             else {
                 transform.SetParent(null);
             }
+            var t = transform.position;
+            t.z = FindObjectOfType<SpawnCargo>().spawnPoint.transform.position.z;
+            transform.position = t;
         } else {
             transform.position = grabbedFrom;
         }
-        _gameState.currentSelectionState = GameState.SelectionState.None;
     }
 
     public void ThrowCargo() {
