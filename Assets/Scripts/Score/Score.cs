@@ -15,6 +15,7 @@ public class Score
     public float totalEarnings = 0;
 
     private List<DeliveryData> listOfDeliveries;
+    private List<WorkingMaterialData> listOfWorkingMaterialsUsed;
     
     public Score()
     {
@@ -34,6 +35,12 @@ public class Score
         listOfDeliveries.Add(toAdd);
     }
 
+    public void AddWorkingMaterialData(WorkingMaterialData data)
+    {
+        totalCost += data.materialCost;
+        listOfWorkingMaterialsUsed.Add(data);
+    }
+    
     public float GetProfit()
     {
         return totalEarnings - totalCost - dailyFixedCosts - (workersCostPerH * workersHouers);
