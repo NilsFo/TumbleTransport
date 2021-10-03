@@ -62,7 +62,7 @@ public class DialogueBox : MonoBehaviour
 
     public void SetText(string text) {
         textMesh.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = maxWidth;
-        //textMesh.rectTransform.sizeDelta.Set(maxWidth, 100);
+        textMesh.rectTransform.sizeDelta.Set(maxWidth, 100);
         textMesh.SetText(text);
         var bounds = textMesh.GetPreferredValues();
         //textMesh.ForceMeshUpdate();

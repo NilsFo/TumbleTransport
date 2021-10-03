@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +12,10 @@ public class Truck : MonoBehaviour {
     public List<GameObject> eyeletsRight;
     public int minEyeletsLeft = 1;
     public int minEyeletsRight = 1;
+
+    public Transform dialoguePosition;
+
+    private float _quoteWaitingTimer;
     
     public enum TruckState
     {
@@ -22,6 +28,62 @@ public class Truck : MonoBehaviour {
     
     private TruckState _state = TruckState.Spawned;
     private TruckState _lastState = TruckState.Spawned;
+
+    public String destination;
+    public String[] possibleDestinations = {
+        "Downtown Coolsville",
+        "Central Airport, Terminal 3",
+        "Jammer Loggin Corp.",
+        "49th East, Ludum Dare Ave.",
+        "Southwest Garbage Dump",
+        "Nevergreen Shipping Co.",
+        "Springfield",
+        "Gorleben",
+        "Goodsprings",
+        "Timbuktu",
+        "1600 Pennsylvania Avenue",
+        "Bochum-Wattenscheid, NRW",
+        "Marl",
+        "Whiterun",
+        "Pallet Town",
+        "New Londo",
+        "Tattoine",
+        "Umbrella Corp. Logistics",
+        "Eyjafjallajökull",
+        "Pripyat, UKR",
+        "Weyland-Yutani Corp.",
+        "221B Baker Street, London",
+        "Ableben Funeral Home",
+        "Chicago",
+        "San Diego",
+        "Innsmouth",
+        "Truth or Consequences, NM",
+        "Qo'noS",
+        "Berlin",
+        "Rotterdam",
+        "Tokyo",
+        "Sidney",
+        "Hong Kong",
+        "3838 Piermont Drive, Albuquerque, NM",
+        "Wacken",
+        "The Boneyard",
+        "Großpösna, Lower-Saxony",
+        "Necropolis",
+        "Vienna",
+        "Stockholm",
+        "Rome",
+        "Stratholme",
+        "Nowhere in particular",
+        "Just around the corner",
+        "Hudson River",
+        "Reykjavík",
+        "Bermuda Triangle",
+        "Blackreach",
+        "Québec",
+        "Seattle",
+        "Sen's Building Co.",
+        "Teufort"
+    };
     
     public TruckState State
     {
@@ -52,6 +114,12 @@ public class Truck : MonoBehaviour {
                 Destroy(eye);
             }
         }
+        
+        SetQuoteWaitingTimer();
+        FindObjectOfType<TruckDialogueManager>().radioPos = dialoguePosition;
+
+        destination = possibleDestinations [Random.Range(0, possibleDestinations.Length)];
+        GameObject.Find("/Canvas/DestinationDisplay").GetComponent<TextMeshProUGUI>().text = destination;
     }
 
     // Update is called once per frame
@@ -71,6 +139,11 @@ public class Truck : MonoBehaviour {
                 BuildGraph();
             }
             _lastState = _state;
+        }
+        _quoteWaitingTimer -= Time.deltaTime;
+        if (_quoteWaitingTimer < 0) {
+            FindObjectOfType<TruckDialogueManager>().ReadRandomWaitingQuote();
+            SetQuoteWaitingTimer();
         }
     }
     
@@ -154,5 +227,9 @@ public class Truck : MonoBehaviour {
     private void SetTraveling()
     {
         _state = TruckState.Traveling;
+    }
+
+    private void SetQuoteWaitingTimer() {
+        _quoteWaitingTimer = Random.Range(10f, 20f);
     }
 }

@@ -230,6 +230,7 @@ MonoBehaviour:
   - {fileID: 2038094498422574143}
   minEyeletsLeft: 1
   minEyeletsRight: 1
+  dialoguePosition: {fileID: 6666494323347579073}
 --- !u!95 &4332978365240185415
 Animator:
   serializedVersion: 3
@@ -312,6 +313,7 @@ Transform:
   - {fileID: 4332978364650421994}
   - {fileID: 4332978365312311068}
   - {fileID: 6960214072474763208}
+  - {fileID: 6666494323347579073}
   m_Father: {fileID: 4332978365240185413}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -435,6 +437,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7480862, y: 3.8777723}
   m_EdgeRadius: 0
+--- !u!1 &5034834394488283610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6666494323347579073}
+  m_Layer: 0
+  m_Name: DialoguePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6666494323347579073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034834394488283610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.956, y: 1.518, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4332978365760103300}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &249494142414056741
 PrefabInstance:
   m_ObjectHideFlags: 0

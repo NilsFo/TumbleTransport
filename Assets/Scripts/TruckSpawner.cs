@@ -70,6 +70,9 @@ public class TruckSpawner : MonoBehaviour
 
     private GameObject SpawnTruck()
     {
+        Debug.Log("Spawning Truck");
+        FindObjectOfType<RadioManager>().ReadRandomQuote();
+        
         int pickWeight = Random.Range(0 ,spawnPool.totalWeight);
 
         TruckScriptableObject init = spawnPool.pool[0];
