@@ -10,8 +10,10 @@ public class Truck : MonoBehaviour {
 
     public List<GameObject> eyeletsLeft;
     public List<GameObject> eyeletsRight;
+    public List<GameObject> eyeletsExtra;
     public int minEyeletsLeft = 1;
     public int minEyeletsRight = 1;
+    public int minEyeletsExtra = 0;
 
     public Transform dialoguePosition;
 
@@ -126,6 +128,15 @@ public class Truck : MonoBehaviour {
                 Destroy(eye);
             }
         }
+        for (int i = minEyeletsExtra; i < eyeletsExtra.Count; i++)
+        {
+            if (UnityEngine.Random.Range(0,1)==0)
+            {
+                GameObject eye = eyeletsExtra[UnityEngine.Random.Range(0, eyeletsExtra.Count)];
+                eyeletsExtra.Remove(eye);
+                Destroy(eye);
+            }
+        }
         
         SetQuoteWaitingTimer();
         FindObjectOfType<TruckDialogueManager>().radioPos = dialoguePosition;
@@ -229,10 +240,19 @@ public class Truck : MonoBehaviour {
         return found;
     }
 
-    public bool canPlaceGlue(Vector3 position)
-    {
-        // TODO Implement this!
-        return true;
+    public bool canPlaceGlue(Vector3 position) {
+        bool canPlace = false;
+        foreach (var collider in GetComponentsInChildren<Collider2D>()) {
+            if (collider.gameObject.layer.Equals(LayerMask.NameToLayer("CrateDropArea"))) {
+                if (collider.OverlapPoint(position))
+                    canPlace = true;
+            } else if(collider.gameObject.layer.Equals(LayerMask.NameToLayer("CrateForbiddenArea")))
+            {
+                if (collider.OverlapPoint(position))
+                    return false;
+            }
+        }
+        return canPlace;
     }
 
     public void ThrowAllCargo() {

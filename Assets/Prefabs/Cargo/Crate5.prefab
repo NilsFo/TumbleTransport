@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4611983003604196593}
   - component: {fileID: 8890137095571354426}
   - component: {fileID: 7652760044599449877}
+  - component: {fileID: -6287871372857843716}
   m_Layer: 0
   m_Name: Crate5
   m_TagString: Untagged
@@ -145,3 +146,16 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   maxAirTime: 2
   bounceNumber: 2
+--- !u!114 &-6287871372857843716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091422238327886732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3

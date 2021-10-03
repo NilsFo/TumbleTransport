@@ -22,6 +22,7 @@ public class Cargo : MonoBehaviour {
     
     private Vector3 grabPivot;
     private Vector3 grabbedFrom;
+    private Quaternion grabbedFromRot;
     private Camera cam;
     private ContactFilter2D _contactFilter;
 
@@ -54,9 +55,9 @@ public class Cargo : MonoBehaviour {
         else if (!fastened & grabbed) {
             _droppable = false;
             var pos = cam.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = -1;
+            pos.z = -5;
             //Debug.Log(pos);
-            transform.position = pos - grabPivot;
+            transform.position = pos - transform.rotation * grabPivot;
 
             var colliderResults = new List<Collider2D>();
             var collisions = coll.OverlapCollider(_contactFilter, colliderResults);
@@ -69,8 +70,11 @@ public class Cargo : MonoBehaviour {
                             && !(colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("Straps")) && colliderResult.GetComponent<Glue>() != null))  // Or on Glue 
                     {
                         _droppable = false;
-                        break;
-                    } 
+                    } else if (colliderResult.gameObject.layer.Equals(LayerMask.NameToLayer("CrateDropArea"))
+                            && !colliderResult.gameObject.tag.Equals("Truck")) {
+                        // Sonderregel für rechts droppen
+                        _droppable = true;
+                    }
                     if (colliderResult.gameObject.CompareTag("Truck")) {
                         _truck = colliderResult.GetComponentInParent<Truck>();
                     }
@@ -86,7 +90,11 @@ public class Cargo : MonoBehaviour {
                 sprite.color = Color.red;
             }
         }
-        
+
+        if (grabbed && Input.GetMouseButtonDown(1)) {
+            Debug.Log("Rotate");
+            transform.rotation *= Quaternion.Euler(0,0,-90f);
+        }
     }
     // Update is called once per frame
     void OnMouseDown() {
@@ -107,6 +115,7 @@ public class Cargo : MonoBehaviour {
         }
         grabbed = true;
         grabbedFrom = transform.position;
+        grabbedFromRot = transform.rotation;
         grabPivot = transform.worldToLocalMatrix.MultiplyPoint(cam.ScreenToWorldPoint(Input.mousePosition));
         grabPivot.z = 0;
         _gameState.currentSelectionState = GameState.SelectionState.Cargo;
@@ -116,18 +125,21 @@ public class Cargo : MonoBehaviour {
             return;
         grabbed = false;
         sprite.color = Color.white;
+        _gameState.currentSelectionState = GameState.SelectionState.None;
         if (_droppable) {
-            
 
             if (truck != null)
                 transform.SetParent(truck.GetComponentInChildren<TruckBed>().transform);
             else {
                 transform.SetParent(null);
             }
+            var t = transform.position;
+            t.z = FindObjectOfType<SpawnCargo>().spawnPoint.transform.position.z;
+            transform.position = t;
         } else {
             transform.position = grabbedFrom;
+            transform.rotation = grabbedFromRot;
         }
-        _gameState.currentSelectionState = GameState.SelectionState.None;
     }
 
     public void ThrowCargo() {
@@ -145,5 +157,5 @@ public class Cargo : MonoBehaviour {
         
         print("i am a cargo. i just got taped");
     }
-    
+
 }

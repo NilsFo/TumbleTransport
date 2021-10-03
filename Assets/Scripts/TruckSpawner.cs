@@ -106,6 +106,7 @@ public class TruckSpawner : MonoBehaviour
         _truckGameObject = myTruckGameObject;
 
         gameState.cargoSpawner.SpawnFixNumberOfCargo(myTruckData.fixNumberOfCargoToSpawn);
+        gameState.toolConveyor.AddPendingSpawns(4);
         
         return myTruckGameObject;
     }

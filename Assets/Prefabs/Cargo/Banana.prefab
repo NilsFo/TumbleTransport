@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5488408699809659534}
   - component: {fileID: 7342566645793772418}
   - component: {fileID: 3453456396267662898}
+  - component: {fileID: 3692608238751951021}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coll: {fileID: 3453456396267662898}
   sprite: {fileID: 2281506021658249344}
+  taped: 0
   fastened: 0
   grabbed: 0
   dataObject: {fileID: 0}
@@ -151,3 +153,16 @@ PolygonCollider2D:
       - {x: 0.13107991, y: -0.25}
       - {x: 0.36177778, y: 0.03115201}
       - {x: 0.40262175, y: 0.110649824}
+--- !u!114 &3692608238751951021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681001409140900733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3

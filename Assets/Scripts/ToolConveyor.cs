@@ -13,22 +13,26 @@ public class ToolConveyor : MonoBehaviour
     public float spawnTimer = 5;
     public float speed = 2;
 
-    public int maxSpawnItems = 5;
+    public int maxSpawnedItems = 4;
     public List<GameObject> spwawnables;
 
     public float toolPositionOffset = .5f;
 
     public float maxDistance = 3.5f;
-    public float creationXPos = 10;
+    public float creationOffsetX = 0;
+    public float creationOffsetY = -2;
 
     public GameObject putAwayArea;
     public GameObject dumpsterArea;
 
-    public SpriteRenderer mySprite;
+    public SpriteRenderer mySpriteLower;
+    public SpriteRenderer mySpriteUpper;
     public float animationSpeed = 1;
     private float animationSpeedCurrent = 0;
     public int currentKeyFrame = 0;
     public List<Sprite> animationKeyFrames;
+
+    public int pendingSpawnCount = 4;
 
     private void Start()
     {
@@ -36,38 +40,42 @@ public class ToolConveyor : MonoBehaviour
         myTools = new List<GameObject>();
         animationSpeedCurrent = 0;
         currentKeyFrame = 0;
-        mySprite.sprite = animationKeyFrames[currentKeyFrame];
+        mySpriteLower.sprite = animationKeyFrames[currentKeyFrame];
+        mySpriteUpper.sprite = animationKeyFrames[currentKeyFrame];
         gameState = FindObjectOfType<GameState>();
     }
 
     private void Update()
     {
         // Update Tool Position
-        bool shouldMove = false;
-        for (int i = 0; i < GetToolCount(); i++)
+        bool shouldAnimate = false;
+        if (gameState.currentSelectionState != GameState.SelectionState.Tool)
         {
-            GameObject tool = myTools[i];
-            Vector3 pos = tool.transform.localPosition;
-            float maxToolDist = maxDistance - toolPositionOffset * i;
-            float newy = pos.y + speed * Time.deltaTime;
-
-            if (newy >= maxToolDist)
+            for (int i = 0; i < GetToolCount(); i++)
             {
-                newy = maxToolDist;
-            }
-            else
-            {
-                shouldMove = true;
-            }
+                GameObject tool = myTools[i];
+                Vector3 pos = tool.transform.localPosition;
+                float maxToolDist = maxDistance - toolPositionOffset * i;
+                float newy = pos.y + speed * Time.deltaTime;
 
-            tool.transform.localPosition = new Vector3(pos.x, newy, pos.z);
+                if (newy >= maxToolDist)
+                {
+                    newy = maxToolDist;
+                }
+                else
+                {
+                    shouldAnimate = true;
+                }
+
+                tool.transform.localPosition = new Vector3(pos.x, newy, pos.z);
+            }
         }
 
         // SpawnNext
-        if (GetToolCount() < maxSpawnItems)
+        if (GetToolCount() < maxSpawnedItems)
         {
             spawnTimerCurrent = spawnTimerCurrent + Time.deltaTime;
-            if (spawnTimerCurrent > spawnTimer)
+            if (spawnTimerCurrent > spawnTimer && pendingSpawnCount>0)
             {
                 SpawnNext();
             }
@@ -78,14 +86,15 @@ public class ToolConveyor : MonoBehaviour
         }
 
         // Updating animation keyframe
-        if (shouldMove && gameState.currentSelectionState != GameState.SelectionState.Tool)
+        if (shouldAnimate && gameState.currentSelectionState != GameState.SelectionState.Tool)
         {
             animationSpeedCurrent = animationSpeedCurrent + Time.deltaTime;
             if (animationSpeedCurrent > animationSpeed)
             {
                 animationSpeedCurrent -= animationSpeed;
                 currentKeyFrame = (currentKeyFrame + 1) % animationKeyFrames.Count;
-                mySprite.sprite = animationKeyFrames[currentKeyFrame];
+                mySpriteLower.sprite = animationKeyFrames[currentKeyFrame];
+                mySpriteUpper.sprite = animationKeyFrames[currentKeyFrame];
             }
         }
     }
@@ -107,7 +116,7 @@ public class ToolConveyor : MonoBehaviour
     {
         GameObject newTool = Instantiate(SelectNextTool(), gameObject.transform);
         myTools.Add(newTool);
-        newTool.transform.localPosition = new Vector3(creationXPos, 0, transform.localPosition.z - 1);
+        newTool.transform.localPosition = new Vector3(creationOffsetX, creationOffsetY, transform.localPosition.z - 1);
 
         ToolPickupButtonRope buttonRopeAI = newTool.GetComponent<ToolPickupButtonRope>();
         ToolPickupButtonGlue buttonGlueAI = newTool.GetComponent<ToolPickupButtonGlue>();
@@ -138,6 +147,7 @@ public class ToolConveyor : MonoBehaviour
             buttonRopeAI.dumpsterArea = dumpsterArea.GetComponent<Collider2D>();
         }
 
+        pendingSpawnCount -= 1;
         spawnTimerCurrent = 0;
     }
 
@@ -145,6 +155,15 @@ public class ToolConveyor : MonoBehaviour
     {
         int i = UnityEngine.Random.Range(0, spwawnables.Count - 1);
         return spwawnables[i];
+    }
+
+    public void AddPendingSpawns(int count)
+    {
+        pendingSpawnCount = pendingSpawnCount + count;
+        if (GetToolCount() + pendingSpawnCount > maxSpawnedItems)
+        {
+            pendingSpawnCount = maxSpawnedItems - GetToolCount();
+        }
     }
 
     public int GetToolCount()
