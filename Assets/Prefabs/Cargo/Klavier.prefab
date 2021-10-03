@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8342015511855220089}
   - component: {fileID: 7789327812039417536}
   - component: {fileID: -8118670477464240620}
+  - component: {fileID: 4482006328066683126}
   m_Layer: 3
   m_Name: Klavier
   m_TagString: Cargo
@@ -151,3 +152,16 @@ PolygonCollider2D:
       - {x: -0.04818344, y: 0.085600436}
       - {x: -0.6000147, y: -0.0420686}
       - {x: -0.8106818, y: -0.2776575}
+--- !u!114 &4482006328066683126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400313684282407009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3

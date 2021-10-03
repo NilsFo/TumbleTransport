@@ -21,7 +21,6 @@ public class ToolConveyor : MonoBehaviour
     public float maxDistance = 3.5f;
     public float creationXPos = 10;
 
-    public GameObject debugSpawn;
     public GameObject putAwayArea;
     public GameObject dumpsterArea;
 
@@ -33,6 +32,7 @@ public class ToolConveyor : MonoBehaviour
 
     private void Start()
     {
+        toolIndicator.gameObject.SetActive(false);
         myTools = new List<GameObject>();
         animationSpeedCurrent = 0;
         currentKeyFrame = 0;
@@ -49,15 +49,18 @@ public class ToolConveyor : MonoBehaviour
             GameObject tool = myTools[i];
             Vector3 pos = tool.transform.localPosition;
             float maxToolDist = maxDistance - toolPositionOffset * i;
-            float newy = pos.y + speed*Time.deltaTime;
- 
-            if (newy >= maxToolDist){
+            float newy = pos.y + speed * Time.deltaTime;
+
+            if (newy >= maxToolDist)
+            {
                 newy = maxToolDist;
-            }else{
+            }
+            else
+            {
                 shouldMove = true;
             }
 
-            tool.transform.localPosition = new Vector3(pos.x,  newy, pos.z);
+            tool.transform.localPosition = new Vector3(pos.x, newy, pos.z);
         }
 
         // SpawnNext
@@ -96,31 +99,56 @@ public class ToolConveyor : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Warning! Request to delete illegal tool!!! "+gameObject);
+            Debug.LogWarning("Warning! Request to delete illegal tool!!! " + gameObject);
         }
     }
 
     private void SpawnNext()
     {
-        print("spawning next item");
-        GameObject newTool = Instantiate(debugSpawn,gameObject.transform);
+        GameObject newTool = Instantiate(SelectNextTool(), gameObject.transform);
         myTools.Add(newTool);
-        newTool.transform.localPosition = new Vector3(creationXPos, 0, transform.localPosition.z-1);
-        newTool.GetComponent<ToolPickupButton>().conveyorCallback = this;
-        newTool.GetComponent<ToolPickupButton>().conveyorIndex = myTools.Count-1;
-        newTool.GetComponent<ToolPickupButton>().putawayArea = putAwayArea.GetComponent<Collider2D>();
-        newTool.GetComponent<ToolPickupButton>().dumpsterArea = dumpsterArea.GetComponent<Collider2D>();
-        
-        ToolPickupButton buttonAI = newTool.GetComponent<ToolPickupButton>();
-        buttonAI.toolUsageIndicator = toolIndicator;
+        newTool.transform.localPosition = new Vector3(creationXPos, 0, transform.localPosition.z - 1);
+
+        ToolPickupButtonRope buttonRopeAI = newTool.GetComponent<ToolPickupButtonRope>();
+        ToolPickupButtonGlue buttonGlueAI = newTool.GetComponent<ToolPickupButtonGlue>();
+        ToolPickupButtonTape buttonTapeAI = newTool.GetComponent<ToolPickupButtonTape>();
+        if (buttonTapeAI != null)
+        {
+            buttonTapeAI.toolUsageIndicator = toolIndicator;
+            buttonTapeAI.conveyorCallback = this;
+            buttonTapeAI.putawayArea = putAwayArea.GetComponent<Collider2D>();
+            buttonTapeAI.dumpsterArea = dumpsterArea.GetComponent<Collider2D>();
+        }
+
+        if (buttonGlueAI != null)
+        {
+            buttonGlueAI.toolUsageIndicator = toolIndicator;
+            buttonGlueAI.toolUsageIndicator = toolIndicator;
+            buttonGlueAI.conveyorCallback = this;
+            buttonGlueAI.putawayArea = putAwayArea.GetComponent<Collider2D>();
+            buttonGlueAI.dumpsterArea = dumpsterArea.GetComponent<Collider2D>();
+        }
+
+        if (buttonRopeAI != null)
+        {
+            buttonRopeAI.toolUsageIndicator = toolIndicator;
+            buttonRopeAI.toolUsageIndicator = toolIndicator;
+            buttonRopeAI.conveyorCallback = this;
+            buttonRopeAI.putawayArea = putAwayArea.GetComponent<Collider2D>();
+            buttonRopeAI.dumpsterArea = dumpsterArea.GetComponent<Collider2D>();
+        }
 
         spawnTimerCurrent = 0;
+    }
+
+    public GameObject SelectNextTool()
+    {
+        int i = UnityEngine.Random.Range(0, spwawnables.Count - 1);
+        return spwawnables[i];
     }
 
     public int GetToolCount()
     {
         return myTools.Count;
     }
-    
-    
 }

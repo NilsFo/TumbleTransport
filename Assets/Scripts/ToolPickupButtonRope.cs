@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TextCore;
 
-public class ToolPickupButton : MonoBehaviour
+public class ToolPickupButtonRope : MonoBehaviour
 {
     private GameState gameState;
     public LashingStrap lashingStrapPrefab;
@@ -125,7 +125,7 @@ public class ToolPickupButton : MonoBehaviour
             // While it is dragging, draw a line
             if (isDragging)
             {
-                print("Dragging from "+selectionOrigin + " to "+currentSelectionPos);
+                // print("Dragging rope from "+selectionOrigin + " to "+currentSelectionPos);
                 lashingStrapPreview.SetLashingStrap(selectionOrigin, currentSelectionPos);
                 selectionTarget = currentSelectionPos;
             }
@@ -178,10 +178,13 @@ public class ToolPickupButton : MonoBehaviour
         ToolAttachment[] attachments = truck.GetComponentsInChildren<ToolAttachment>(true);
         foreach (var attachment in attachments)
         {
-            if (attachment.GetComponent<Collider2D>().OverlapPoint(start))
+            if (attachment.myType == ToolAttachment.AttachmentType.Eyelet)
             {
-                startValid = true;
-                validAttachers.Add(attachment.gameObject);
+                if (attachment.GetComponent<Collider2D>().OverlapPoint(start))
+                {
+                    startValid = true;
+                    validAttachers.Add(attachment.gameObject);
+                }
             }
         }
 
@@ -205,16 +208,19 @@ public class ToolPickupButton : MonoBehaviour
         ToolAttachment[] attachments = truck.GetComponentsInChildren<ToolAttachment>(true);
         foreach (var attachment in attachments)
         {
-            if (attachment.GetComponent<Collider2D>().OverlapPoint(start))
+            if (attachment.myType == ToolAttachment.AttachmentType.Eyelet)
             {
-                startValid = true;
-                validAttachers.Add(attachment.gameObject);
-            }
+                if (attachment.GetComponent<Collider2D>().OverlapPoint(start))
+                {
+                    startValid = true;
+                    validAttachers.Add(attachment.gameObject);
+                }
 
-            if (attachment.GetComponent<Collider2D>().OverlapPoint(end))
-            {
-                endValid = true;
-                validAttachers.Add(attachment.gameObject);
+                if (attachment.GetComponent<Collider2D>().OverlapPoint(end))
+                {
+                    endValid = true;
+                    validAttachers.Add(attachment.gameObject);
+                }
             }
         }
 
