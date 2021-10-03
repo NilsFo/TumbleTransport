@@ -8,7 +8,7 @@ public class GameState : MonoBehaviour
 {
 
     public static int shift = 0;
-    public static Score score;
+    public static Score score = new Score();
     
     public enum SelectionState: UInt16
     {
