@@ -57,7 +57,7 @@ public class Cargo : MonoBehaviour {
             var pos = cam.ScreenToWorldPoint(Input.mousePosition);
             pos.z = -5;
             //Debug.Log(pos);
-            transform.position = pos - grabPivot;
+            transform.position = pos - transform.rotation * grabPivot;
 
             var colliderResults = new List<Collider2D>();
             var collisions = coll.OverlapCollider(_contactFilter, colliderResults);
