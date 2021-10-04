@@ -26,6 +26,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
     private bool interactable = true;
     private float timeHeld = 0;
     public float materialCost = 100f;
+    public string materialNameInScore = "Spend Glue";
     private bool pickedUpThisFrame = false;
 
 
@@ -64,7 +65,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost, "Glue", mySprite.sprite);
+                gameState.SubtractMaterialCost(materialCost, materialNameInScore, mySprite.sprite);
             }
         }
 
@@ -93,7 +94,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
-                gameState.SubtractMaterialCost(materialCost, "Glue", mySprite.sprite);
+                gameState.SubtractMaterialCost(materialCost, materialNameInScore, mySprite.sprite);
             }
         }
 

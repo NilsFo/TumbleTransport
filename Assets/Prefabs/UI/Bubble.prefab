@@ -323,6 +323,7 @@ MonoBehaviour:
   cutOffY: 6
   labelText: {fileID: 6791038591857715096}
   costText: {fileID: 5342219560832805573}
+  image: {fileID: 9069294093297081093}
 --- !u!1 &6942748900641018651
 GameObject:
   m_ObjectHideFlags: 0

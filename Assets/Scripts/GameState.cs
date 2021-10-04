@@ -70,9 +70,14 @@ public class GameState : MonoBehaviour
 
             startBT.myText.enabled = false;
         }
-        else
+
+        if (GameState.shift == 1)
         {
-            cargoSpawner.maxNumberOfCargo = 3;
+            cargoSpawner.maxNumberOfCargo = 7;
+        }
+        else if (GameState.shift == 2)
+        {
+            cargoSpawner.maxNumberOfCargo = 5;
         }
     }
 

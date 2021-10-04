@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -37,7 +38,7 @@ public class EarningsDelayDisplay : MonoBehaviour
             textcolor = negative;
         }
         
-        label.text = vorzeichen + " $" + value;
+        label.text = vorzeichen + " $" + String.Format("{0:0.00}", Mathf.Round(value * 100f) / 100f);
         label.color = textcolor;
     }
 

@@ -45,15 +45,26 @@ public class BubbleSpawner : MonoBehaviour
   private void SpawnBubble(BubbleData data)
   {
     GameObject newBubble = Instantiate(prefabBubble, spawnPoint.transform.position, Quaternion.identity, transform);
-    Image bubbleImage = newBubble.GetComponent<Image>();
-    if (bubbleImage != null)
-    {
-      bubbleImage.sprite = data.GetImage();
-    }
-    BubbleMoveAndDestroy bubbleMoveAndDestroy = newBubble.GetComponent<BubbleMoveAndDestroy>();
+    BubbleMoveAndDestroy bubbleMoveAndDestroy = newBubble.GetComponentInChildren<BubbleMoveAndDestroy>();
     if (bubbleMoveAndDestroy != null)
     {
       bubbleMoveAndDestroy.labelText.text = data.GetName();
+      bubbleMoveAndDestroy.image.sprite = data.GetImage();
+
+      //Fix Scaling modified SetNativeSize => bubbleMoveAndDestroy.image.SetNativeSize();
+      RectTransform imageRectTransform = bubbleMoveAndDestroy.image.gameObject.GetComponent<RectTransform>();
+      if (imageRectTransform != null)
+      {
+        float w = bubbleMoveAndDestroy.image.sprite.rect.width / bubbleMoveAndDestroy.image.pixelsPerUnit;
+        float h = bubbleMoveAndDestroy.image.sprite.rect.height / bubbleMoveAndDestroy.image.pixelsPerUnit;
+        imageRectTransform.anchorMax = imageRectTransform.anchorMin;
+        if (h > 190)
+        {
+          h = 190;
+          w = 110;
+        }
+        imageRectTransform.sizeDelta = new Vector2(w, h);
+      }
 
       float value = data.GetValue();
       value = Mathf.Abs(value);

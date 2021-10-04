@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LieferRadTruckDataObject
   m_EditorClassIdentifier: 
   truck: {fileID: 1154181907250422196, guid: f3716b5ae470dc045883b67195b3fff0, type: 3}
-  weight: 400
+  weight: 100
   fixNumberOfCargoToSpawn: 1
-  cost: 100
-  nameInScore: Truck + Driver + Fuel
+  cost: 30
+  nameInScore: Bike + Driver
