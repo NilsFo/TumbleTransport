@@ -8,10 +8,12 @@ public class ToolConveyor : MonoBehaviour
     private GameState gameState;
     private List<GameObject> myTools;
     public GameObject toolIndicator;
+    public TextBubbleManager textBubbleManager;
 
     private float spawnTimerCurrent;
     public float spawnTimer = 5;
     public float speed = 2;
+    public int tutorialToolOverrideState = -1;
 
     public int maxSpawnedItems = 4;
     public List<GameObject> spwawnables;
@@ -34,7 +36,6 @@ public class ToolConveyor : MonoBehaviour
 
     public int pendingSpawnCount = 4;
     public bool ropeGuaranteed = true;
-    public GameObject ropePrefab;
 
     private void Start()
     {
@@ -117,6 +118,8 @@ public class ToolConveyor : MonoBehaviour
 
     private void SpawnNext()
     {
+        bool showTutorial = tutorialToolOverrideState == 0;
+        
         GameObject newTool = Instantiate(SelectNextTool(), gameObject.transform);
         myTools.Add(newTool);
         newTool.transform.localPosition = new Vector3(creationOffsetX, creationOffsetY, transform.localPosition.z - 1);
@@ -152,6 +155,11 @@ public class ToolConveyor : MonoBehaviour
 
         pendingSpawnCount -= 1;
         spawnTimerCurrent = 0;
+
+        if (showTutorial)
+        {
+            ShowToolTutorials();
+        }
     }
 
     public GameObject SelectNextTool()
@@ -160,8 +168,14 @@ public class ToolConveyor : MonoBehaviour
         GameObject s = spwawnables[i];
         if (ropeGuaranteed)
         {
-            s = ropePrefab;
+            s = spwawnables[0];
             ropeGuaranteed = false;
+        }
+
+        if (tutorialToolOverrideState >= 0)
+        {
+            s = spwawnables[tutorialToolOverrideState];
+            tutorialToolOverrideState = tutorialToolOverrideState - 1;
         }
 
         return s;
@@ -189,6 +203,14 @@ public class ToolConveyor : MonoBehaviour
         }
 
         return rope;
+    }
+
+    public void ShowToolTutorials()
+    {
+        textBubbleManager.ClearDialogueBoxes();
+        textBubbleManager.Say(myTools[0].transform, "Glue can stick cargo directly to the truck.", 7);
+        textBubbleManager.Say(myTools[1].transform, "Tape can fasten cargo attach cargo to each other.", 7);
+        textBubbleManager.Say(myTools[2].transform, "Use eyelets and lashing straps to fasten cargo.", 7);
     }
 
     public int GetToolCount()

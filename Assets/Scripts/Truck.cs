@@ -173,6 +173,8 @@ public class Truck : MonoBehaviour {
                 BuildGraph();
                 gameState.tutorialHasDepartedAtLeastOnce = true;
                 gameState.worktimeDecayEnabled = true;
+                gameState.startBT.animationPlaying = false;
+
             }
             _lastState = _state;
         }

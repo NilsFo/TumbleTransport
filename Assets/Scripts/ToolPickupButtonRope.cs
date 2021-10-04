@@ -186,6 +186,7 @@ public class ToolPickupButtonRope : MonoBehaviour
         ac.Play();
         strap.SetLashingStrap(start, end);
         gameState.tutorialHasTooledAtLeastOnce = true;
+        gameState.startBT.AnimateButtonText();
     }
 
     private List<GameObject> CheckToolRopeValidPoints(Vector3 start)
