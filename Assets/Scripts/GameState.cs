@@ -40,6 +40,8 @@ public class GameState : MonoBehaviour
 
     public bool shiftEnded;
     public AudioSource shiftEndedSound;
+    public AudioSource boxPickupSound;
+    public AudioSource boxDropSound;
 
     // Start is called before the first frame update
     void Start()

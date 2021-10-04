@@ -106,11 +106,13 @@ public class Cargo : MonoBehaviour {
             foreach (var result in results) {
                 if (result.gameObject.layer == LayerMask.NameToLayer("Straps")) {
                     Debug.Log("Can't grab what is already fastened");
+                    _gameState.boxDropSound.Play();
                     return;
                 }
             }
         }
         if (taped) {
+            _gameState.boxDropSound.Play();
             return;
         }
         grabbed = true;
@@ -119,6 +121,7 @@ public class Cargo : MonoBehaviour {
         grabPivot = transform.worldToLocalMatrix.MultiplyPoint(cam.ScreenToWorldPoint(Input.mousePosition));
         grabPivot.z = 0;
         _gameState.currentSelectionState = GameState.SelectionState.Cargo;
+        _gameState.boxPickupSound.Play();
     }
     void OnMouseUp() {
         if (!grabbed)
@@ -148,6 +151,8 @@ public class Cargo : MonoBehaviour {
             transform.position = grabbedFrom;
             transform.rotation = grabbedFromRot;
         }
+        
+        _gameState.boxDropSound.Play();
     }
 
     public void ThrowCargo() {
@@ -156,6 +161,8 @@ public class Cargo : MonoBehaviour {
         t.z = -7;
         transform.position = t;
         flying = true;
+        
+        _gameState.boxDropSound.Play();
     }
 
     public void OnTapeAttached(Cargo partner)
