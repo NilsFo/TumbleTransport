@@ -15,6 +15,7 @@ public class LastScoreDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameState.loadDaat();
         foreach (var tmp in GetComponentsInChildren<TextMeshProUGUI>()) {
             tmp.gameObject.SetActive(false);
         }
