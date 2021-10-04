@@ -145,6 +145,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
         selectionOrigin.z = 0.5f;
         splat.transform.position = selectionOrigin;
         gameState.tutorialHasTooledAtLeastOnce = true;
+        gameState.startBT.AnimateButtonText();
         print("mew glue splat");
     }
 

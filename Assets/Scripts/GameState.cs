@@ -26,6 +26,7 @@ public class GameState : MonoBehaviour
     public TruckSpawner truckSpawner;
     public SpawnCargo cargoSpawner;
     public ToolConveyor toolConveyor;
+    public StartButtonTruck startBT;
 
     public bool tutorialRunning = false;
     public bool forceNextDriverQuote = false;
@@ -45,7 +46,7 @@ public class GameState : MonoBehaviour
         workTimeLeft = workTime;
         score = new Score();
 
-        bool tutorialLevel = true;
+        bool tutorialLevel = GameState.shift == 0;
         // TODO if not the first level, clear tutorial flags!
         if (tutorialLevel)
         {
@@ -61,6 +62,9 @@ public class GameState : MonoBehaviour
 
             toolConveyor.maxSpawnedItems = 0;
             toolConveyor.pendingSpawnCount = 0;
+            toolConveyor.tutorialToolOverrideState = 2;
+
+            startBT.myText.enabled = false;
         }
         else
         {
@@ -78,6 +82,15 @@ public class GameState : MonoBehaviour
                 SceneManager.LoadScene("EndScene");
             }
         }
+        
+        
+        // ESC quits to main menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Escape key was pressed");
+            SceneManager.LoadScene("Scenes/MenuScene");
+        }
+
     }
 
     public void SubtractMaterialCost(float cost, string toolname)

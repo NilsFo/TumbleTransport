@@ -172,6 +172,7 @@ public class Truck : MonoBehaviour {
                 Invoke(nameof(SetTraveling), 2.0f);
                 BuildGraph();
                 gameState.tutorialHasDepartedAtLeastOnce = true;
+                gameState.startBT.animationPlaying = false;
             }
             _lastState = _state;
         }
