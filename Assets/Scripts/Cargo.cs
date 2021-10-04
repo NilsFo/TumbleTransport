@@ -94,9 +94,14 @@ public class Cargo : MonoBehaviour {
             }
         }
 
-        if (grabbed && Input.GetMouseButtonDown(1)) {
+        if (grabbed && (Input.GetMouseButtonDown(1) || Mathf.Abs(Input.mouseScrollDelta.y) > 0.1f)) {
             Debug.Log("Rotate");
-            transform.rotation *= Quaternion.Euler(0,0,-90f);
+            if(Input.mouseScrollDelta.y > 0.1f)
+                transform.rotation *= Quaternion.Euler(0,0,90f);
+            else if(Input.mouseScrollDelta.y < -0.1f)
+                transform.rotation *= Quaternion.Euler(0,0,-90f);
+            else
+                transform.rotation *= Quaternion.Euler(0,0,-90f);
             _gameState.tutorialHasRotatedAtLeastOnce = true;
             
             if (lastFloatingText != null)
