@@ -169,7 +169,11 @@ public class Truck : MonoBehaviour {
                 truckAnimator.Play("TruckExit");
                 truckLeaveAudio.Play();
                 Invoke(nameof(ThrowAllCargo), 0.8f);
-                Invoke(nameof(SetTraveling), 2.0f);
+                if (gameObject.name == "Train(Clone)") {
+                    Invoke(nameof(SetTraveling), 4.0f);
+                } else {
+                    Invoke(nameof(SetTraveling), 2.0f);
+                }
                 BuildGraph();
                 gameState.tutorialHasDepartedAtLeastOnce = true;
                 gameState.worktimeDecayEnabled = true;

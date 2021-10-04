@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6013686848761563426}
   - component: {fileID: 2248915170485906166}
   - component: {fileID: 6813657668572048742}
+  - component: {fileID: 7809682455675993217}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Untagged
@@ -145,3 +146,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65625, y: 2.34375}
   m_EdgeRadius: 0
+--- !u!114 &7809682455675993217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465514844664470593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3

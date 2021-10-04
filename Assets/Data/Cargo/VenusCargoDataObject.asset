@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 6465514844664470593, guid: a7d84a114e9d1914990ee9add55270e9, type: 3}
   weight: 100
-  isUnique: 0
-  purchaseValue: 30
-  salesValue: 90
+  isUnique: 1
+  purchaseValue: 300
+  salesValue: 600
   nameInScore: Cargo
