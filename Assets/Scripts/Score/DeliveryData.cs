@@ -40,7 +40,7 @@ public class DeliveryData
         float sum = 0f;
         foreach (var cargo in fastenedCargo)
         {
-            sum += cargo.salesValue;
+            sum += (cargo.salesValue - cargo.purchaseValue);
         }
 
         return sum;

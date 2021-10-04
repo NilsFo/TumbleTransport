@@ -64,7 +64,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost, "Glue");
+                gameState.SubtractMaterialCost(materialCost, "Glue", mySprite.sprite);
             }
         }
 
@@ -93,7 +93,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
-                gameState.SubtractMaterialCost(materialCost, "Glue");
+                gameState.SubtractMaterialCost(materialCost, "Glue", mySprite.sprite);
             }
         }
 

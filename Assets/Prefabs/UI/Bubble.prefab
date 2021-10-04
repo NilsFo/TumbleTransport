@@ -321,6 +321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.2
   cutOffY: 6
+  labelText: {fileID: 6791038591857715096}
+  costText: {fileID: 5342219560832805573}
 --- !u!1 &6942748900641018651
 GameObject:
   m_ObjectHideFlags: 0

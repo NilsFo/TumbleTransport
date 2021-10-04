@@ -99,7 +99,7 @@ public class ToolPickupButtonRope : MonoBehaviour
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
-                gameState.SubtractMaterialCost(materialCost, "Rope");
+                gameState.SubtractMaterialCost(materialCost, "Rope", mySprite.sprite);
             }
         }
 
@@ -121,7 +121,7 @@ public class ToolPickupButtonRope : MonoBehaviour
 
                 RequestToolUse(firstCenter, secondCenter);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost, "Rope");
+                gameState.SubtractMaterialCost(materialCost, "Rope", mySprite.sprite);
             }
         }
 
