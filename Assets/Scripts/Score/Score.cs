@@ -77,7 +77,7 @@ public class Score
     
     public float GetProfit()
     {
-        return totalEarnings - totalCost - dailyFixedCosts - (workersCostPerH * workersHouers);
+        return totalEarnings - totalCost - dailyFixedCosts - GetPersonalCost();
     }
 
     public float GetPersonalCost()
