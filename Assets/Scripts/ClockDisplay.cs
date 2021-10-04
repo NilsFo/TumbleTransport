@@ -21,6 +21,12 @@ namespace UI.Display
 
     void FixedUpdate()
     {
+
+      if (!gameState.worktimeDecayEnabled)
+      {
+        return;
+      }
+      
       _timer += Time.deltaTime;
       if (_timer > _maxTime)
       {

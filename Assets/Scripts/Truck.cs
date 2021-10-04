@@ -58,6 +58,7 @@ public class Truck : MonoBehaviour {
         "Whiterun",
         "Pallet Town",
         "New Londo",
+        "New York",
         "Tattoine",
         "Umbrella Corp. Logistics",
         "Eyjafjallajökull",
@@ -80,6 +81,7 @@ public class Truck : MonoBehaviour {
         "The Boneyard",
         "Großpösna, Lower-Saxony",
         "Necropolis",
+        "Atlantis",
         "Vienna",
         "Stockholm",
         "Rome",
@@ -93,6 +95,7 @@ public class Truck : MonoBehaviour {
         "Québec",
         "Seattle",
         "Sen's Building Co.",
+        "Libery City",
         "Teufort",
         "Outset Island",
         "Bob-Omb Battlefield"

@@ -19,6 +19,7 @@ public class GameState : MonoBehaviour
     public float workTime = 12f;
     public float workTimeLeft = 0;
     public float workHoursPerMinute = 1.0f;
+    public bool worktimeDecayEnabled = true;
 
     public SelectionState currentSelectionState;
 
@@ -26,14 +27,15 @@ public class GameState : MonoBehaviour
     public SpawnCargo cargoSpawner;
     public ToolConveyor toolConveyor;
 
+    public bool tutorialRunning = false;
     public bool forceNextDriverQuote = false;
-    public bool tutorialHasLoadedTruckAtLeastOnce=false;
-    public bool tutorialHasDepartedAtLeastOnce = false;
-    public bool tutorialHasTooledAtLeastOnce = false;
-    
-    public bool tutorialHasRopedAtLeastOnce = false;
-    public bool tutorialHasGluedAtLeastOnce = false;
-    public bool tutorialHasTapedAtLeastOnce = false;
+    public bool tutorialHasLoadedTruckAtLeastOnce = true;
+    public bool tutorialHasDepartedAtLeastOnce = true;
+    public bool tutorialHasTooledAtLeastOnce = true;
+
+    public bool tutorialHasRopedAtLeastOnce = true;
+    public bool tutorialHasGluedAtLeastOnce = true;
+    public bool tutorialHasTapedAtLeastOnce = true;
 
     // Start is called before the first frame update
     void Start()
@@ -41,19 +43,40 @@ public class GameState : MonoBehaviour
         currentSelectionState = SelectionState.None;
         truckSpawner.CurrentSpawnerState = TruckSpawner.SpawnerState.On;
         workTimeLeft = workTime;
-
         score = new Score();
-        
+
+        bool tutorialLevel = true;
         // TODO if not the first level, clear tutorial flags!
-        
+        if (tutorialLevel)
+        {
+            worktimeDecayEnabled = false;
+            tutorialHasLoadedTruckAtLeastOnce = false;
+            tutorialHasDepartedAtLeastOnce = false;
+            tutorialHasTooledAtLeastOnce = false;
+
+            tutorialHasRopedAtLeastOnce = false;
+            tutorialHasGluedAtLeastOnce = false;
+            tutorialHasTapedAtLeastOnce = false;
+            tutorialRunning = true;
+
+            toolConveyor.maxSpawnedItems = 0;
+            toolConveyor.pendingSpawnCount = 0;
+        }
+        else
+        {
+            cargoSpawner.maxNumberOfCargo = 3;
+        }
     }
 
     void Update()
     {
-        workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60;
-        if (workTimeLeft < 0)
+        if (worktimeDecayEnabled)
         {
-            SceneManager.LoadScene("EndScene");
+            workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60;
+            if (workTimeLeft < 0)
+            {
+                SceneManager.LoadScene("EndScene");
+            }
         }
     }
 

@@ -131,6 +131,12 @@ public class Cargo : MonoBehaviour {
             {
                 transform.SetParent(truck.GetComponentInChildren<TruckBed>().transform);
                 _gameState.tutorialHasLoadedTruckAtLeastOnce = true;
+                if (_gameState.tutorialRunning)
+                {
+                    _gameState.worktimeDecayEnabled = false;
+                    _gameState.toolConveyor.maxSpawnedItems = 4;
+                    _gameState.toolConveyor.pendingSpawnCount = 4;
+                }
             }
             else {
                 transform.SetParent(null);
