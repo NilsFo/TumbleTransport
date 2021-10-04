@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f5bd0ea9e91b7b47b11e32c9cf5f447, type: 3}
-  m_Name: MotorradATruckDataObject
+  m_Name: TrainTruckDataObject
   m_EditorClassIdentifier: 
-  truck: {fileID: 8660181547102082021, guid: f28255702895c8d46ad21eafd8b31dfd, type: 3}
-  weight: 200
-  fixNumberOfCargoToSpawn: 4
+  truck: {fileID: 153970261091200085, guid: 78e3c9cf61538514daf583bdf5613ca9, type: 3}
+  weight: 100
+  fixNumberOfCargoToSpawn: 6
   cost: 100
-  nameInScore: Truck + Driver + Fuel
+  nameInScore: Train + Driver + Fuel
