@@ -33,6 +33,8 @@ public class GameState : MonoBehaviour
     public bool tutorialHasLoadedTruckAtLeastOnce = true;
     public bool tutorialHasDepartedAtLeastOnce = true;
     public bool tutorialHasTooledAtLeastOnce = true;
+    public bool tutorialHasDeletedAtLeastOnce = true;
+    public bool tutorialHasRotatedAtLeastOnce = true;
 
     public bool tutorialHasRopedAtLeastOnce = true;
     public bool tutorialHasGluedAtLeastOnce = true;
@@ -58,6 +60,8 @@ public class GameState : MonoBehaviour
             tutorialHasLoadedTruckAtLeastOnce = false;
             tutorialHasDepartedAtLeastOnce = false;
             tutorialHasTooledAtLeastOnce = false;
+            tutorialHasDeletedAtLeastOnce = false;
+            tutorialHasRotatedAtLeastOnce = false;
 
             tutorialHasRopedAtLeastOnce = false;
             tutorialHasGluedAtLeastOnce = false;

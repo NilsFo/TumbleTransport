@@ -57,6 +57,7 @@ MonoBehaviour:
   conveyorIndex: 0
   materialCost: 5
   ropeEndSound: {fileID: 8300000, guid: a306435c9b5cfcd4694fe9664dc31044, type: 3}
+  floatingTextPrefab: {fileID: 6658745519226898469, guid: 63732aa803b11ba4f85dcd99572f62fa, type: 3}
 --- !u!61 &1037265484885433245
 BoxCollider2D:
   m_ObjectHideFlags: 0

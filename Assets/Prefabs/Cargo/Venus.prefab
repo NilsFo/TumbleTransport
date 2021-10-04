@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4054261688653249883}
   - component: {fileID: 6013686848761563426}
   - component: {fileID: 2248915170485906166}
-  - component: {fileID: 6813657668572048742}
   - component: {fileID: 7809682455675993217}
+  - component: {fileID: 4472959359546890433}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Untagged
@@ -98,11 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339efa137920e7c47bd5903d95a53482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coll: {fileID: 6813657668572048742}
+  coll: {fileID: 0}
   sprite: {fileID: 4054261688653249883}
   taped: 0
   fastened: 0
   grabbed: 0
+  floatingTextPrefab: {fileID: 6658745519226898469, guid: 63732aa803b11ba4f85dcd99572f62fa, type: 3}
   dataObject: {fileID: 0}
 --- !u!114 &2248915170485906166
 MonoBehaviour:
@@ -120,8 +121,21 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   maxAirTime: 2
   bounceNumber: 3
---- !u!61 &6813657668572048742
-BoxCollider2D:
+--- !u!114 &7809682455675993217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465514844664470593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 3
+--- !u!60 &4472959359546890433
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,19 +157,28 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.65625, y: 2.34375}
-  m_EdgeRadius: 0
---- !u!114 &7809682455675993217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6465514844664470593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465a433adf1be2e4ca0cef755d899951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myType: 3
+  m_Points:
+    m_Paths:
+    - - {x: -0.121055365, y: 1.1664195}
+      - {x: -0.11962819, y: 0.89669037}
+      - {x: -0.11941409, y: 0.8562398}
+      - {x: -0.250849, y: 0.7469172}
+      - {x: -0.25597954, y: 0.47858608}
+      - {x: -0.29088378, y: 0.10810125}
+      - {x: -0.28139353, y: -0.2094897}
+      - {x: -0.19574809, y: -0.96553004}
+      - {x: -0.328125, y: -0.9606272}
+      - {x: -0.328125, y: -1.171875}
+      - {x: 0.21071458, y: -1.1781589}
+      - {x: 0.27236032, y: -1.1228464}
+      - {x: 0.33547926, y: -1.0082481}
+      - {x: 0.34148812, y: -0.47070634}
+      - {x: 0.3047688, y: 0.05175352}
+      - {x: 0.27334, y: 0.17618608}
+      - {x: 0.2428348, y: 0.5981907}
+      - {x: 0.30910182, y: 0.70714706}
+      - {x: 0.30559897, y: 0.76510835}
+      - {x: 0.2410376, y: 0.8369401}
+      - {x: 0.1513598, y: 0.8372147}
+      - {x: 0.14376736, y: 1.1159158}
+      - {x: 0.08836365, y: 1.1777744}

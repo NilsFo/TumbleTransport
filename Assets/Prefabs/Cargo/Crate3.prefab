@@ -129,6 +129,7 @@ MonoBehaviour:
   taped: 0
   fastened: 0
   grabbed: 0
+  floatingTextPrefab: {fileID: 6658745519226898469, guid: 63732aa803b11ba4f85dcd99572f62fa, type: 3}
   dataObject: {fileID: 0}
 --- !u!114 &7320477493792707203
 MonoBehaviour:

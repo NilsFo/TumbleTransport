@@ -59,6 +59,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
             if (isValid)
             {
                 RequestToolUse(selectionOrigin);
+                CreateFloatingText(selectionTarget);
                 isSelected = false;
                 interactable = false;
                 gameState.currentSelectionState = GameState.SelectionState.None;
@@ -80,19 +81,21 @@ public class ToolPickupButtonGlue : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
 
-                Invoke("EnableInteractable", (float) (Time.smoothDeltaTime * 2.2237));
+                Invoke("EnableInteractable", (0.005f));
             }
 
             if (dumpsterArea.OverlapPoint(selectionTemp))
             {
                 // Deleting the selected tool
                 print("delete");
+                gameState.tutorialHasDeletedAtLeastOnce = true;
                 isSelected = false;
                 interactable = false;
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
+                CreateFloatingText(dumpsterArea.bounds.center);
                 gameState.SubtractMaterialCost(materialCost, "Glue", mySprite.sprite);
             }
         }
@@ -109,11 +112,11 @@ public class ToolPickupButtonGlue : MonoBehaviour
             Vector3 currentMousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             //offsetPoint = currentSelectionPos;
             Vector3 offsetPoint = currentMousePos;
-            toolUsageIndicator.gameObject.SetActive(true);
             offsetPoint.x = offsetPoint.x - toolFrameOffset.x;
             offsetPoint.y = offsetPoint.y - toolFrameOffset.y;
             offsetPoint.z = -6;
             toolUsageIndicator.gameObject.transform.position = offsetPoint;
+            toolUsageIndicator.gameObject.SetActive(true);
         }
     }
 
@@ -130,7 +133,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
             timeHeld = 0;
 
             toolUsageIndicator.gameObject.GetComponent<SpriteRenderer>().sprite = mySprite.sprite;
-            toolUsageIndicator.gameObject.SetActive(true);
+            // toolUsageIndicator.gameObject.SetActive(true);
             gameState.currentSelectionState = GameState.SelectionState.Tool;
         }
         else
@@ -142,8 +145,8 @@ public class ToolPickupButtonGlue : MonoBehaviour
     private void RequestToolUse(Vector3 start)
     {
         var splat = Instantiate(GlueSplatPrefab, FindObjectOfType<TruckBed>().transform);
-        selectionOrigin.z = 0.5f;
-        splat.transform.position = selectionOrigin;
+        start.z = 0.5f;
+        splat.transform.position = start;
         gameState.tutorialHasTooledAtLeastOnce = true;
         gameState.startBT.AnimateButtonText();
         print("mew glue splat");
@@ -159,4 +162,22 @@ public class ToolPickupButtonGlue : MonoBehaviour
     {
         this.interactable = true;
     }
+    public void CreateFloatingText(Vector3 textPos)
+    {
+        GameObject textGO = Instantiate(floatingTextPrefab);
+        textPos.z = -9;
+        textGO.transform.position = textPos;
+        FloatingText text = textGO.GetComponent<FloatingText>();
+
+        text.text = "- $" + materialCost;
+        text.textColor = new Color(201 / 255f, 48 / 255f, 56 / 255f);
+
+        text.duration = 1.5f;
+        text.velocity = Vector3.up * 1.5f;
+        text.fontSize = 32;
+
+        // GameObject.Find("/Audio/KachingSound").GetComponent<AudioSource>().Play();
+    }
+
+    public GameObject floatingTextPrefab;
 }

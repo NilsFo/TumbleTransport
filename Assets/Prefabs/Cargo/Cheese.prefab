@@ -100,8 +100,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coll: {fileID: 4292287388254698846}
   sprite: {fileID: 1186922321315455698}
+  taped: 0
   fastened: 0
   grabbed: 0
+  floatingTextPrefab: {fileID: 6658745519226898469, guid: 63732aa803b11ba4f85dcd99572f62fa, type: 3}
+  dataObject: {fileID: 0}
 --- !u!114 &6606047310991654445
 MonoBehaviour:
   m_ObjectHideFlags: 0

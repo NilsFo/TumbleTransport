@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TrashContainerAI : MonoBehaviour
@@ -10,6 +11,7 @@ public class TrashContainerAI : MonoBehaviour
     public Sprite closedSprite;
     public SpriteRenderer myRenderer;
     public Collider2D myCollider;
+    public TMP_Text myText;
 
     private Camera cam;
     private GameState gameState;
@@ -19,6 +21,7 @@ public class TrashContainerAI : MonoBehaviour
         cam = Camera.main;
         myRenderer.sprite = closedSprite;
         gameState = FindObjectOfType<GameState>();
+        myText.enabled = false;
     }
 
     // Update is called once per frame
@@ -29,10 +32,16 @@ public class TrashContainerAI : MonoBehaviour
         if (myCollider.OverlapPoint(mousePos) && gameState.currentSelectionState != GameState.SelectionState.Cargo)
         {
             myRenderer.sprite = openSprite;
+
+            if (!gameState.tutorialHasDeletedAtLeastOnce)
+            {
+                myText.enabled = true;
+            }
         }
         else
         {
             myRenderer.sprite = closedSprite;
+            myText.enabled = false;
         }
     }
 }
