@@ -47,7 +47,6 @@ public class GameState : MonoBehaviour
         score = new Score();
 
         bool tutorialLevel = GameState.shift == 0;
-        // TODO if not the first level, clear tutorial flags!
         if (tutorialLevel)
         {
             worktimeDecayEnabled = false;
@@ -74,9 +73,8 @@ public class GameState : MonoBehaviour
 
     void Update()
     {
-        if (worktimeDecayEnabled)
-        {
-            workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60;
+        if (worktimeDecayEnabled) {
+            workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60f;
             if (workTimeLeft < 0)
             {
                 SceneManager.LoadScene("EndScene");

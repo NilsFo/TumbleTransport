@@ -3308,6 +3308,10 @@ PrefabInstance:
       propertyPath: spawnTime
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 213718382813630849, guid: 55944eeb8c4fd7a4ab9c3069626ee3d7, type: 3}
+      propertyPath: prefabBubble
+      value: 
+      objectReference: {fileID: 3393427814566618048, guid: 1975d44c5fc15ee4e8fa57fae8791381, type: 3}
     - target: {fileID: 213718382813630878, guid: 55944eeb8c4fd7a4ab9c3069626ee3d7, type: 3}
       propertyPath: m_Name
       value: BubbleSpawner

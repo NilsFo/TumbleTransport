@@ -35,7 +35,7 @@ namespace UI.Display
           (diffRotation * (gameState.workTimeLeft / maxWorkTime));
         var newRotationLong = minRotation +
           (diffRotation * (gameState.workTimeLeft - (int)gameState.workTimeLeft));
-        longHand.transform.localRotation = Quaternion.Euler(0, 0, (newRotationLong - newRotationLong % 6) - offsetRotation);
+        longHand.transform.localRotation = Quaternion.Euler(0, 0, (newRotationLong - newRotationLong % 6) - 90);
         shortHand.transform.localRotation = Quaternion.Euler(0, 0, (newRotationShort - newRotationShort % 6) - offsetRotation);
       }
     }
