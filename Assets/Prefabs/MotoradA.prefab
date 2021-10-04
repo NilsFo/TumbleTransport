@@ -897,6 +897,8 @@ MonoBehaviour:
   fastenedCargo: []
   thrownCargo: []
   allCargo: []
+  truckLeaveAudio: {fileID: 0}
+  floatingTextPrefab: {fileID: 6658745519226898469, guid: 63732aa803b11ba4f85dcd99572f62fa, type: 3}
   destination: 
   possibleDestinations:
   - Downtown Coolsville

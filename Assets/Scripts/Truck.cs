@@ -39,6 +39,7 @@ public class Truck : MonoBehaviour {
     private GameState gameState;
     private TruckState _state = TruckState.Spawned;
     private TruckState _lastState = TruckState.Spawned;
+    public GameObject floatingTextPrefab;
 
     public String destination;
     public String[] possibleDestinations = {
@@ -178,7 +179,7 @@ public class Truck : MonoBehaviour {
                 gameState.tutorialHasDepartedAtLeastOnce = true;
                 gameState.worktimeDecayEnabled = true;
                 gameState.startBT.animationPlaying = false;
-
+                CreateFloatingText();
             }
             _lastState = _state;
         }
@@ -323,6 +324,22 @@ public class Truck : MonoBehaviour {
     private void SetTraveling()
     {
         _state = TruckState.Traveling;
+    }
+
+    private void CreateFloatingText()
+    {
+        GameObject textGO = Instantiate(floatingTextPrefab);
+        var textPos = transform.position;
+        textPos.z -= 5;
+        textGO.transform.position = textPos;
+        FloatingText text = textGO.GetComponent<FloatingText>();
+
+        text.text = "Truck GET!";
+        // TODO change text!
+        text.textColor=Color.green;
+        text.duration = 1.5f;
+        text.velocity = Vector3.up*1.5f;
+        text.fontSize = 2;
     }
 
     private void SetQuoteWaitingTimer() {
