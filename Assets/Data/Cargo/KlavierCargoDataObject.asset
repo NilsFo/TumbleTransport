@@ -16,5 +16,5 @@ MonoBehaviour:
   weight: 100
   isUnique: 0
   purchaseValue: 60
-  salesValue: 120
+  salesValue: 150
   nameInScore: Piano

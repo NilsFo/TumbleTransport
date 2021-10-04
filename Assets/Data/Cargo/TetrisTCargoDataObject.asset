@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 6769095133398426212, guid: ef93fcd2c0c98054b93f665629924a24, type: 3}
   weight: 200
   isUnique: 0
-  purchaseValue: 15
-  salesValue: 45
+  purchaseValue: 10
+  salesValue: 50
   nameInScore: Unwieldy Package

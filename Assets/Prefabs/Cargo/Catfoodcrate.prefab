@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1274897553576135600}
   - component: {fileID: 2832670761941382326}
   - component: {fileID: 8863794569029849089}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Catfoodcrate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

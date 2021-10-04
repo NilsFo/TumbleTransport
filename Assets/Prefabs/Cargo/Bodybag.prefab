@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1044419969404865951}
   - component: {fileID: 5182171831083201677}
   - component: {fileID: 3546018684274638691}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bodybag
   m_TagString: Untagged
   m_Icon: {fileID: 0}

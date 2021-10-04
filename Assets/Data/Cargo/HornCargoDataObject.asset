@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 3584009606885513856, guid: e5f18a848a389e04c9fe01b5cceb2e55, type: 3}
   weight: 100
   isUnique: 0
-  purchaseValue: 35
+  purchaseValue: 30
   salesValue: 60
   nameInScore: Drinking Horn

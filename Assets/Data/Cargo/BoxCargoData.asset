@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 4296989242459096725, guid: 1131a377d6a88de4499ace728321ed1c, type: 3}
   weight: 500
   isUnique: 0
-  purchaseValue: 20
+  purchaseValue: 10
   salesValue: 40
   nameInScore: Fragile Cargo

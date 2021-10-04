@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 4676834047712745854, guid: 770721b9742237f44a5bf912401a05d3, type: 3}
   weight: 100
   isUnique: 0
-  purchaseValue: 50
+  purchaseValue: 30
   salesValue: 90
   nameInScore: Cat Food

@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 1240773048399992842, guid: 8373823407d5a964d97b49e28e59e6b6, type: 3}
   weight: 100
   isUnique: 0
-  purchaseValue: 15
+  purchaseValue: 10
   salesValue: 30
   nameInScore: Pumpkin

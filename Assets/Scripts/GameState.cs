@@ -73,6 +73,8 @@ public class GameState : MonoBehaviour
             toolConveyor.tutorialToolOverrideState = 2;
 
             startBT.myText.enabled = false;
+        } else {
+            toolConveyor.maxSpawnedItems = 3;
         }
 
         if (GameState.shift == 1)

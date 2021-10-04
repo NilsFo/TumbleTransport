@@ -15,6 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 7221539194365009423, guid: 8924a72ca5b4f234ba33b08755c8d137, type: 3}
   weight: 100
   isUnique: 0
-  purchaseValue: 20
+  purchaseValue: 10
   salesValue: 40
   nameInScore: '"Old Carpet"'

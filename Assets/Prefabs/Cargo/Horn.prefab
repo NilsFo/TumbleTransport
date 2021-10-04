@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3401950994641867777}
   - component: {fileID: 2800965613675355908}
   - component: {fileID: 2049022257656632761}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Horn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

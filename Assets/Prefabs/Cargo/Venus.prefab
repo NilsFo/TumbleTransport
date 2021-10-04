@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2248915170485906166}
   - component: {fileID: 7809682455675993217}
   - component: {fileID: 4472959359546890433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Venus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339efa137920e7c47bd5903d95a53482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coll: {fileID: 0}
+  coll: {fileID: 4472959359546890433}
   sprite: {fileID: 4054261688653249883}
   taped: 0
   fastened: 0

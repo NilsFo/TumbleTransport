@@ -16,5 +16,5 @@ MonoBehaviour:
   weight: 100
   isUnique: 0
   purchaseValue: 10
-  salesValue: 40
+  salesValue: 50
   nameInScore: Radioactive Waste

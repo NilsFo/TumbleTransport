@@ -16,5 +16,5 @@ MonoBehaviour:
   weight: 500
   isUnique: 0
   purchaseValue: 5
-  salesValue: 10
+  salesValue: 15
   nameInScore: Bananas

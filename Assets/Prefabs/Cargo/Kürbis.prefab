@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3265629073278308352}
   - component: {fileID: 1407874620219527453}
   - component: {fileID: -6277478442306537045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "K\xFCrbis"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
