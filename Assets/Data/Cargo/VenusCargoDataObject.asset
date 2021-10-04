@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5bd0ea9e91b7b47b11e32c9cf5f447, type: 3}
-  m_Name: MotorradATruckDataObject
+  m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
+  m_Name: VenusCargoDataObject
   m_EditorClassIdentifier: 
-  truck: {fileID: 8660181547102082021, guid: f28255702895c8d46ad21eafd8b31dfd, type: 3}
-  weight: 200
-  fixNumberOfCargoToSpawn: 4
-  cost: 100
-  nameInScore: Truck + Driver + Fuel
+  sprite: {fileID: 6465514844664470593, guid: a7d84a114e9d1914990ee9add55270e9, type: 3}
+  weight: 100
+  isUnique: 0
+  purchaseValue: 30
+  salesValue: 90
+  nameInScore: Cargo

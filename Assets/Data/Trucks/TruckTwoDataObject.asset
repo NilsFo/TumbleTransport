@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5bd0ea9e91b7b47b11e32c9cf5f447, type: 3}
   m_Name: TruckTwoDataObject
   m_EditorClassIdentifier: 
-  weight: 100
   truck: {fileID: 8317496335158412140, guid: bab7b5e77520aa542b29b857507f182c, type: 3}
+  weight: 500
+  fixNumberOfCargoToSpawn: 4
+  cost: 100
+  nameInScore: Truck + Driver + Fuel

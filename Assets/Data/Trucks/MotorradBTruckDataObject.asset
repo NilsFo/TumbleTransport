@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MotorradBTruckDataObject
   m_EditorClassIdentifier: 
   truck: {fileID: 2496941608352664912, guid: 43e12c629c00cdf449a1e62cf149f89b, type: 3}
-  weight: 100
-  fixNumberOfCargoToSpawn: 1
+  weight: 200
+  fixNumberOfCargoToSpawn: 4
   cost: 100
+  nameInScore: Truck + Driver + Fuel
