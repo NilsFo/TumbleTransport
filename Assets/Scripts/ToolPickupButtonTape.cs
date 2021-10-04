@@ -50,7 +50,8 @@ public class ToolPickupButtonTape : MonoBehaviour
     {
         // Updating rendered sprite
         mySprite.enabled = !isSelected;
-        if (pickedUpThisFrame) {
+        if (pickedUpThisFrame)
+        {
             pickedUpThisFrame = false;
             return;
         }
@@ -87,7 +88,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 gameState.currentSelectionState = GameState.SelectionState.None;
                 toolUsageIndicator.gameObject.SetActive(false);
 
-                Invoke("EnableInteractable", (float) (Time.smoothDeltaTime * 2.22));
+                Invoke("EnableInteractable", (float) (0.005f));
             }
 
             if (dumpsterArea.OverlapPoint(selectionTemp))
@@ -101,12 +102,13 @@ public class ToolPickupButtonTape : MonoBehaviour
                 toolUsageIndicator.gameObject.SetActive(false);
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
+                CreateFloatingText(dumpsterArea.bounds.center);
                 gameState.SubtractMaterialCost(materialCost, "Tape", mySprite.sprite);
             }
         }
 
         // Checking if this tool is dragging and mouse has been released
-        if (Input.GetMouseButtonUp(0) && isSelected && isDragging&& timeHeld > .5)
+        if (Input.GetMouseButtonUp(0) && isSelected && isDragging && timeHeld > .5)
         {
             isSelected = false;
             isDragging = false;
@@ -119,6 +121,7 @@ public class ToolPickupButtonTape : MonoBehaviour
             if (validAttachers.Count >= 1)
             {
                 RequestToolUse(selectionOrigin, selectionTarget);
+                CreateFloatingText(selectionTarget);
                 conveyorCallback.Remove(gameObject);
                 gameState.SubtractMaterialCost(materialCost, "Tape", mySprite.sprite);
             }
@@ -146,15 +149,8 @@ public class ToolPickupButtonTape : MonoBehaviour
                 }
                 else
                 {
-                    /*var angle = Vector3.Angle(selectionOrigin, currentSelectionPos);
-                    
-                    var x = maximumDistance * Mathf.Cos(angle * Mathf.Deg2Rad);
-                    var y = maximumDistance * Mathf.Sin(angle * Mathf.Deg2Rad);
-                    var newPosition = selectionOrigin;
-                    newPosition.x += x;
-                    newPosition.y += y;*/
-                    
-                    selectionTarget = selectionOrigin + (currentSelectionPos - selectionOrigin).normalized * maximumDistance;
+                    selectionTarget = selectionOrigin +
+                                      (currentSelectionPos - selectionOrigin).normalized * maximumDistance;
                     tooLong = true;
                 }
 
@@ -273,4 +269,23 @@ public class ToolPickupButtonTape : MonoBehaviour
     {
         this.interactable = true;
     }
+
+    public void CreateFloatingText(Vector3 textPos)
+    {
+        GameObject textGO = Instantiate(floatingTextPrefab);
+        textPos.z = -9;
+        textGO.transform.position = textPos;
+        FloatingText text = textGO.GetComponent<FloatingText>();
+
+        text.text = "- $" + materialCost;
+        text.textColor = new Color(201 / 255f, 48 / 255f, 56 / 255f);
+
+        text.duration = 1.5f;
+        text.velocity = Vector3.up * 1.5f;
+        text.fontSize = 32;
+
+        // GameObject.Find("/Audio/KachingSound").GetComponent<AudioSource>().Play();
+    }
+
+    public GameObject floatingTextPrefab;
 }

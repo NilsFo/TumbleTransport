@@ -208,10 +208,30 @@ public class ToolConveyor : MonoBehaviour
 
     public void ShowToolTutorials()
     {
+        var items = Math.Min(3,GetToolCount());
+        
         textBubbleManager.ClearDialogueBoxes();
-        textBubbleManager.Say(myTools[0].transform, "Glue can stick cargo directly to the truck.", 999999);
-        textBubbleManager.Say(myTools[1].transform, "Tape can fasten cargo to each other.", 999999);
-        textBubbleManager.Say(myTools[2].transform, "Use eyelets and lashing straps to fasten cargo.", 999999);
+        for (int i = 0; i < items; i++)
+        {
+            var tool = myTools[i];
+            ToolPickupButtonRope buttonRopeAI = tool.GetComponent<ToolPickupButtonRope>();
+            ToolPickupButtonGlue buttonGlueAI = tool.GetComponent<ToolPickupButtonGlue>();
+            ToolPickupButtonTape buttonTapeAI = tool.GetComponent<ToolPickupButtonTape>();
+            if (buttonTapeAI != null)
+            {
+                textBubbleManager.Say(tool.transform, "Tape can fasten cargo to each other.", 999999);
+            }
+
+            if (buttonGlueAI != null)
+            {
+                textBubbleManager.Say(tool.transform, "Glue can stick cargo directly to the truck.", 999999);
+            }
+
+            if (buttonRopeAI != null)
+            {
+                textBubbleManager.Say(tool.transform, "Use eyelets and lashing straps to fasten cargo.", 999999);
+            }
+        }
     }
 
     public int GetToolCount()
