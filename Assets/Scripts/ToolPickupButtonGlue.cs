@@ -26,7 +26,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
     private bool interactable = true;
     private float timeHeld = 0;
     public float materialCost = 100f;
-    public string materialNameInScore = "Spend Glue";
+    public string materialNameInScore = "Spent Glue";
     private bool pickedUpThisFrame = false;
 
 

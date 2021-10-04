@@ -271,6 +271,7 @@ public class Truck : MonoBehaviour {
                 // Tape is not attached to truck
                 // Attach it to some cargo or something
                 strap.transform.SetParent(found[strap.gameObject].nodes[0].gameObject.transform);
+                found[strap.gameObject].nodes[0].gameObject.GetComponent<Cargo>()?.ShowFloatingText("Tape only sticks to other cargo.", false, 3f);
             }
 
         }

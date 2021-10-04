@@ -26,7 +26,7 @@ public class ToolPickupButtonRope : MonoBehaviour
     public ToolConveyor conveyorCallback;
     public int conveyorIndex;
     public float materialCost = 100;
-    public string materialNameInScore = "Spend Rope";
+    public string materialNameInScore = "Spent Rope";
     private bool interactable = true;
     private float timeHeld = 0;
     private bool pickedUpThisFrame = false;

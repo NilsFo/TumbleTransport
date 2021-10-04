@@ -15,8 +15,16 @@ public class LastScoreDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach (var tmp in GetComponentsInChildren<TextMeshProUGUI>()) {
+            tmp.gameObject.SetActive(false);
+        }
+        
         if (GameState.lastProfit > 0)
         {
+            
+            foreach (var tmp in GetComponentsInChildren<TextMeshProUGUI>(true)) {
+                tmp.gameObject.SetActive(true);
+            }
             float value = GameState.lastProfit;
             string vorzeichen = "+";
             Color textcolor = positive;

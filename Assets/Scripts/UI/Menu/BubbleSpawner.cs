@@ -27,7 +27,6 @@ public class BubbleSpawner : MonoBehaviour
     initialCountdown -= Time.deltaTime;
     if (initialCountdown > 0)
     {
-      print(initialCountdown);
       return;
     }
     

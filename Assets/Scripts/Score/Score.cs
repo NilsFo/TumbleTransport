@@ -32,7 +32,7 @@ public class Score
     public void AddDeliveryData(DeliveryData toAdd)
     {
         totalCountTrucks++;
-        totalCountCargo += toAdd.GetNumberOfCargo();
+        totalCountCargo += toAdd.fastenedCargo.Count;
         
         totalEarnings += toAdd.GetSalesValueOfCargo();
         
@@ -61,7 +61,7 @@ public class Score
         {
             CargoScriptableObject dataObject = toAdd.thrownCargo[i];
             SpriteRenderer cargoRenderer  = dataObject.sprite.GetComponent<SpriteRenderer>();
-            listOfBubbles.Add(new BubbleData(cargoRenderer.sprite, dataObject.purchaseValue, dataObject.nameInScore + "(Dropped)", -1));
+            listOfBubbles.Add(new BubbleData(cargoRenderer.sprite, dataObject.purchaseValue, dataObject.nameInScore + " (Dropped)", -1));
         }
     }
 

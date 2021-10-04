@@ -207,7 +207,7 @@ public class Cargo : MonoBehaviour {
         _gameState.boxDropSound.Play();
     }
 
-    public void ShowFloatingText(string message, bool stickToParent=true)
+    public void ShowFloatingText(string message, bool stickToParent=true, float duration=0.95f)
     {   
         if (lastFloatingText != null)
         {
@@ -230,7 +230,7 @@ public class Cargo : MonoBehaviour {
         text.text = message;
         text.textColor = Color.white;
 
-        text.duration = 0.95f;
+        text.duration = duration;
         text.velocity = Vector3.up * 0.69f;
         text.fontSize = 12;
     }

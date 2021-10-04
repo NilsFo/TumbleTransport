@@ -42,7 +42,7 @@ public class SecretSpawner : MonoBehaviour
                 if (countSpawner > 2)
                 {
                     CounterObj.SetActive(true);
-                    Counter.text = "X"+countSpawner;
+                    Counter.text = "(x"+countSpawner+")";
                 }
                 if (audioSource != null)
                 {

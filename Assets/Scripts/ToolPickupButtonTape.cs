@@ -28,7 +28,7 @@ public class ToolPickupButtonTape : MonoBehaviour
     public ToolConveyor conveyorCallback;
     public bool tooLong;
     public int materialCost = 100;
-    public string materialNameInScore = "Spend Tape";
+    public string materialNameInScore = "Spent Tape";
     private bool interactable = true;
     private float timeHeld = 0;
     private bool pickedUpThisFrame = false;
