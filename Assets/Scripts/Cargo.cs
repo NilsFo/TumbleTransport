@@ -121,10 +121,12 @@ public class Cargo : MonoBehaviour {
                 }
             }
         }
+        
         if (taped) {
             _gameState.boxDropSound.Play();
             return;
         }
+        
         grabbed = true;
         grabbedFrom = transform.position;
         grabbedFromRot = transform.rotation;
@@ -176,18 +178,29 @@ public class Cargo : MonoBehaviour {
         t.z = -7;
         transform.position = t;
         flying = true;
+
+        if (taped && !_gameState.tutorialHasTapeDroppedAtLeastOnce)
+        {
+            _gameState.tutorialHasTapeDroppedAtLeastOnce = true;
+            ShowFloatingText("Tape only sticks to other cargo",false);
+        }
         
         _gameState.boxDropSound.Play();
     }
 
-    public void ShowFloatingText(string message)
+    public void ShowFloatingText(string message, bool stickToParent=true)
     {   
         if (lastFloatingText != null)
         {
             Destroy(lastFloatingText.gameObject);
         }
         
-        GameObject textGO = Instantiate(floatingTextPrefab,gameObject.transform);
+        GameObject textGO = Instantiate(floatingTextPrefab);
+        if (stickToParent)
+        {
+            textGO.transform.parent = transform;
+        }
+        
         Vector3 textPos = textGO.transform.position;
         textPos.z = -9;
         textGO.transform.position = textPos;
