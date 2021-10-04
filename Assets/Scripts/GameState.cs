@@ -106,7 +106,7 @@ public class GameState : MonoBehaviour
 
     void Update()
     {
-        if (worktimeDecayEnabled) {
+        if (worktimeDecayEnabled && !shiftEnded) {
             workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60f;
             if (workTimeLeft < 0) {
                 shiftEnded = true;
