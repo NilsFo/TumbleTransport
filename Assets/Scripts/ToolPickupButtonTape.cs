@@ -95,6 +95,7 @@ public class ToolPickupButtonTape : MonoBehaviour
             {
                 // Deleting the selected tool
                 print("delete");
+                gameState.tutorialHasDeletedAtLeastOnce = true;
                 isDragging = false;
                 isSelected = false;
                 interactable = false;
@@ -162,11 +163,11 @@ public class ToolPickupButtonTape : MonoBehaviour
             {
                 //offsetPoint = currentSelectionPos;
                 Vector3 offsetPoint = currentSelectionPos;
-                toolUsageIndicator.gameObject.SetActive(true);
                 offsetPoint.x = offsetPoint.x - toolFrameOffset.x;
                 offsetPoint.y = offsetPoint.y - toolFrameOffset.y;
                 offsetPoint.z = -6;
                 toolUsageIndicator.gameObject.transform.position = offsetPoint;
+                toolUsageIndicator.gameObject.SetActive(true);
             }
         }
     }
@@ -184,7 +185,7 @@ public class ToolPickupButtonTape : MonoBehaviour
             timeHeld = 0;
 
             toolUsageIndicator.gameObject.GetComponent<SpriteRenderer>().sprite = mySprite.sprite;
-            toolUsageIndicator.gameObject.SetActive(true);
+            // toolUsageIndicator.gameObject.SetActive(true);
             gameState.currentSelectionState = GameState.SelectionState.Tool;
         }
         else

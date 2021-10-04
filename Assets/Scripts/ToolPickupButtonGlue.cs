@@ -88,6 +88,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
             {
                 // Deleting the selected tool
                 print("delete");
+                gameState.tutorialHasDeletedAtLeastOnce = true;
                 isSelected = false;
                 interactable = false;
                 gameState.currentSelectionState = GameState.SelectionState.None;
@@ -111,11 +112,11 @@ public class ToolPickupButtonGlue : MonoBehaviour
             Vector3 currentMousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             //offsetPoint = currentSelectionPos;
             Vector3 offsetPoint = currentMousePos;
-            toolUsageIndicator.gameObject.SetActive(true);
             offsetPoint.x = offsetPoint.x - toolFrameOffset.x;
             offsetPoint.y = offsetPoint.y - toolFrameOffset.y;
             offsetPoint.z = -6;
             toolUsageIndicator.gameObject.transform.position = offsetPoint;
+            toolUsageIndicator.gameObject.SetActive(true);
         }
     }
 
@@ -132,7 +133,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
             timeHeld = 0;
 
             toolUsageIndicator.gameObject.GetComponent<SpriteRenderer>().sprite = mySprite.sprite;
-            toolUsageIndicator.gameObject.SetActive(true);
+            // toolUsageIndicator.gameObject.SetActive(true);
             gameState.currentSelectionState = GameState.SelectionState.Tool;
         }
         else

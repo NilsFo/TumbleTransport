@@ -93,6 +93,7 @@ public class ToolPickupButtonRope : MonoBehaviour
             if (dumpsterArea.OverlapPoint(selectionTemp))
             {
                 // Deleting the selected tool
+                gameState.tutorialHasDeletedAtLeastOnce = true;
                 isDragging = false;
                 isSelected = false;
                 interactable = false;
@@ -150,11 +151,11 @@ public class ToolPickupButtonRope : MonoBehaviour
             {
                 //offsetPoint = currentSelectionPos;
                 Vector3 offsetPoint = currentSelectionPos;
-                toolUsageIndicator.gameObject.SetActive(true);
                 offsetPoint.x = offsetPoint.x - toolFrameOffset.x;
                 offsetPoint.y = offsetPoint.y - toolFrameOffset.y;
                 offsetPoint.z = -6;
                 toolUsageIndicator.gameObject.transform.position = offsetPoint;
+                toolUsageIndicator.gameObject.SetActive(true);
             }
         }
     }
@@ -172,7 +173,7 @@ public class ToolPickupButtonRope : MonoBehaviour
             timeHeld = 0;
 
             toolUsageIndicator.gameObject.GetComponent<SpriteRenderer>().sprite = mySprite.sprite;
-            toolUsageIndicator.gameObject.SetActive(true);
+            // toolUsageIndicator.gameObject.SetActive(true);
             gameState.currentSelectionState = GameState.SelectionState.Tool;
         }
         else

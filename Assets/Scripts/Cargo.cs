@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -14,6 +15,8 @@ public class Cargo : MonoBehaviour {
     public bool fastened;
     public bool grabbed;
 
+    public GameObject floatingTextPrefab;
+    private GameObject lastFloatingText;
     public CargoScriptableObject dataObject;
 
     private bool flying;
@@ -94,6 +97,12 @@ public class Cargo : MonoBehaviour {
         if (grabbed && Input.GetMouseButtonDown(1)) {
             Debug.Log("Rotate");
             transform.rotation *= Quaternion.Euler(0,0,-90f);
+            _gameState.tutorialHasRotatedAtLeastOnce = true;
+            
+            if (lastFloatingText != null)
+            {
+                Destroy(lastFloatingText.gameObject);
+            }
         }
     }
     // Update is called once per frame
@@ -106,6 +115,7 @@ public class Cargo : MonoBehaviour {
             foreach (var result in results) {
                 if (result.gameObject.layer == LayerMask.NameToLayer("Straps")) {
                     Debug.Log("Can't grab what is already fastened");
+                    ShowFloatingText("It's fastened tight.");
                     _gameState.boxDropSound.Play();
                     return;
                 }
@@ -122,6 +132,12 @@ public class Cargo : MonoBehaviour {
         grabPivot.z = 0;
         _gameState.currentSelectionState = GameState.SelectionState.Cargo;
         _gameState.boxPickupSound.Play();
+        
+        // Displaying rotation tutorial reminder
+        if (!_gameState.tutorialHasRotatedAtLeastOnce && _gameState.tutorialHasLoadedTruckAtLeastOnce)
+        {
+            ShowFloatingText("Rotate cargo using right click.");
+        }
     }
     void OnMouseUp() {
         if (!grabbed)
@@ -164,12 +180,27 @@ public class Cargo : MonoBehaviour {
         _gameState.boxDropSound.Play();
     }
 
-    public void OnTapeAttached(Cargo partner)
-    {
-        // TODO implement
-        taped = true;
+    public void ShowFloatingText(string message)
+    {   
+        if (lastFloatingText != null)
+        {
+            Destroy(lastFloatingText.gameObject);
+        }
         
-        print("i am a cargo. i just got taped");
+        GameObject textGO = Instantiate(floatingTextPrefab,gameObject.transform);
+        Vector3 textPos = textGO.transform.position;
+        textPos.z = -9;
+        textGO.transform.position = textPos;
+        textGO.transform.rotation = Quaternion.identity;
+        lastFloatingText = textGO;
+        FloatingText text = textGO.GetComponent<FloatingText>();
+
+        text.text = message;
+        text.textColor = Color.white;
+
+        text.duration = 0.95f;
+        text.velocity = Vector3.up * 0.69f;
+        text.fontSize = 12;
     }
 
 }
