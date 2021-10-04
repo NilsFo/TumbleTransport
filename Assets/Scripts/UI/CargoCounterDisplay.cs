@@ -11,6 +11,6 @@ public class CargoCounterDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textMeshProUGUI.text = "C " + GameState.score.totalCountCargo;
+        textMeshProUGUI.text = "" + GameState.score.totalCountCargo;
     }
 }

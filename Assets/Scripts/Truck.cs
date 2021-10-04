@@ -171,7 +171,7 @@ public class Truck : MonoBehaviour {
                 truckLeaveAudio.Play();
                 Invoke(nameof(ThrowAllCargo), 0.8f);
                 if (gameObject.name == "Train(Clone)") {
-                    Invoke(nameof(SetTraveling), 4.0f);
+                    Invoke(nameof(SetTraveling), 3.0f);
                 } else {
                     Invoke(nameof(SetTraveling), 2.0f);
                 }
@@ -179,7 +179,6 @@ public class Truck : MonoBehaviour {
                 gameState.tutorialHasDepartedAtLeastOnce = true;
                 gameState.worktimeDecayEnabled = true;
                 gameState.startBT.animationPlaying = false;
-                CreateFloatingText();
             }
             _lastState = _state;
         }
@@ -326,7 +325,7 @@ public class Truck : MonoBehaviour {
         _state = TruckState.Traveling;
     }
 
-    private void CreateFloatingText()
+    public void CreateFloatingText(int value)
     {
         GameObject textGO = Instantiate(floatingTextPrefab);
         var textPos = transform.position;
@@ -334,12 +333,18 @@ public class Truck : MonoBehaviour {
         textGO.transform.position = textPos;
         FloatingText text = textGO.GetComponent<FloatingText>();
 
-        text.text = "Truck GET!";
-        // TODO change text!
-        text.textColor=Color.green;
+        if (value >= 0) {
+            text.text = "+ $" + value;
+            text.textColor=new Color(81/255f, 196/255f, 63/255f);
+        } else {
+            text.text = "- $" + -value;
+            text.textColor=new Color(201/255f, 48/255f, 56/255f);
+        }
+        
+        
         text.duration = 1.5f;
         text.velocity = Vector3.up*1.5f;
-        text.fontSize = 2;
+        text.fontSize = 32;
     }
 
     private void SetQuoteWaitingTimer() {

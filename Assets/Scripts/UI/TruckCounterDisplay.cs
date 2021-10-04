@@ -11,6 +11,6 @@ public class TruckCounterDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textMeshProUGUI.text = "T " + GameState.score.totalCountTrucks;
+        textMeshProUGUI.text = "" + GameState.score.totalCountTrucks;
     }
 }
