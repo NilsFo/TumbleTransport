@@ -120,16 +120,26 @@ public class Cargo : MonoBehaviour {
             foreach (var result in results) {
                 if (result.gameObject.layer == LayerMask.NameToLayer("Straps")) {
                     Debug.Log("Can't grab what is already fastened");
-                    ShowFloatingText("It's fastened tight.");
+
+                    if (taped)
+                    {
+                        ShowFloatingText("Cannot move taped cargo.");
+                    }
+                    else
+                    {
+                        ShowFloatingText("It's fastened tight.");
+                    }
                     _gameState.boxDropSound.Play();
                     return;
                 }
             }
         }
+        
         if (taped) {
             _gameState.boxDropSound.Play();
             return;
         }
+        
         grabbed = true;
         grabbedFrom = transform.position;
         grabbedFromRot = transform.rotation;
@@ -143,7 +153,7 @@ public class Cargo : MonoBehaviour {
         // Displaying rotation tutorial reminder
         if (!_gameState.tutorialHasRotatedAtLeastOnce && _gameState.tutorialHasLoadedTruckAtLeastOnce)
         {
-            ShowFloatingText("Rotate cargo using right click.");
+            ShowFloatingText("Rotate cargo using right click or the mouse wheel.");
         }
     }
     void OnMouseUp() {
@@ -161,7 +171,11 @@ public class Cargo : MonoBehaviour {
                     _gameState.toolConveyor.maxSpawnedItems = 4;
                     _gameState.toolConveyor.AddPendingSpawns(4);
                 }
+                
                 _gameState.tutorialHasLoadedTruckAtLeastOnce = true;
+                truck.quoteTimerEnabled = true;
+                truck.ShutUp();
+                //_gameState.forceNextDriverQuote = true;
             }
             else {
                 transform.SetParent(null);
@@ -183,18 +197,29 @@ public class Cargo : MonoBehaviour {
         t.z = -7;
         transform.position = t;
         flying = true;
+
+        if (taped && !_gameState.tutorialHasTapeDroppedAtLeastOnce)
+        {
+            _gameState.tutorialHasTapeDroppedAtLeastOnce = true;
+            ShowFloatingText("Tape only sticks to other cargo",false);
+        }
         
         _gameState.boxDropSound.Play();
     }
 
-    public void ShowFloatingText(string message)
+    public void ShowFloatingText(string message, bool stickToParent=true)
     {   
         if (lastFloatingText != null)
         {
             Destroy(lastFloatingText.gameObject);
         }
         
-        GameObject textGO = Instantiate(floatingTextPrefab,gameObject.transform);
+        GameObject textGO = Instantiate(floatingTextPrefab);
+        if (stickToParent)
+        {
+            textGO.transform.parent = transform;
+        }
+        
         Vector3 textPos = textGO.transform.position;
         textPos.z = -9;
         textGO.transform.position = textPos;

@@ -27,6 +27,8 @@ public class GameState : MonoBehaviour
     public SpawnCargo cargoSpawner;
     public ToolConveyor toolConveyor;
     public StartButtonTruck startBT;
+    
+    public bool tutorialHasTapeDroppedAtLeastOnce = false;
 
     public bool tutorialRunning = false;
     public bool forceNextDriverQuote = false;
@@ -84,6 +86,7 @@ public class GameState : MonoBehaviour
         } else {
             toolConveyor.maxSpawnedItems = 3;
         }
+        tutorialHasTapeDroppedAtLeastOnce = false;
 
         if (GameState.shift == 0)
         {

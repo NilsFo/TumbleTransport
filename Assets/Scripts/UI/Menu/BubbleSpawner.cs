@@ -19,9 +19,18 @@ public class BubbleSpawner : MonoBehaviour
   public Color positive = Color.green;
   public Color negative = Color.red;
   public Color neutral = Color.white;
+
+  public float initialCountdown = 12.0f;
   
   private void Update()
   {
+    initialCountdown -= Time.deltaTime;
+    if (initialCountdown > 0)
+    {
+      print(initialCountdown);
+      return;
+    }
+    
     if (_currentSpawnTime < spawnTime)
     {
       _currentSpawnTime += Time.deltaTime;

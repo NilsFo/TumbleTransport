@@ -192,6 +192,10 @@ public class ToolPickupButtonRope : MonoBehaviour
         strap.SetLashingStrap(start, end);
         gameState.tutorialHasTooledAtLeastOnce = true;
         gameState.startBT.AnimateButtonText();
+        
+        Truck currentTruck = gameState.truckSpawner.TruckGameObject.GetComponent<Truck>();
+        currentTruck.quoteTimerEnabled = true;
+        currentTruck.ShutUp();
     }
 
     private List<GameObject> CheckToolRopeValidPoints(Vector3 start)

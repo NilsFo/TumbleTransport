@@ -151,6 +151,9 @@ public class ToolPickupButtonGlue : MonoBehaviour
         gameState.tutorialHasTooledAtLeastOnce = true;
         gameState.startBT.AnimateButtonText();
         print("mew glue splat");
+        Truck currentTruck = gameState.truckSpawner.TruckGameObject.GetComponent<Truck>();
+        currentTruck.quoteTimerEnabled = true;
+        currentTruck.ShutUp();
     }
 
     private bool CheckGlueValidPoints(Vector3 start)
