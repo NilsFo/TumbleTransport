@@ -208,9 +208,9 @@ public class ToolConveyor : MonoBehaviour
     public void ShowToolTutorials()
     {
         textBubbleManager.ClearDialogueBoxes();
-        textBubbleManager.Say(myTools[0].transform, "Glue can stick cargo directly to the truck.", 7);
-        textBubbleManager.Say(myTools[1].transform, "Tape can fasten cargo attach cargo to each other.", 7);
-        textBubbleManager.Say(myTools[2].transform, "Use eyelets and lashing straps to fasten cargo.", 7);
+        textBubbleManager.Say(myTools[0].transform, "Glue can stick cargo directly to the truck.", 15);
+        textBubbleManager.Say(myTools[1].transform, "Tape can fasten cargo to each other.", 15);
+        textBubbleManager.Say(myTools[2].transform, "Use eyelets and lashing straps to fasten cargo.", 15);
     }
 
     public int GetToolCount()

@@ -1486,6 +1486,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1073839648, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+      propertyPath: dialogueBoxPrefab
+      value: 
+      objectReference: {fileID: 6652207136580568648, guid: 833f7e8af42fa244393d7067b2f755fd, type: 3}
+    - target: {fileID: 1573871832671350773, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+      propertyPath: m_Size.y
+      value: 6.5824146
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573871832671350773, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+      propertyPath: m_Offset.y
+      value: 3.650814
+      objectReference: {fileID: 0}
     - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: maxDistance
       value: 6
@@ -1494,6 +1506,10 @@ PrefabInstance:
       propertyPath: dumpsterArea
       value: 
       objectReference: {fileID: 164979795}
+    - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
+      propertyPath: creationOffsetY
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: toolPositionOffset
       value: 0.98
