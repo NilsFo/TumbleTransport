@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747194771450539549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.956, y: 1.518, z: -8}
+  m_LocalPosition: {x: -0.12, y: 1.98, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8331683802798058563}
@@ -990,11 +990,9 @@ MonoBehaviour:
   eyeletsLeft:
   - {fileID: 4474443052857103575}
   - {fileID: 5056675342113805426}
-  - {fileID: 0}
   eyeletsRight:
   - {fileID: 6029263691268142371}
   - {fileID: 3004081908591969541}
-  - {fileID: 0}
   eyeletsExtra: []
   minEyeletsLeft: 1
   minEyeletsRight: 1
@@ -1005,6 +1003,7 @@ MonoBehaviour:
   thrownCargo: []
   allCargo: []
   truckLeaveAudio: {fileID: 0}
+  floatingTextPrefab: {fileID: 6658745519226898469, guid: 63732aa803b11ba4f85dcd99572f62fa, type: 3}
   destination: 
   possibleDestinations:
   - Downtown Coolsville

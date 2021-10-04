@@ -79,13 +79,17 @@ public class GameState : MonoBehaviour
             toolConveyor.maxSpawnedItems = 3;
         }
 
-        if (GameState.shift == 1)
+        if (GameState.shift == 0)
         {
-            cargoSpawner.maxNumberOfCargo = 7;
+            cargoSpawner.maxNumberOfCargo = 8;
+        } 
+        else if (GameState.shift == 1)
+        {
+            cargoSpawner.maxNumberOfCargo = 10;
         }
         else if (GameState.shift == 2)
         {
-            cargoSpawner.maxNumberOfCargo = 5;
+            cargoSpawner.maxNumberOfCargo = 12;
         }
     }
 

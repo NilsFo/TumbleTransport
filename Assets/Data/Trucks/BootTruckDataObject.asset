@@ -15,5 +15,5 @@ MonoBehaviour:
   truck: {fileID: 8331683804425624961, guid: e530e97b944321241b97a345c204362c, type: 3}
   weight: 100
   fixNumberOfCargoToSpawn: 1
-  cost: 30
-  nameInScore: Boot + Driver
+  cost: 10
+  nameInScore: Boat + Rower
