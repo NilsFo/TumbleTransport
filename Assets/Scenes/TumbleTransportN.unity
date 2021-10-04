@@ -967,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 1557033049}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: workTime
-      value: 12
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: debugTruck
