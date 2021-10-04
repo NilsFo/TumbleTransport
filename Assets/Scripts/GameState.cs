@@ -93,9 +93,9 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void SubtractMaterialCost(float cost, string toolname)
+    public void SubtractMaterialCost(float cost, string toolname, Sprite Image)
     {
-        score.AddWorkingMaterialData(new WorkingMaterialData(cost, toolname));
+        score.AddWorkingMaterialData(new WorkingMaterialData(cost, toolname), Image);
     }
 
     public bool HasSomethingSelected()

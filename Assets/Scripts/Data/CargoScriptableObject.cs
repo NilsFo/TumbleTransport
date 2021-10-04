@@ -12,4 +12,6 @@ public class CargoScriptableObject : ScriptableObject
     
     public float purchaseValue = 30f;
     public float salesValue = 90f;
+
+    public string nameInScore = "Cargo";
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BubbleMoveAndDestroy : MonoBehaviour
@@ -7,6 +8,9 @@ public class BubbleMoveAndDestroy : MonoBehaviour
     public float speed = 0.75f;
     public float cutOffY = 6f;
 
+    public TextMeshProUGUI labelText;
+    public TextMeshProUGUI costText;
+    
     // Update is called once per frame
     void Update()
     {

@@ -11,4 +11,5 @@ public class TruckScriptableObject : ScriptableObject
     public int fixNumberOfCargoToSpawn = 1;
     
     public float cost = 100f; //Pauschl für Sub Benzien + Driver
+    public string nameInScore = "Truck + Driver + Fuel";
 }
