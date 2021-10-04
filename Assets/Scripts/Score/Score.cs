@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Score
 {
     public float dailyFixedCosts = 100f;
-    public float workersCostPerH = 12.50f;
-    public int workersHouers= 5;
+    public float workersCostPerH = 7.25f;
+    public int workersHouers= 8;
     
     public int totalCountTrucks = 0;
     public int totalCountCargo = 0;
@@ -79,7 +79,7 @@ public class Score
 
     public float GetSalary()
     {
-        return (float)(GetPersonalCost() * 0.7);
+        return (float)(GetPersonalCost());
     }
 
     public override string ToString()

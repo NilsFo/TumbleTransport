@@ -36,7 +36,8 @@ public class MaterialDelayDisplay : MonoBehaviour
             vorzeichen = "+";
             textcolor = positive;
         }
-        label.text = vorzeichen + value + " $";
+        
+        label.text = vorzeichen + " $" + value;
         label.color = textcolor;
     }
 

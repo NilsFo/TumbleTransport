@@ -35,7 +35,8 @@ public class ProfitsDelayDisplay : MonoBehaviour
             vorzeichen = "";
             textcolor = negative;
         }
-        label.text = vorzeichen + value + " $";
+        
+        label.text = vorzeichen + " $" + value;
         label.color = textcolor;
     }
 

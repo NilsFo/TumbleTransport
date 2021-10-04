@@ -70,7 +70,7 @@ public class BubbleSpawner : MonoBehaviour
         textcolor = negative;
       }
       
-      bubbleMoveAndDestroy.costText.text = vorzeichen + value + " $";
+      bubbleMoveAndDestroy.costText.text =  vorzeichen + " $" + value;
       bubbleMoveAndDestroy.costText.color = textcolor;
     }
   }
