@@ -46,6 +46,12 @@ public class GameState : MonoBehaviour
     public AudioSource boxDropSound;
     
     public static int firedCounter = 0; //Secret
+    public static float lastProfit = 0; //Profit
+    public static float lastShift = 0; //Profit
+    
+    public static float bestProfitShift0 = 0; //Profit Shift 0
+    public static float bestProfitShift1 = 0; //Profit Shift 1
+    public static float bestProfitShift2 = 0; //Profit Shift 2
 
     // Start is called before the first frame update
     void Start()

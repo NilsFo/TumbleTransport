@@ -23,7 +23,33 @@ public class ProfitsDelayDisplay : MonoBehaviour
     {
         obj.SetActive(false);
         _currentDelayTime = 0f;
+        
         float value = GameState.score.GetProfit();
+        GameState.lastProfit = value;
+        GameState.lastShift = GameState.shift;
+        
+        if (GameState.shift == 1)
+        {
+            if (value > GameState.bestProfitShift1)
+            {
+                GameState.bestProfitShift1 = value;
+            }
+        }
+        else if(GameState.shift == 2)
+        {
+            if (value > GameState.bestProfitShift2)
+            {
+                GameState.bestProfitShift2 = value;
+            }
+        }
+        else
+        {
+            if (value > GameState.bestProfitShift0)
+            {
+                GameState.bestProfitShift0 = value;
+            }
+        }
+        
         string vorzeichen = "+";
         Color textcolor = positive;
         if (value == 0)

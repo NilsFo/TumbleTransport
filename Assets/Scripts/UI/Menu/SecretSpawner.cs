@@ -20,7 +20,10 @@ public class SecretSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FiredObj.SetActive(false);
+        CounterObj.SetActive(false);
         _currentDelayTime = 0f;
+        
         float salary = GameState.score.GetSalary();
         if (GameState.score.GetProfit() < (-1 * salary))
         {
