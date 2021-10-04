@@ -286,16 +286,17 @@ MonoBehaviour:
   truckAnimator: {fileID: 1154181907250422197}
   eyeletsLeft:
   - {fileID: 6754280332585937122}
-  - {fileID: 3461108068148873494}
-  eyeletsRight:
   - {fileID: 7206708706393138503}
+  eyeletsRight:
   - {fileID: 3489562573406732237}
+  - {fileID: 3461108068148873494}
   eyeletsExtra:
-  - {fileID: 8256706074478846568}
+  - {fileID: 0}
   minEyeletsLeft: 1
   minEyeletsRight: 1
   minEyeletsExtra: 0
   dialoguePosition: {fileID: 8115921719640347443}
+  quoteTimerEnabled: 0
   truckData: {fileID: 0}
   fastenedCargo: []
   thrownCargo: []

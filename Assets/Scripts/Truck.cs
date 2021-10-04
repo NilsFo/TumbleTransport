@@ -129,7 +129,7 @@ public class Truck : MonoBehaviour {
         // Removing eyelets if needed
         for (int i = minEyeletsLeft; i < eyeletsLeft.Count; i++)
         {
-            if (UnityEngine.Random.Range(0,1)==0)
+            if (UnityEngine.Random.Range(0,2)==0)
             {
                 GameObject eye = eyeletsLeft[UnityEngine.Random.Range(0, eyeletsLeft.Count)];
                 eyeletsLeft.Remove(eye);
@@ -138,7 +138,7 @@ public class Truck : MonoBehaviour {
         }
         for (int i = minEyeletsRight; i < eyeletsRight.Count; i++)
         {
-            if (UnityEngine.Random.Range(0,1)==0)
+            if (UnityEngine.Random.Range(0,2)==0)
             {
                 GameObject eye = eyeletsRight[UnityEngine.Random.Range(0, eyeletsRight.Count)];
                 eyeletsRight.Remove(eye);
@@ -147,7 +147,7 @@ public class Truck : MonoBehaviour {
         }
         for (int i = minEyeletsExtra; i < eyeletsExtra.Count; i++)
         {
-            if (UnityEngine.Random.Range(0,1)==0)
+            if (UnityEngine.Random.Range(0,2)==0)
             {
                 GameObject eye = eyeletsExtra[UnityEngine.Random.Range(0, eyeletsExtra.Count)];
                 eyeletsExtra.Remove(eye);

@@ -46,6 +46,8 @@ public class GameState : MonoBehaviour
     public AudioSource shiftEndedSound;
     public AudioSource boxPickupSound;
     public AudioSource boxDropSound;
+
+    public Transform nightMode;
     
     public static int firedCounter = 0; //Secret
     public static float lastProfit = 0; //Profit
@@ -99,6 +101,7 @@ public class GameState : MonoBehaviour
         else if (GameState.shift == 2)
         {
             cargoSpawner.maxNumberOfCargo = 12;
+            nightMode.gameObject.SetActive(true);
         }
     }
 
