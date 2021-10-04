@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class TruckSpawner : MonoBehaviour
@@ -43,11 +44,14 @@ public class TruckSpawner : MonoBehaviour
         {
             if (_truck.State == Truck.TruckState.Traveling)
             {
-                
                 GameState.score.AddDeliveryData(new DeliveryData(_truck.truckData, _truck.fastenedCargo, _truck.thrownCargo));
                 Destroy(_truckGameObject);
                 _truckGameObject = null;
                 _truck = null;
+                
+                if (gameState.shiftEnded) {
+                    SceneManager.LoadScene("EndScene");
+                }
             }
         }
         else

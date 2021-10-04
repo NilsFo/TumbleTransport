@@ -38,6 +38,9 @@ public class GameState : MonoBehaviour
     public bool tutorialHasGluedAtLeastOnce = true;
     public bool tutorialHasTapedAtLeastOnce = true;
 
+    public bool shiftEnded;
+    public AudioSource shiftEndedSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,9 +78,10 @@ public class GameState : MonoBehaviour
     {
         if (worktimeDecayEnabled) {
             workTimeLeft -= Time.deltaTime * workHoursPerMinute / 60f;
-            if (workTimeLeft < 0)
-            {
-                SceneManager.LoadScene("EndScene");
+            if (workTimeLeft < 0) {
+                shiftEnded = true;
+                worktimeDecayEnabled = false;
+                shiftEndedSound.Play();
             }
         }
         
