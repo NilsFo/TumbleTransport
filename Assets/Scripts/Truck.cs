@@ -202,6 +202,7 @@ public class Truck : MonoBehaviour {
 
         foreach (var strap in straps) {
             var strapnode = new Node(strap.gameObject);
+            found.Add(strap.gameObject, strapnode);
             
             if(strap.fixedOnTruck)
                 rootNode.nodes.Add(strapnode);
@@ -215,7 +216,6 @@ public class Truck : MonoBehaviour {
                 layerMask = LayerMask.NameToLayer("Crate")
             }, collResults);
 
-            // This is a lashing strap or glue
             foreach (var c in collResults) {
                 var cgo = c.GetComponent<Cargo>();
                 if (cgo != null) {
@@ -242,7 +242,16 @@ public class Truck : MonoBehaviour {
             }
         }
         
-        
+        // Check if any tape is not stuck to the truck
+        foreach (var strap in straps) {
+            if (!strap.fixedOnTruck && !result.Contains(strap.gameObject)) {
+                // Tape is not attached to truck
+                // Attach it to some cargo or something
+                strap.transform.SetParent(found[strap.gameObject].nodes[0].gameObject.transform);
+            }
+
+        }
+
     }
 
     private List<GameObject> traverseTree(Node rootNode) {
