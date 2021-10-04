@@ -43,5 +43,11 @@ public class TrashContainerAI : MonoBehaviour
             myRenderer.sprite = closedSprite;
             myText.enabled = false;
         }
+
+        if (gameState.tutorialHasLoadedTruckAtLeastOnce && !gameState.tutorialHasDepartedAtLeastOnce)
+        {
+            myText.enabled = true;
+        }
+        
     }
 }
