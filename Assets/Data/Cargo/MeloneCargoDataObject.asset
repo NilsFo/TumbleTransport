@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5bd0ea9e91b7b47b11e32c9cf5f447, type: 3}
-  m_Name: TrainTruckDataObject
+  m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
+  m_Name: MeloneCargoDataObject
   m_EditorClassIdentifier: 
-  truck: {fileID: 153970261091200085, guid: 78e3c9cf61538514daf583bdf5613ca9, type: 3}
-  weight: 200
-  fixNumberOfCargoToSpawn: 10
-  cost: 60
-  nameInScore: Train + Driver
+  sprite: {fileID: 2448807087127550522, guid: 20bb986750f49ca4e9d627ea0842e43a, type: 3}
+  weight: 500
+  isUnique: 0
+  purchaseValue: 10
+  salesValue: 25
+  nameInScore: Melone

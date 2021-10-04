@@ -25,7 +25,7 @@ public class SecretSpawner : MonoBehaviour
         _currentDelayTime = 0f;
         
         float salary = GameState.score.GetSalary();
-        if (GameState.score.GetProfit() < (-1 * salary))
+        if (GameState.score.GetProfit() < (-1 * salary) && GameState.shift != -1)
         {
             countSpawner = Math.Abs((int)((GameState.score.GetProfit() - salary) / salary))-1;
         }

@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5bd0ea9e91b7b47b11e32c9cf5f447, type: 3}
-  m_Name: TrainTruckDataObject
+  m_Script: {fileID: 11500000, guid: ba617ada40df2cf4096c0bf3e197e107, type: 3}
+  m_Name: SargCargoDataObject
   m_EditorClassIdentifier: 
-  truck: {fileID: 153970261091200085, guid: 78e3c9cf61538514daf583bdf5613ca9, type: 3}
+  sprite: {fileID: 7349036047517895086, guid: fee45153c8a03db4b88b61fc5c0b7710, type: 3}
   weight: 200
-  fixNumberOfCargoToSpawn: 10
-  cost: 60
-  nameInScore: Train + Driver
+  isUnique: 0
+  purchaseValue: 20
+  salesValue: 40
+  nameInScore: Coffin (Empty)

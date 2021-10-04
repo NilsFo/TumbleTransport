@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-    public static int shift = 0;
+    public static int shift = -1; //Init mit -1 für newbie
     public static Score score = new Score();
 
     public enum SelectionState : UInt16

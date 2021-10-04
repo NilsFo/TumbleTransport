@@ -30,4 +30,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f76438d7acddfe44296ea000644c20f8, type: 2}
   - {fileID: 11400000, guid: 8f5aa6402273157429f8012e6e3be0d4, type: 2}
   - {fileID: 11400000, guid: d1daf119b5b04a740897cee3202df09c, type: 2}
-  totalWeight: 4500
+  - {fileID: 11400000, guid: c4f04537b0d0d09418ab488a6f8856e6, type: 2}
+  - {fileID: 11400000, guid: fda17402fc2b77044af1cff832c0f951, type: 2}
+  - {fileID: 11400000, guid: b27d87148197c7e44accded060549e2f, type: 2}
+  - {fileID: 11400000, guid: 88af7d848793ac1459d71e8c3affd904, type: 2}
+  totalWeight: 6200

@@ -90,7 +90,7 @@ public class BubbleSpawner : MonoBehaviour
         textcolor = negative;
       }
       
-      bubbleMoveAndDestroy.costText.text =  vorzeichen + " $" + value;
+      bubbleMoveAndDestroy.costText.text =  vorzeichen + " $" + String.Format("{0:0.00}", Mathf.Round(value * 100f) / 100f);
       bubbleMoveAndDestroy.costText.color = textcolor;
     }
   }
