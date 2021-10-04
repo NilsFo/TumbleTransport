@@ -1484,7 +1484,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: maxDistance
-      value: 5.65
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6377111118239951737, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: dumpsterArea
@@ -1500,11 +1500,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9191020358048414656, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.375
+      value: -5.28125
       objectReference: {fileID: 0}
     - target: {fileID: 9191020358048414656, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.65625
+      value: -5.25
       objectReference: {fileID: 0}
     - target: {fileID: 9191020358048414656, guid: 93cbb0db9c41eec4b866e89989c5d1dc, type: 3}
       propertyPath: m_LocalPosition.z
