@@ -44,6 +44,8 @@ public class GameState : MonoBehaviour
     public AudioSource shiftEndedSound;
     public AudioSource boxPickupSound;
     public AudioSource boxDropSound;
+    
+    public static int firedCounter = 0; //Secret
 
     // Start is called before the first frame update
     void Start()
