@@ -15,5 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 7434063277711024913, guid: 5b777bf4f77eed846b34f9acdbe20f1e, type: 3}
   weight: 500
   isUnique: 0
-  purchaseValue: 30
-  salesValue: 90
+  purchaseValue: 100
+  salesValue: 150
+  nameInScore: Wooden Container

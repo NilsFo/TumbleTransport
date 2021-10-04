@@ -15,5 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 5834841123164719433, guid: 9196c4be750446a41b262b920b447d7b, type: 3}
   weight: 500
   isUnique: 0
-  purchaseValue: 30
-  salesValue: 90
+  purchaseValue: 40
+  salesValue: 80
+  nameInScore: Fair Crate

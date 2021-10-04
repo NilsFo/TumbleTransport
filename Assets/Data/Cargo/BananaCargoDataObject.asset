@@ -15,5 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 4681001409140900733, guid: 8776134e752753d4f8fc521c78e7473e, type: 3}
   weight: 500
   isUnique: 0
-  purchaseValue: 2
+  purchaseValue: 5
   salesValue: 10
+  nameInScore: Bananas

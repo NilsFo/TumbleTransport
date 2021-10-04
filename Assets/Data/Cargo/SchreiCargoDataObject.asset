@@ -15,5 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 4684218879388996210, guid: 34ea4b29d5f7c1541ac63299cf32ca2a, type: 3}
   weight: 100
   isUnique: 1
-  purchaseValue: 10
+  purchaseValue: 200
   salesValue: 500
+  nameInScore: Counterfeit Painting

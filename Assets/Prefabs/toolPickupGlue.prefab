@@ -54,8 +54,7 @@ MonoBehaviour:
   toolFrameOffset: {x: 0, y: 0}
   conveyorCallback: {fileID: 0}
   conveyorIndex: 0
-  materialCost: 100
-  glueSound: {fileID: 0}
+  materialCost: 5
 --- !u!61 &1037265484885433245
 BoxCollider2D:
   m_ObjectHideFlags: 0

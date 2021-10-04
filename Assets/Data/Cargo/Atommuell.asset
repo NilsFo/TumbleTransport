@@ -15,5 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 2246668453684747050, guid: 35288eb6eda8c7f49a3dbfc5a34a50f4, type: 3}
   weight: 100
   isUnique: 0
-  purchaseValue: 30
-  salesValue: 90
+  purchaseValue: 10
+  salesValue: 40
+  nameInScore: Radioactive Waste

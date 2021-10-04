@@ -15,5 +15,6 @@ MonoBehaviour:
   sprite: {fileID: 8091422238327886732, guid: 58b91f076454166408058ad5e0a23eb7, type: 3}
   weight: 500
   isUnique: 0
-  purchaseValue: 30
-  salesValue: 90
+  purchaseValue: 40
+  salesValue: 60
+  nameInScore: Supply Crate
