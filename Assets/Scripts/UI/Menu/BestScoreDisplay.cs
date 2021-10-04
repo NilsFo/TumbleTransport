@@ -14,6 +14,7 @@ public class BestScoreDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameState.loadDaat();
         if (shift == 1)
         {
             if (GameState.bestProfitShift1 > 0)
@@ -26,7 +27,7 @@ public class BestScoreDisplay : MonoBehaviour
                 obj.SetActive(false);
             }
         }
-        else if (shift == 1)
+        else if (shift == 2)
         {
             if (GameState.bestProfitShift2 > 0)
             {
