@@ -88,7 +88,7 @@ public class TruckDialogueManager : MonoBehaviour
 
         if (!gameState.tutorialHasDepartedAtLeastOnce)
         {
-            quote = "Thanks kid! Load up as much as you can. When you are done use the 'Dispatch' button above.";
+            quote = "Use the 'Dispatch' button when you're ready.";
         }
         if (!gameState.tutorialHasTooledAtLeastOnce)
         {

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   truck: {fileID: 153970261091200085, guid: 78e3c9cf61538514daf583bdf5613ca9, type: 3}
   weight: 100
-  fixNumberOfCargoToSpawn: 6
+  fixNumberOfCargoToSpawn: 10
   cost: 40
   nameInScore: Train + Driver

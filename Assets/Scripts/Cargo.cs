@@ -132,6 +132,8 @@ public class Cargo : MonoBehaviour {
         grabPivot.z = 0;
         _gameState.currentSelectionState = GameState.SelectionState.Cargo;
         _gameState.boxPickupSound.Play();
+
+        Destroy(GetComponent<CargoSpawnAnimator>());
         
         // Displaying rotation tutorial reminder
         if (!_gameState.tutorialHasRotatedAtLeastOnce && _gameState.tutorialHasLoadedTruckAtLeastOnce)

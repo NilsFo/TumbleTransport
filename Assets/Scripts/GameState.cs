@@ -95,6 +95,7 @@ public class GameState : MonoBehaviour
                 shiftEnded = true;
                 worktimeDecayEnabled = false;
                 shiftEndedSound.Play();
+                FindObjectOfType<RadioManager>().RadioMessage("Shift's over! Finish up, there's no pay for overtime!", 10);
             }
         }
         

@@ -43,14 +43,15 @@ public class RadioManager : MonoBehaviour
         "Announcement: We are now owned by the North Bay Fishery Inc.",
         "Announcement: We are now owned by Southeast Airlines.",
         "Look at those incompetent idiots... wait, is this thing on?",
-        "Dental care is cancelled for the month."
+        "Dental care is cancelled for the month.",
+        "Get stacking kid! I don't pay you for standing around!"
     };
     
     // Start is called before the first frame update
     void Start() {
         busyTimer = 0.9f;
         textBubbleManager = GetComponent<TextBubbleManager>();
-        Invoke("DialogueLine1", 1);
+        //Invoke("DialogueLine1", 1);
         //Invoke("DialogueLine2", 3+5);
         //Invoke("DialogueLine3", 3+5+7);
     }

@@ -43,8 +43,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457647ce2e57b8d4cbf6dd958bfe82ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workTime: 12
+  workTime: 3
   workTimeLeft: 0
   workHoursPerMinute: 1
+  worktimeDecayEnabled: 1
   currentSelectionState: 0
   truckSpawner: {fileID: 0}
+  cargoSpawner: {fileID: 0}
+  toolConveyor: {fileID: 0}
+  startBT: {fileID: 0}
+  tutorialRunning: 0
+  forceNextDriverQuote: 0
+  tutorialHasLoadedTruckAtLeastOnce: 1
+  tutorialHasDepartedAtLeastOnce: 1
+  tutorialHasTooledAtLeastOnce: 1
+  tutorialHasDeletedAtLeastOnce: 1
+  tutorialHasRotatedAtLeastOnce: 1
+  tutorialHasRopedAtLeastOnce: 1
+  tutorialHasGluedAtLeastOnce: 1
+  tutorialHasTapedAtLeastOnce: 1
+  shiftEnded: 0
+  shiftEndedSound: {fileID: 0}
+  boxPickupSound: {fileID: 0}
+  boxDropSound: {fileID: 0}
