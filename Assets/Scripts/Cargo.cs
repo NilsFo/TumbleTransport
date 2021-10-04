@@ -170,11 +170,11 @@ public class Cargo : MonoBehaviour {
                 {
                     _gameState.toolConveyor.maxSpawnedItems = 4;
                     _gameState.toolConveyor.AddPendingSpawns(4);
+                    truck.ShutUp();
                 }
                 
                 _gameState.tutorialHasLoadedTruckAtLeastOnce = true;
                 truck.quoteTimerEnabled = true;
-                truck.ShutUp();
                 //_gameState.forceNextDriverQuote = true;
             }
             else {
@@ -215,9 +215,11 @@ public class Cargo : MonoBehaviour {
         }
         
         GameObject textGO = Instantiate(floatingTextPrefab);
+        textGO.transform.position = gameObject.transform.position;
         if (stickToParent)
         {
             textGO.transform.parent = transform;
+            textGO.transform.localPosition = new Vector3(0, 0, 0);
         }
         
         Vector3 textPos = textGO.transform.position;
