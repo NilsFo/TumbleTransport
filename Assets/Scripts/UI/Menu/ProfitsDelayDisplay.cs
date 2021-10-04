@@ -50,6 +50,8 @@ public class ProfitsDelayDisplay : MonoBehaviour
             }
         }
         
+        GameState.saveData();
+        
         string vorzeichen = "+";
         Color textcolor = positive;
         if (value == 0)

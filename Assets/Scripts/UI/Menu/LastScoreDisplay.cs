@@ -19,7 +19,7 @@ public class LastScoreDisplay : MonoBehaviour
             tmp.gameObject.SetActive(false);
         }
         
-        if (GameState.lastProfit > 0)
+        if (GameState.lastProfit != 0)
         {
             
             foreach (var tmp in GetComponentsInChildren<TextMeshProUGUI>(true)) {

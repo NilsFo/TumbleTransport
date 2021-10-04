@@ -23,20 +23,20 @@ public class SecretSpawner : MonoBehaviour
         FiredObj.SetActive(false);
         CounterObj.SetActive(false);
         _currentDelayTime = 0f;
-        
-        float salary = GameState.score.GetSalary();
-        if (GameState.score.GetProfit() < (-1 * salary) && GameState.shift != -1)
-        {
-            countSpawner = Math.Abs((int)((GameState.score.GetProfit() - salary) / salary))-1;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_currentDelayTime > delayToDisplay && countSpawner > 1)
+        if (_currentDelayTime > delayToDisplay)
         {
-            if (!FiredObj.activeSelf)
+            float salary = GameState.score.GetSalary();
+            if (GameState.lastShift != -1 && GameState.lastProfit < (-1 * salary))
+            {
+                countSpawner = Math.Abs((int)((GameState.lastProfit - salary) / salary))- 1;
+            }
+            
+            if (!FiredObj.activeSelf && countSpawner > 0)
             {
                 FiredObj.SetActive(true);
                 if (countSpawner > 2)
@@ -48,8 +48,6 @@ public class SecretSpawner : MonoBehaviour
                 {
                     audioSource.Play();
                 }
-
-                GameState.firedCounter = countSpawner;
             }
         }
         else

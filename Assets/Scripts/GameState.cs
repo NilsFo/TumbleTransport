@@ -49,9 +49,8 @@ public class GameState : MonoBehaviour
 
     public Transform nightMode;
     
-    public static int firedCounter = 0; //Secret
     public static float lastProfit = 0; //Profit
-    public static float lastShift = 0; //Profit
+    public static int lastShift = -1; //lastShift
     
     public static float bestProfitShift0 = 0; //Profit Shift 0
     public static float bestProfitShift1 = 0; //Profit Shift 1
@@ -140,5 +139,56 @@ public class GameState : MonoBehaviour
     public GameObject GetCurrentTruck()
     {
         return truckSpawner.TruckGameObject;
+    }
+
+    public static void loadDaat()
+    {
+        if (PlayerPrefs.HasKey("lastProfit"))
+        {
+            lastProfit = PlayerPrefs.GetFloat("lastProfit");
+        }
+        if (PlayerPrefs.HasKey("lastShift"))
+        {
+            lastShift = PlayerPrefs.GetInt("lastShift");
+        }
+        if (PlayerPrefs.HasKey("bestProfitShift0"))
+        {
+            bestProfitShift0 = PlayerPrefs.GetFloat("bestProfitShift0");
+        }
+        if (PlayerPrefs.HasKey("bestProfitShift1"))
+        {
+            bestProfitShift1 = PlayerPrefs.GetFloat("bestProfitShift1");
+        }
+        if (PlayerPrefs.HasKey("bestProfitShift2"))
+        {
+            bestProfitShift2 = PlayerPrefs.GetFloat("bestProfitShift2");
+        }
+
+        /*
+        Debug.Log(lastProfit);
+        Debug.Log(lastShift);
+        Debug.Log(bestProfitShift0);
+        Debug.Log(bestProfitShift1);
+        Debug.Log(bestProfitShift2);
+        Debug.Log("Load!!!"); 
+        */
+    }
+
+    public static void saveData()
+    {
+        PlayerPrefs.SetFloat("lastProfit", lastProfit);
+        PlayerPrefs.SetInt("lastShift", lastShift);
+        PlayerPrefs.SetFloat("bestProfitShift0", bestProfitShift0);
+        PlayerPrefs.SetFloat("bestProfitShift1", bestProfitShift1);
+        PlayerPrefs.SetFloat("bestProfitShift2", bestProfitShift2);
+        PlayerPrefs.Save();
+        /*
+        Debug.Log(lastProfit);
+        Debug.Log(lastShift);
+        Debug.Log(bestProfitShift0);
+        Debug.Log(bestProfitShift1);
+        Debug.Log(bestProfitShift2);
+        Debug.Log("Save!!!"); 
+        */
     }
 }
