@@ -754,7 +754,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\"Tumble Transport Inc.\"\nCreated for Ludum Dare Game Jam 49.\nTheme:
     \"Unstable\".\n\nCreated by Nils F\xF6rster, Adrian Herbers, Patrick Herbers,
-    and Patrick Quiskamp.\n\nFont Used: PixelMix\nSounds: freesound.org"
+    and Patrick Quiskamp.\n\nFont Used: PixelMix\nSounds: freesound.org\nMusic: \"Tumbling\"
+    - Patrick Herbers"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68c0d1dfeff9dce45b1fdc80d8763e7b, type: 2}
   m_sharedMaterial: {fileID: 832488639546379081, guid: 68c0d1dfeff9dce45b1fdc80d8763e7b, type: 2}
@@ -789,7 +790,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -817,7 +818,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -299.64673, z: 0, w: 0}
+  m_margin: {x: 0, y: -347.20627, z: 0, w: 12.05}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
