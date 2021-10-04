@@ -73,10 +73,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe84afc3a27c1147899d645e2fafc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabTruckBubble: {fileID: 3393427814566618048, guid: 1975d44c5fc15ee4e8fa57fae8791381, type: 3}
-  prefabMaterialBubble: {fileID: 3393427814566618048, guid: 1975d44c5fc15ee4e8fa57fae8791381, type: 3}
+  prefabBubble: {fileID: 3393427814566618048, guid: 1975d44c5fc15ee4e8fa57fae8791381, type: 3}
   spawnPoint: {fileID: 213718383827420185}
-  spawnTime: 2
+  spawnTime: 0.7
+  positive: {r: 0, g: 1, b: 0, a: 1}
+  negative: {r: 1, g: 0, b: 0, a: 1}
+  neutral: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &213718383827420185
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,8 +109,8 @@ RectTransform:
   m_Father: {fileID: 213718382813630879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000095367, y: -360}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.0000095367, y: -74}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

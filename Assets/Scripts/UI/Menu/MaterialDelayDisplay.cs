@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -32,12 +33,11 @@ public class MaterialDelayDisplay : MonoBehaviour
         }
         else if (value < 0)
         {
-            value = Mathf.Abs(value);
             vorzeichen = "+";
             textcolor = positive;
         }
-        
-        label.text = vorzeichen + " $" + value;
+        value = Mathf.Abs(value);
+        label.text = vorzeichen + " $" + String.Format("{0:0.00}", Mathf.Round(value * 100f) / 100f);
         label.color = textcolor;
     }
 

@@ -28,6 +28,7 @@ public class ToolPickupButtonTape : MonoBehaviour
     public ToolConveyor conveyorCallback;
     public bool tooLong;
     public int materialCost = 100;
+    public string materialNameInScore = "Spend Tape";
     private bool interactable = true;
     private float timeHeld = 0;
     private bool pickedUpThisFrame = false;
@@ -104,7 +105,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 conveyorCallback.Remove(gameObject);
                 conveyorCallback.AddPendingSpawns(1);
                 CreateFloatingText(dumpsterArea.bounds.center);
-                gameState.SubtractMaterialCost(materialCost, "Tape", mySprite.sprite);
+                gameState.SubtractMaterialCost(materialCost, materialNameInScore, mySprite.sprite);
             }
         }
 
@@ -124,7 +125,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 RequestToolUse(selectionOrigin, selectionTarget);
                 CreateFloatingText(selectionTarget);
                 conveyorCallback.Remove(gameObject);
-                gameState.SubtractMaterialCost(materialCost, "Tape", mySprite.sprite);
+                gameState.SubtractMaterialCost(materialCost, materialNameInScore, mySprite.sprite);
             }
         }
 

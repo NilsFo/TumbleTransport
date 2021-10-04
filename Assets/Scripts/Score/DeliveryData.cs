@@ -40,10 +40,24 @@ public class DeliveryData
         float sum = 0f;
         foreach (var cargo in fastenedCargo)
         {
+            sum += (cargo.salesValue);
+        }
+        return sum;
+    }
+
+    public float GetSalesGrossProfit()
+    {
+        float sum = 0f;
+        foreach (var cargo in fastenedCargo)
+        {
             sum += (cargo.salesValue - cargo.purchaseValue);
         }
-
         return sum;
+    }
+    
+    public float GetSalesProfit()
+    {
+        return (GetSalesGrossProfit() - truck.cost);
     }
     
     public int GetNumberOfCargo()

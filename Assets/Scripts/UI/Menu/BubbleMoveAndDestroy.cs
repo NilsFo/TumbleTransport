@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BubbleMoveAndDestroy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BubbleMoveAndDestroy : MonoBehaviour
 
     public TextMeshProUGUI labelText;
     public TextMeshProUGUI costText;
+    public Image image;
     
     // Update is called once per frame
     void Update()

@@ -14,6 +14,7 @@ public class Score
     
     public float totalCost = 0;
     public float totalEarnings = 0;
+    public float totalProfit = 0;
 
     private List<DeliveryData> listOfDeliveries;
     private List<WorkingMaterialData> listOfWorkingMaterialsUsed;
@@ -32,9 +33,14 @@ public class Score
     {
         totalCountTrucks++;
         totalCountCargo += toAdd.GetNumberOfCargo();
+        
         totalEarnings += toAdd.GetSalesValueOfCargo();
+        
+        totalProfit += toAdd.GetSalesProfit();
+        
         totalCost += toAdd.GetPurchaseValueOfCargo();
         totalCost += toAdd.truck.cost;
+        
         listOfDeliveries.Add(toAdd);
 
         //Truck Cost
@@ -62,6 +68,8 @@ public class Score
     public void AddWorkingMaterialData(WorkingMaterialData data, Sprite toolSprite)
     {
         totalCost += data.materialCost;
+        totalProfit -= data.materialCost;
+        
         listOfWorkingMaterialsUsed.Add(data);
 
         listOfBubbles.Add(new BubbleData(toolSprite, data.materialCost, data.materialName, -1));
@@ -74,12 +82,12 @@ public class Score
 
     public float GetPersonalCost()
     {
-        return workersCostPerH * workersHouers;
+        return GetSalary() * 1.3f;
     }
 
     public float GetSalary()
     {
-        return (float)(GetPersonalCost());
+        return workersCostPerH * workersHouers;
     }
 
     public override string ToString()
