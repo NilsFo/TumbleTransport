@@ -107,7 +107,8 @@ public class Truck : MonoBehaviour {
         "Bööblingen, Germany",
         "Teufort",
         "Outset Island",
-        "Bob-Omb Battlefield"
+        "Bob-Omb Battlefield",
+        "Tetris Space Agency"
     };
     
     public TruckState State
