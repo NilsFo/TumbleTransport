@@ -3492,6 +3492,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2080754299}
     m_Modifications:
+    - target: {fileID: 213718382813630849, guid: 55944eeb8c4fd7a4ab9c3069626ee3d7, type: 3}
+      propertyPath: initialCountdown
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 213718382813630878, guid: 55944eeb8c4fd7a4ab9c3069626ee3d7, type: 3}
       propertyPath: m_Name
       value: BubbleSpawner
@@ -3562,7 +3566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 213718382813630879, guid: 55944eeb8c4fd7a4ab9c3069626ee3d7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -462.82
+      value: -462.82007
       objectReference: {fileID: 0}
     - target: {fileID: 213718382813630879, guid: 55944eeb8c4fd7a4ab9c3069626ee3d7, type: 3}
       propertyPath: m_AnchoredPosition.y

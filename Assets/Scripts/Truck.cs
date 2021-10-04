@@ -198,7 +198,6 @@ public class Truck : MonoBehaviour {
         {
             _quoteWaitingTimer -= Time.deltaTime;
         }
-        print(""+_quoteWaitingTimer+" - "+quoteTimerEnabled);
         
         if (gameState.forceNextDriverQuote)
         {
