@@ -345,6 +345,8 @@ public class Truck : MonoBehaviour {
         text.duration = 1.5f;
         text.velocity = Vector3.up*1.5f;
         text.fontSize = 32;
+        
+        GameObject.Find("/Audio/KachingSound").GetComponent<AudioSource>().Play();
     }
 
     private void SetQuoteWaitingTimer() {
