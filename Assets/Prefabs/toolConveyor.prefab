@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolIndicator: {fileID: 758412274975172808}
-  textBubbleManager: {fileID: 0}
+  textBubbleManager: {fileID: 1073839648}
   spawnTimer: 1.5
   speed: 2
   tutorialToolOverrideState: 0

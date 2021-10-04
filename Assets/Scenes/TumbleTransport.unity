@@ -962,6 +962,10 @@ PrefabInstance:
       value: GameState
       objectReference: {fileID: 0}
     - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
+      propertyPath: startBT
+      value: 
+      objectReference: {fileID: 1557033049}
+    - target: {fileID: 4572940503312076238, guid: 3c75ce3389ab16741989246a2a61593a, type: 3}
       propertyPath: workTime
       value: 12
       objectReference: {fileID: 0}
@@ -1709,6 +1713,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 1108592592}
+  myText: {fileID: 1525146142}
+  animationSpeed: 0.21
+  textColorSpeed: 14.42
+  defaultColor: {r: 0.121568635, g: 0.09411766, b: 0.20000002, a: 1}
+  blinkColor: {r: 0.78823537, g: 0.18823531, b: 0.21960786, a: 1}
+  animationPlaying: 0
 --- !u!61 &1557033050
 BoxCollider2D:
   m_ObjectHideFlags: 0
