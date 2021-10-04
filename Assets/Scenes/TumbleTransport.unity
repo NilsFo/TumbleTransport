@@ -667,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trashcontainer
       objectReference: {fileID: 0}
+    - target: {fileID: 7606428449225004157, guid: 66e57ec59868b7b4c8246a96b2cdf23b, type: 3}
+      propertyPath: m_text
+      value: Place tools here to delete.
+      objectReference: {fileID: 0}
     - target: {fileID: 7650872215400116895, guid: 66e57ec59868b7b4c8246a96b2cdf23b, type: 3}
       propertyPath: m_RootOrder
       value: 1
