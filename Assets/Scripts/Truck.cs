@@ -18,6 +18,7 @@ public class Truck : MonoBehaviour {
     public Transform dialoguePosition;
 
     private float _quoteWaitingTimer;
+    public bool quoteTimerEnabled;
     
     public TruckScriptableObject truckData;
     
@@ -75,6 +76,11 @@ public class Truck : MonoBehaviour {
         "Berlin",
         "Rotterdam",
         "Tokyo",
+        "London",
+        "Mexico City",
+        "Oslo",
+        "That one gas station",
+        "City 17",
         "Sidney",
         "Hong Kong",
         "3838 Piermont Drive, Albuquerque, NM",
@@ -90,6 +96,7 @@ public class Truck : MonoBehaviour {
         "Nowhere in particular",
         "Just around the corner",
         "Hudson River",
+        "Honolulu",
         "Reykjavík",
         "Bermuda Triangle",
         "Blackreach",
@@ -97,6 +104,7 @@ public class Truck : MonoBehaviour {
         "Seattle",
         "Sen's Building Co.",
         "Libery City",
+        "Bööblingen, Germany",
         "Teufort",
         "Outset Island",
         "Bob-Omb Battlefield"
@@ -112,6 +120,7 @@ public class Truck : MonoBehaviour {
     {
         _state = TruckState.In;
         gameState = FindObjectOfType<GameState>();
+        quoteTimerEnabled = true;
         
         fastenedCargo = new List<CargoScriptableObject>();
         thrownCargo = new List<CargoScriptableObject>();
@@ -149,7 +158,7 @@ public class Truck : MonoBehaviour {
         SetQuoteWaitingTimer();
         FindObjectOfType<TruckDialogueManager>().radioPos = dialoguePosition;
 
-        destination = possibleDestinations [Random.Range(0, possibleDestinations.Length)];
+        destination = "DST: "+possibleDestinations [Random.Range(0, possibleDestinations.Length)];
         GameObject.Find("/Canvas/DestinationDisplay").GetComponent<TextMeshProUGUI>().text = destination;
 
         GameObject.Find("/Audio/TruckArriveAudio").GetComponent<AudioSource>().Play();
@@ -179,11 +188,18 @@ public class Truck : MonoBehaviour {
                 gameState.tutorialHasDepartedAtLeastOnce = true;
                 gameState.worktimeDecayEnabled = true;
                 gameState.startBT.animationPlaying = false;
+                quoteTimerEnabled = true;
+                ShutUp();
             }
             _lastState = _state;
         }
+
+        if (quoteTimerEnabled)
+        {
+            _quoteWaitingTimer -= Time.deltaTime;
+        }
+        print(""+_quoteWaitingTimer+" - "+quoteTimerEnabled);
         
-        _quoteWaitingTimer -= Time.deltaTime;
         if (gameState.forceNextDriverQuote)
         {
             _quoteWaitingTimer = -10;
@@ -194,6 +210,11 @@ public class Truck : MonoBehaviour {
         if (_quoteWaitingTimer < 0) {
             FindObjectOfType<TruckDialogueManager>().ReadRandomWaitingQuote();
             SetQuoteWaitingTimer();
+            
+            if (!gameState.tutorialHasDepartedAtLeastOnce)
+            {
+                quoteTimerEnabled = false;
+            }
         }
     }
     
@@ -213,7 +234,6 @@ public class Truck : MonoBehaviour {
             
             Debug.Log("Found Strap or Glue " + strap + " on Truck");
             var coll = strap.GetComponent<Collider2D>();
-
             var collResults = new List<Collider2D>();
 
             var nCollisions = coll.OverlapCollider(new ContactFilter2D() {
@@ -349,6 +369,11 @@ public class Truck : MonoBehaviour {
         GameObject.Find("/Audio/KachingSound").GetComponent<AudioSource>().Play();
     }
 
+    public void ShutUp()
+    {
+        FindObjectOfType<TruckDialogueManager>().textBubbleManager.ClearDialogueBoxes();
+    }
+
     private void SetQuoteWaitingTimer() {
         _quoteWaitingTimer = Random.Range(10f, 20f);
 
@@ -361,5 +386,6 @@ public class Truck : MonoBehaviour {
         {
             _quoteWaitingTimer = _quoteWaitingTimer * .6f;
         }
+        
     }
 }

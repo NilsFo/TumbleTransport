@@ -115,7 +115,15 @@ public class Cargo : MonoBehaviour {
             foreach (var result in results) {
                 if (result.gameObject.layer == LayerMask.NameToLayer("Straps")) {
                     Debug.Log("Can't grab what is already fastened");
-                    ShowFloatingText("It's fastened tight.");
+
+                    if (taped)
+                    {
+                        ShowFloatingText("Cannot move taped cargo.");
+                    }
+                    else
+                    {
+                        ShowFloatingText("It's fastened tight.");
+                    }
                     _gameState.boxDropSound.Play();
                     return;
                 }
@@ -138,7 +146,7 @@ public class Cargo : MonoBehaviour {
         // Displaying rotation tutorial reminder
         if (!_gameState.tutorialHasRotatedAtLeastOnce && _gameState.tutorialHasLoadedTruckAtLeastOnce)
         {
-            ShowFloatingText("Rotate cargo using right click.");
+            ShowFloatingText("Rotate cargo using right click or the mouse wheel.");
         }
     }
     void OnMouseUp() {
@@ -156,7 +164,11 @@ public class Cargo : MonoBehaviour {
                     _gameState.toolConveyor.maxSpawnedItems = 4;
                     _gameState.toolConveyor.AddPendingSpawns(4);
                 }
+                
                 _gameState.tutorialHasLoadedTruckAtLeastOnce = true;
+                truck.quoteTimerEnabled = true;
+                truck.ShutUp();
+                //_gameState.forceNextDriverQuote = true;
             }
             else {
                 transform.SetParent(null);
