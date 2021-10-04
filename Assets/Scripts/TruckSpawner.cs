@@ -51,7 +51,7 @@ public class TruckSpawner : MonoBehaviour
                 _truck = null;
                 
                 if (gameState.shiftEnded) {
-                    SceneManager.LoadScene("EndScene");
+                    StartCoroutine(LoadEndSceneAsync());
                 }
             }
         }
@@ -66,6 +66,25 @@ public class TruckSpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator LoadEndSceneAsync() {
+        // Set the current Scene to be able to unload it later
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("EndScene", LoadSceneMode.Additive);
+
+        // Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Move the GameObject (you attach this in the Inspector) to the newly loaded Scene
+        SceneManager.MoveGameObjectToScene(GameObject.Find("/Audio"), SceneManager.GetSceneByName("EndScene"));
+        // Unload the previous Scene
+        SceneManager.UnloadSceneAsync(currentScene);
     }
 
     public void DispatchTruck()

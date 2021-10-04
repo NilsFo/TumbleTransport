@@ -47,8 +47,8 @@ public class RadioManager : MonoBehaviour
     };
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        busyTimer = 0.9f;
         textBubbleManager = GetComponent<TextBubbleManager>();
         Invoke("DialogueLine1", 1);
         //Invoke("DialogueLine2", 3+5);
