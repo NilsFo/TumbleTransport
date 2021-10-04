@@ -75,7 +75,7 @@ public class ToolPickupButtonRope : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && isSelected && timeHeld > .5)
+        if (Input.GetMouseButtonDown(0) && isSelected && timeHeld > .1)
         {
             Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
             if (putawayArea.OverlapPoint(selectionTemp))

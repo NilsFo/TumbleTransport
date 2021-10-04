@@ -53,7 +53,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
         }
 
         // Checking if this tool is selected and if drag should be initiated
-        if (Input.GetMouseButton(0) && isSelected)
+        if (Input.GetMouseButtonUp(0) && isSelected)
         {
             selectionOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
             bool isValid = CheckGlueValidPoints(selectionOrigin);
@@ -70,7 +70,7 @@ public class ToolPickupButtonGlue : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && isSelected && timeHeld > .5)
+        if (Input.GetMouseButtonDown(0) && isSelected && timeHeld > .1)
         {
             Vector3 selectionTemp = cam.ScreenToWorldPoint(Input.mousePosition);
             if (putawayArea.OverlapPoint(selectionTemp))

@@ -58,7 +58,7 @@ public class ToolPickupButtonTape : MonoBehaviour
         }
 
         // Checking if this tool is selected and if drag should be initiated
-        if (Input.GetMouseButton(0) && isSelected && !isDragging)
+        if ((Input.GetMouseButtonUp(0) || Input.GetMouseButtonDown(0)) && isSelected && !isDragging)
         {
             selectionOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
             List<GameObject> validAttachers = CheckToolTapeValidPoints(selectionOrigin);
@@ -68,6 +68,7 @@ public class ToolPickupButtonTape : MonoBehaviour
                 lashingStrapPreview = Instantiate(tapePrefab);
                 lashingStrapPreview.GetComponent<Collider2D>().enabled = false;
                 selectionOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+                return;
             }
             else
             {
