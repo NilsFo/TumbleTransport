@@ -404,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2525812603396635651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.956, y: 2.02, z: -8}
+  m_LocalPosition: {x: -0.956, y: 1.518, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2633298222313952084}
@@ -903,6 +903,7 @@ MonoBehaviour:
   minEyeletsRight: 1
   minEyeletsExtra: 0
   dialoguePosition: {fileID: 140292607914144061}
+  quoteTimerEnabled: 0
   truckData: {fileID: 0}
   fastenedCargo: []
   thrownCargo: []
