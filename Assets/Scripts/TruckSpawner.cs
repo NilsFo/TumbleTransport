@@ -97,7 +97,7 @@ public class TruckSpawner : MonoBehaviour
 
     private GameObject SpawnTruck()
     {
-        if(!gameState.tutorialRunning)
+        if(!gameState.tutorialRunning || gameState.tutorialHasDepartedAtLeastOnce)
             FindObjectOfType<RadioManager>().ReadRandomQuote();
 
         TruckSpawnPoolScriptableObject spawnPool = spawnPools[GameState.shift];
